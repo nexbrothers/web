@@ -22,7 +22,7 @@ const socialLinks = [
   { icon: Twitter, href: "https://twitter.com/nexbrothers", label: "Twitter" },
   { icon: Linkedin, href: "https://linkedin.com/company/nexbrothers", label: "LinkedIn" },
   { icon: Github, href: "https://github.com/nexbrothers", label: "GitHub" },
-  { icon: Mail, href: "mailto:contact@nexbrothers.com", label: "Email" },
+  { icon: Mail, href: "mailto:support@nexbrothers.com", label: "Email" },
 ];
 
 export function Footer() {

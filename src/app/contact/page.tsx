@@ -9,7 +9,7 @@ const contactInfo = [
   {
     icon: <Mail className="w-6 h-6" />,
     title: "Email",
-    value: "contact@nexbrothers.com",
+    value: "support@nexbrothers.com",
     description: "Drop us a line anytime",
   },
   {
