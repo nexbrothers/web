@@ -95,9 +95,9 @@ export default function HomePage() {
               <ProductCard
                 name="Playro"
                 tagline="Cricket Tournament Management"
-                description="The complete solution for managing cricket tournaments. Create, organize, and track tournaments with real-time scoring, automatic standings, and detailed statistics."
+                description="The complete solution for managing cricket tournaments. Create, organize, and track tournaments with real-time scoring, automatic standings, and detailed statistics. Coming soon!"
                 icon={<Trophy className="w-8 h-8" />}
-                status="live"
+                status="coming-soon"
                 href="/playro"
                 featured
               />

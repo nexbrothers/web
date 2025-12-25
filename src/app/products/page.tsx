@@ -15,9 +15,9 @@ const products = [
     name: "Playro",
     tagline: "Cricket Tournament Management",
     description:
-      "The complete solution for managing cricket tournaments. Create tournaments, manage teams, track live scores, and generate automatic standings - all in one powerful app.",
+      "The complete solution for managing cricket tournaments. Create tournaments, manage teams, track live scores, and generate automatic standings - all in one powerful app. Coming soon!",
     icon: <Trophy className="w-8 h-8" />,
-    status: "live" as const,
+    status: "coming-soon" as const,
     href: "/playro",
     featured: true,
     features: [
@@ -128,8 +128,8 @@ export default function ProductsPage() {
                         <div style={{ color: "white" }}>{products[0].icon}</div>
                       </div>
                       <div>
-                        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#10B981]/20 text-[#10B981] mb-1">
-                          Live
+                        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#F59E0B]/20 text-[#F59E0B] mb-1">
+                          Coming Soon
                         </span>
                         <h2 
                           className="text-3xl font-bold"

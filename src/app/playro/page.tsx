@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Container, Button, Card } from "@/components/ui";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
 import {
@@ -14,7 +15,7 @@ import {
   Smartphone,
   ChevronDown,
   ChevronUp,
-  Download,
+  Bell,
   Play,
   Building,
   GraduationCap,
@@ -232,8 +233,8 @@ export default function PlayroPage() {
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#00D4FF] to-[#7C3AED] flex items-center justify-center">
                   <Trophy className="w-7 h-7 text-white" />
                 </div>
-                <span className="px-3 py-1 rounded-full text-sm font-semibold bg-[#10B981]/20 text-[#10B981]">
-                  Available Now
+                <span className="px-3 py-1 rounded-full text-sm font-semibold bg-[#F59E0B]/20 text-[#F59E0B]">
+                  Coming Soon
                 </span>
               </div>
 
@@ -255,20 +256,14 @@ export default function PlayroPage() {
               >
                 Create, organize, and manage cricket tournaments with ease.
                 Real-time scoring, automatic standings, and detailed
-                statistics - all in one powerful app.
+                statistics - all in one powerful app. Launching soon!
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.nexbrothers.playro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button size="lg" className="w-full sm:w-auto group">
-                    <Download className="mr-2 w-5 h-5" />
-                    Download Now
-                  </Button>
-                </a>
+                <Button size="lg" className="w-full sm:w-auto group">
+                  <Bell className="mr-2 w-5 h-5" />
+                  Get Notified
+                </Button>
                 <Button variant="secondary" size="lg" className="w-full sm:w-auto">
                   <Play className="mr-2 w-5 h-5" />
                   Watch Demo
@@ -280,18 +275,18 @@ export default function PlayroPage() {
                 style={{ color: "var(--text-secondary)" }}
               >
                 <span className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#10B981]" />
-                  Android Available
+                  <div className="w-2 h-2 rounded-full bg-[#F59E0B]" />
+                  Android Coming Soon
                 </span>
                 <span className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-[#7C3AED]" />
+                  <div className="w-2 h-2 rounded-full bg-[#F59E0B]" />
                   iOS Coming Soon
                 </span>
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.3} className="hidden lg:block">
-              <div className="relative">
+            <FadeIn delay={0.3} className="hidden lg:flex justify-center">
+              <div className="relative" style={{ maxWidth: "280px" }}>
                 <div 
                   className="absolute inset-0 rounded-3xl blur-3xl"
                   style={{ 
@@ -300,14 +295,19 @@ export default function PlayroPage() {
                   }}
                 />
                 <div 
-                  className="relative backdrop-blur-xl border rounded-3xl p-8 text-center"
+                  className="relative backdrop-blur-xl border rounded-3xl overflow-hidden shadow-2xl"
                   style={{ 
                     backgroundColor: "var(--background-card)",
                     borderColor: "var(--border)" 
                   }}
                 >
-                  <Trophy style={{ color: "var(--accent)" }} className="w-24 h-24 mx-auto mb-6" />
-                  <p style={{ color: "var(--text-secondary)" }}>App Screenshot Coming Soon</p>
+                  <Image 
+                    src="/Playro.png" 
+                    alt="Playro App Screenshot" 
+                    width={280}
+                    height={560}
+                    className="w-full h-auto object-contain"
+                  />
                 </div>
               </div>
             </FadeIn>
@@ -620,26 +620,15 @@ export default function PlayroPage() {
                 className="text-lg mb-10"
                 style={{ color: "var(--text-secondary)" }}
               >
-                Join thousands of cricket enthusiasts who trust Playro for
-                their tournament management needs. Download now and experience
-                the difference.
+                Be among the first to experience Playro when it launches.
+                Sign up for notifications and get early access to the app
+                that will transform how you manage cricket tournaments.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.nexbrothers.playro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block"
-                >
-                  <Button size="lg" className="group">
-                    <Download className="mr-2 w-5 h-5" />
-                    Get it on Google Play
-                  </Button>
-                </a>
-                <Button variant="secondary" size="lg" disabled>
-                  <Smartphone className="mr-2 w-5 h-5" />
-                  App Store (Coming Soon)
+                <Button size="lg" className="group">
+                  <Bell className="mr-2 w-5 h-5" />
+                  Get Notified When We Launch
                 </Button>
               </div>
 
