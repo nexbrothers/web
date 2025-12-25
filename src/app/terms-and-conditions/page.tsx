@@ -277,7 +277,7 @@ export default function TermsPage() {
                 className="mt-2"
                 style={{ color: "var(--accent)" }}
               >
-                legal@nexbrothers.com
+                support@nexbrothers.com
               </p>
             </div>
           </FadeIn>
