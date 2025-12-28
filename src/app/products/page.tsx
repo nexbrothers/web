@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Container, ProductCard, Button, Input } from "@/components/ui";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
-import { Trophy, Rocket, Sparkles, ArrowRight } from "lucide-react";
+import { Trophy, Database, Rocket, Sparkles, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -30,20 +30,29 @@ const products = [
     ],
   },
   {
-    name: "Project Alpha",
-    tagline: "Coming Soon",
+    name: "request-ledger",
+    tagline: "Never Lose a Request Again",
     description:
-      "We're working on something revolutionary. A new way to streamline your daily workflows and boost productivity like never before.",
-    icon: <Rocket className="w-8 h-8" />,
-    status: "coming-soon" as const,
-    href: "/products",
+      "A durable, client-side HTTP request ledger for web applications on unreliable networks. Persist offline requests, auto-replay on reconnection, zero dependencies.",
+    icon: <Database className="w-8 h-8" />,
+    status: "live" as const,
+    href: "/products/request-ledger",
+    featured: true,
+    features: [
+      "Offline-First Persistence",
+      "Auto-Replay on Reconnection",
+      "Crash-Safe Recovery",
+      "Configurable Retry Strategies",
+      "TypeScript-First",
+      "Zero Dependencies (~8KB)",
+    ],
   },
   {
-    name: "Project Beta",
-    tagline: "In Development",
+    name: "Coming Soon",
+    tagline: "Next Innovation",
     description:
-      "Our next innovation is brewing. Stay tuned for updates on this exciting new project that will transform how you connect and collaborate.",
-    icon: <Sparkles className="w-8 h-8" />,
+      "We're working on something exciting. Stay tuned for our next product that will revolutionize how you work.",
+    icon: <Rocket className="w-8 h-8" />,
     status: "coming-soon" as const,
     href: "/products",
   },
@@ -98,7 +107,7 @@ export default function ProductsPage() {
 
         <Container className="relative z-10">
           <StaggerChildren className="space-y-8">
-            {/* Featured Product - Playro */}
+            {/* Featured Product - request-ledger */}
             <StaggerItem>
               <div 
                 className="relative p-8 rounded-3xl backdrop-blur-xl border overflow-hidden"
@@ -128,8 +137,12 @@ export default function ProductsPage() {
                         <div style={{ color: "white" }}>{products[0].icon}</div>
                       </div>
                       <div>
-                        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#F59E0B]/20 text-[#F59E0B] mb-1">
-                          Coming Soon
+                        <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-1 ${
+                          products[0].status === "live" 
+                            ? "bg-[#10B981]/20 text-[#10B981]" 
+                            : "bg-[#F59E0B]/20 text-[#F59E0B]"
+                        }`}>
+                          {products[0].status === "live" ? "Live" : "Coming Soon"}
                         </span>
                         <h2 
                           className="text-3xl font-bold"
@@ -153,9 +166,9 @@ export default function ProductsPage() {
                       {products[0].description}
                     </p>
 
-                    <Link href="/playro">
+                    <Link href={products[0].href}>
                       <Button size="lg" className="group">
-                        Learn More
+                        {products[0].status === "live" ? "View Product" : "Learn More"}
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </Button>
                     </Link>
@@ -193,18 +206,20 @@ export default function ProductsPage() {
               </div>
             </StaggerItem>
 
-            {/* Coming Soon Products */}
+            {/* Other Products */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {products.slice(1).map((product, index) => (
                 <StaggerItem key={index}>
-                  <ProductCard
-                    name={product.name}
-                    tagline={product.tagline}
-                    description={product.description}
-                    icon={product.icon}
-                    status={product.status}
-                    href={product.href}
-                  />
+                  <Link href={product.href}>
+                    <ProductCard
+                      name={product.name}
+                      tagline={product.tagline}
+                      description={product.description}
+                      icon={product.icon}
+                      status={product.status}
+                      href={product.href}
+                    />
+                  </Link>
                 </StaggerItem>
               ))}
             </div>

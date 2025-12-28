@@ -7,6 +7,7 @@ import {
   Cpu,
   TrendingUp,
   Trophy,
+  Database,
   ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
@@ -90,44 +91,53 @@ export default function HomePage() {
           </FadeIn>
 
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Featured Product - Playro */}
-            <StaggerItem className="md:col-span-2 lg:col-span-1">
-              <ProductCard
-                name="Playro"
-                tagline="Cricket Tournament Management"
-                description="The complete solution for managing cricket tournaments. Create, organize, and track tournaments with real-time scoring, automatic standings, and detailed statistics. Coming soon!"
-                icon={<Trophy className="w-8 h-8" />}
-                status="coming-soon"
-                href="/playro"
-                featured
-              />
+            {/* Featured Product - Playro (USP) */}
+            <StaggerItem>
+              <Link href="/playro">
+                <ProductCard
+                  name="Playro"
+                  tagline="Cricket Tournament Management"
+                  description="The complete solution for managing cricket tournaments with real-time scoring, automatic standings, and detailed statistics."
+                  icon={<Trophy className="w-8 h-8" />}
+                  status="coming-soon"
+                  href="/playro"
+                  featured
+                />
+              </Link>
             </StaggerItem>
 
-            {/* Coming Soon Cards */}
+            {/* request-ledger */}
             <StaggerItem>
-              <ProductCard
-                name="Coming Soon"
-                tagline="Next Innovation"
-                description="We're working on something exciting. Stay tuned for our next product that will revolutionize how you work."
-                status="coming-soon"
-                href="/products"
-              />
+              <Link href="/products/request-ledger">
+                <ProductCard
+                  name="request-ledger"
+                  tagline="Never Lose a Request Again"
+                  description="A durable, client-side HTTP request ledger for web apps on unreliable networks. Offline persistence, auto-replay, zero dependencies."
+                  icon={<Database className="w-8 h-8" />}
+                  status="live"
+                  href="/products/request-ledger"
+                />
+              </Link>
             </StaggerItem>
+
+            {/* Coming Soon */}
             <StaggerItem>
-              <ProductCard
-                name="Coming Soon"
-                tagline="Future Release"
-                description="Another innovative solution is in development. Subscribe to our newsletter to be the first to know."
-                status="coming-soon"
-                href="/products"
-              />
+              <Link href="/products">
+                <ProductCard
+                  name="Coming Soon"
+                  tagline="Next Innovation"
+                  description="We're working on something exciting. Stay tuned for our next product that will revolutionize how you work."
+                  status="coming-soon"
+                  href="/products"
+                />
+              </Link>
             </StaggerItem>
           </StaggerChildren>
 
           <FadeIn delay={0.4} className="text-center mt-12">
-            <Link href="/playro">
+            <Link href="/products">
               <Button size="lg" className="group">
-                Discover Playro
+                View All Products
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
