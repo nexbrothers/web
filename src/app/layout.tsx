@@ -3,7 +3,6 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Header, Footer } from "@/components/layout";
 import { ThemeProvider } from "@/components/theme";
-import { CustomCursor } from "@/components/ui";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -76,7 +75,6 @@ export default function RootLayout({
         style={{ background: "var(--background)", color: "var(--text-primary)" }}
       >
         <ThemeProvider>
-          <CustomCursor />
           <Header />
           <main>{children}</main>
           <Footer />
