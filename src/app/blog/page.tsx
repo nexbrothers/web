@@ -309,7 +309,7 @@ export default function BlogPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
-                  href="https://twitter.com/nexbrothers"
+                  href="https://x.com/nexbrothers"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105"

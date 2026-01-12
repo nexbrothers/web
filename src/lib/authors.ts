@@ -36,7 +36,7 @@ export const authors: Record<string, Author> = {
     name: "NexBrothers Team",
     bio: "Building the future of technology at NexBrothers.",
     social: {
-      twitter: "https://twitter.com/nexbrothers",
+      twitter: "https://x.com/nexbrothers",
       github: "https://github.com/nexbrothers",
     },
   },

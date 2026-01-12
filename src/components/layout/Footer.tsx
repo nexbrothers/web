@@ -1,5 +1,5 @@
 import { Container } from "@/components/ui";
-import { Zap, Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Zap, Github, Twitter, Instagram, Youtube, Mail } from "lucide-react";
 import Link from "next/link";
 
 const footerLinks = {
@@ -19,8 +19,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Twitter, href: "https://twitter.com/nexbrothers", label: "Twitter" },
-  { icon: Linkedin, href: "https://linkedin.com/company/nexbrothers", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/nexbrothers", label: "X (Twitter)" },
+  { icon: Instagram, href: "https://www.instagram.com/nexbrothers/", label: "Instagram" },
+  { icon: Youtube, href: "https://www.youtube.com/@nex-brothers", label: "YouTube" },
   { icon: Github, href: "https://github.com/nexbrothers", label: "GitHub" },
   { icon: Mail, href: "mailto:support@nexbrothers.com", label: "Email" },
 ];
