@@ -7,7 +7,31 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Discover NexBrothers products - innovative solutions designed for real-world impact. Explore Playro and upcoming products.",
+    "Discover NexBrothers products - innovative solutions designed for real-world impact. Explore Playro for cricket tournament management and request-ledger for reliable HTTP requests.",
+  keywords: [
+    "NexBrothers products",
+    "Playro",
+    "request-ledger",
+    "cricket app",
+    "HTTP request library",
+    "tournament management",
+  ],
+  openGraph: {
+    title: "NexBrothers Products",
+    description:
+      "Innovative solutions designed for real-world impact. Explore Playro and request-ledger.",
+    url: "https://nexbrothers.com/products",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "NexBrothers Products",
+    description:
+      "Innovative solutions designed for real-world impact. Explore Playro and request-ledger.",
+  },
+  alternates: {
+    canonical: "https://nexbrothers.com/products",
+  },
 };
 
 const products = [

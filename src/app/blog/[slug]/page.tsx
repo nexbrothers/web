@@ -7,6 +7,7 @@ import { getAuthor } from "@/lib/authors";
 import { markdownToHtml } from "@/lib/markdown";
 import { Container } from "@/components/ui";
 import { FadeIn } from "@/components/animations";
+import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/seo";
 import { Calendar, Clock, User, ArrowLeft, Tag, Twitter, Github, Linkedin, Globe } from "lucide-react";
 
 interface Props {
@@ -45,6 +46,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.description,
       images: post.coverImage ? [post.coverImage] : undefined,
     },
+    alternates: {
+      canonical: `https://nexbrothers.com/blog/${slug}`,
+    },
   };
 }
 
@@ -65,6 +69,23 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      {/* JSON-LD Structured Data */}
+      <ArticleJsonLd
+        title={post.title}
+        description={post.description}
+        url={`https://nexbrothers.com/blog/${slug}`}
+        imageUrl={post.coverImage ? `https://nexbrothers.com${post.coverImage}` : undefined}
+        datePublished={post.date}
+        authorName={author.name}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: "https://nexbrothers.com" },
+          { name: "Blog", url: "https://nexbrothers.com/blog" },
+          { name: post.title, url: `https://nexbrothers.com/blog/${slug}` },
+        ]}
+      />
+
       {/* Hero */}
       <section className="relative pt-32 pb-12 overflow-hidden">
         <div
