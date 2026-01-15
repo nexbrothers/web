@@ -39,7 +39,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "NexBrothers", url: "https://nexbrothers.com" }],
   creator: "NexBrothers",
-<<<<<<< Updated upstream
   manifest: "/favicon_io/site.webmanifest",
   icons: {
     icon: [
@@ -54,13 +53,12 @@ export const metadata: Metadata = {
       { url: "/favicon_io/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
       { url: "/favicon_io/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
     ],
-=======
+  },
   publisher: "NexBrothers",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
->>>>>>> Stashed changes
   },
   openGraph: {
     title: "NexBrothers | Building the Future of Technology",
