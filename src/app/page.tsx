@@ -1,4 +1,4 @@
-import { Hero, Features, Stats, CTA } from "@/components/sections";
+import { Hero, Features, Stats, CTA, Teams } from "@/components/sections";
 import { Container, ProductCard, Button } from "@/components/ui";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
 import {
@@ -44,6 +44,25 @@ const stats = [
   { value: 10, suffix: "K+", label: "Users Impacted" },
   { value: 50, suffix: "+", label: "Countries Reached" },
   { value: 99, suffix: "%", label: "Customer Satisfaction" },
+];
+
+const teamMembers = [
+  {
+    name: "Aman Sharma",
+    role: "Co-Founder & Senior Software Developer",
+    company: "Airstashed Pvt Ltd",
+    image: "/aman.jpeg",
+    experience: "2.5+ Years",
+    bio: "Passionate about building innovative solutions that make a real impact. Focused on creating seamless user experiences and scalable architectures.",
+  },
+  {
+    name: "Anuj Sharma",
+    role: "Co-Founder & Senior Software Developer",
+    company: "Bytes24",
+    image: "/anuj.jpg",
+    experience: "1+ Year",
+    bio: "Dedicated to pushing technological boundaries and delivering high-quality software solutions that users love.",
+  },
 ];
 
 export default function HomePage() {
@@ -158,6 +177,13 @@ export default function HomePage() {
         title="Making an Impact"
         subtitle="Numbers that reflect our commitment to excellence and user satisfaction."
         stats={stats}
+      />
+
+      {/* Team */}
+      <Teams
+        title="Meet the Brothers"
+        subtitle="The passionate duo behind NexBrothers, dedicated to building innovative technology solutions."
+        members={teamMembers}
       />
 
       {/* CTA */}
