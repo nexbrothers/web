@@ -2,13 +2,14 @@
 
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { Container } from "@/components/ui";
 import { MobileMenu } from "./MobileMenu";
 import { ThemeToggle } from "@/components/theme";
+import Image from "next/image";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -53,8 +54,14 @@ export function Header() {
           <nav className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00D4FF] to-[#7C3AED] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 rounded-xl overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                <Image
+                  src="/favicon_io/android-chrome-512x512.png"
+                  alt="NexBrothers Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>
                 NexBrothers
