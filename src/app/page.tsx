@@ -9,6 +9,9 @@ import {
   Trophy,
   Database,
   ArrowRight,
+  Gamepad2,
+  Image,
+  BriefcaseBusiness,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -139,13 +142,42 @@ export default function HomePage() {
               </Link>
             </StaggerItem>
 
-            {/* Coming Soon */}
+            {/* GridSmash */}
             <StaggerItem>
               <Link href="/products">
                 <ProductCard
-                  name="Coming Soon"
-                  tagline="Next Innovation"
-                  description="We're working on something exciting. Stay tuned for our next product that will revolutionize how you work."
+                  name="GridSmash"
+                  tagline="Offline Block Puzzle Game"
+                  description="A fun offline puzzle game where you strategically place blocks to clear rows and columns. Play anywhere, no internet needed."
+                  icon={<Gamepad2 className="w-8 h-8" />}
+                  status="coming-soon"
+                  href="/products"
+                />
+              </Link>
+            </StaggerItem>
+
+            {/* PhotoPrint Pro */}
+            <StaggerItem>
+              <Link href="/products">
+                <ProductCard
+                  name="PhotoPrint Pro"
+                  tagline="Print-Ready Photos in Seconds"
+                  description="Remove backgrounds, arrange photos on A4 sheets, and print high-quality images directly. No design skills needed."
+                  icon={<Image className="w-8 h-8" />}
+                  status="coming-soon"
+                  href="/products"
+                />
+              </Link>
+            </StaggerItem>
+
+            {/* Job Automator */}
+            <StaggerItem>
+              <Link href="/products">
+                <ProductCard
+                  name="Job Automator"
+                  tagline="Automated Job Search & Apply"
+                  description="Connect your Naukri account, set your preferences, and let it find and apply to matching jobs automatically with a full activity dashboard."
+                  icon={<BriefcaseBusiness className="w-8 h-8" />}
                   status="coming-soon"
                   href="/products"
                 />

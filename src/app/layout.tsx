@@ -104,6 +104,9 @@ export const metadata: Metadata = {
     google: "your-google-verification-code", // Replace with actual verification code
   },
   category: "technology",
+  other: {
+    "google-adsense-account": "ca-pub-9997068042197628",
+  },
 };
 
 export default function RootLayout({
