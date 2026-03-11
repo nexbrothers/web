@@ -158,28 +158,28 @@ export default function HomePage() {
 
             {/* PhotoPrint Pro */}
             <StaggerItem>
-              <Link href="/products">
+              <Link href="/products/photoprint-pro">
                 <ProductCard
                   name="PhotoPrint Pro"
                   tagline="Print-Ready Photos in Seconds"
                   description="Remove backgrounds, arrange photos on A4 sheets, and print high-quality images directly. No design skills needed."
                   icon={<Image className="w-8 h-8" />}
-                  status="coming-soon"
-                  href="/products"
+                  status="live"
+                  href="/products/photoprint-pro"
                 />
               </Link>
             </StaggerItem>
 
             {/* Job Automator */}
             <StaggerItem>
-              <Link href="/products">
+              <Link href="/products/job-automator">
                 <ProductCard
                   name="Job Automator"
                   tagline="Automated Job Search & Apply"
                   description="Connect your Naukri account, set your preferences, and let it find and apply to matching jobs automatically with a full activity dashboard."
                   icon={<BriefcaseBusiness className="w-8 h-8" />}
-                  status="coming-soon"
-                  href="/products"
+                  status="live"
+                  href="/products/job-automator"
                 />
               </Link>
             </StaggerItem>

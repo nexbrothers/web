@@ -107,8 +107,8 @@ const products = [
     description:
       'Remove backgrounds instantly, arrange photos on A4 sheets, and print high-quality images directly from the app. Perfect for passport photos, ID cards, and bulk photo printing. No design skills needed.',
     icon: <Image className="w-8 h-8" />,
-    status: 'coming-soon' as const,
-    href: '/products',
+    status: 'live' as const,
+    href: '/products/photoprint-pro',
     features: [
       'Instant Background Removal',
       'A4 Sheet Auto-Arrangement',
@@ -124,8 +124,8 @@ const products = [
     description:
       'Connect your Naukri credentials, set your job preferences, and let the app find and apply to matching jobs automatically. Features a comprehensive dashboard to track all applications, logs, and activity.',
     icon: <BriefcaseBusiness className="w-8 h-8" />,
-    status: 'coming-soon' as const,
-    href: '/products',
+    status: 'live' as const,
+    href: '/products/job-automator',
     features: [
       'Naukri Account Integration',
       'Smart Job Matching & Scraping',
