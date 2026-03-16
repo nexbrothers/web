@@ -1,6 +1,6 @@
-import { Hero, Features, Stats, CTA, Teams } from "@/components/sections";
-import { Container, ProductCard, Button } from "@/components/ui";
-import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
+import { Hero, Features, Stats, CTA, Teams } from '@/components/sections';
+import { Container, ProductCard, Button } from '@/components/ui';
+import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
 import {
   Lightbulb,
   Users,
@@ -10,61 +10,61 @@ import {
   Database,
   ArrowRight,
   Gamepad2,
-  Image,
+  Camera,
   BriefcaseBusiness,
-} from "lucide-react";
-import Link from "next/link";
+} from 'lucide-react';
+import Link from 'next/link';
 
 const values = [
   {
     icon: <Lightbulb className="w-7 h-7" />,
-    title: "Innovation First",
+    title: 'Innovation First',
     description:
       "We push boundaries and explore new technologies to create solutions that make a real difference in people's lives.",
   },
   {
     icon: <Users className="w-7 h-7" />,
-    title: "User-Centric Design",
+    title: 'User-Centric Design',
     description:
-      "Every feature we build starts with understanding our users. We design experiences that are intuitive and delightful.",
+      'Every feature we build starts with understanding our users. We design experiences that are intuitive and delightful.',
   },
   {
     icon: <Cpu className="w-7 h-7" />,
-    title: "Cutting-Edge Technology",
+    title: 'Cutting-Edge Technology',
     description:
-      "We leverage the latest technologies and best practices to build robust, scalable, and future-proof solutions.",
+      'We leverage the latest technologies and best practices to build robust, scalable, and future-proof solutions.',
   },
   {
     icon: <TrendingUp className="w-7 h-7" />,
-    title: "Continuous Improvement",
+    title: 'Continuous Improvement',
     description:
-      "We never stop learning and improving. Our products evolve with user feedback and technological advancements.",
+      'We never stop learning and improving. Our products evolve with user feedback and technological advancements.',
   },
 ];
 
 const stats = [
-  { value: 1, suffix: "+", label: "Products Launched" },
-  { value: 10, suffix: "K+", label: "Users Impacted" },
-  { value: 50, suffix: "+", label: "Countries Reached" },
-  { value: 99, suffix: "%", label: "Customer Satisfaction" },
+  { value: 4, suffix: '+', label: 'Products Launched' },
+  { value: 10, suffix: 'K+', label: 'Users Impacted' },
+  { value: 50, suffix: '+', label: 'Countries Reached' },
+  { value: 99, suffix: '%', label: 'Customer Satisfaction' },
 ];
 
 const teamMembers = [
   {
-    name: "Aman Sharma",
-    role: "Co-Founder & Senior Software Developer",
-    company: "Airstashed Pvt Ltd",
-    image: "/aman.jpeg",
-    experience: "2.5+ Years",
-    bio: "Passionate about building innovative solutions that make a real impact. Focused on creating seamless user experiences and scalable architectures.",
+    name: 'Aman Sharma',
+    role: 'Co-Founder & Senior Software Developer',
+    company: 'Airstashed Pvt Ltd',
+    image: '/aman.jpeg',
+    experience: '2.5+ Years',
+    bio: 'Passionate about building innovative solutions that make a real impact. Focused on creating seamless user experiences and scalable architectures.',
   },
   {
-    name: "Anuj Sharma",
-    role: "Co-Founder & Senior Software Developer",
-    company: "Bytes24",
-    image: "/anuj.jpg",
-    experience: "1+ Year",
-    bio: "Dedicated to pushing technological boundaries and delivering high-quality software solutions that users love.",
+    name: 'Anuj Sharma',
+    role: 'Co-Founder & Senior Software Developer',
+    company: 'Bytes24',
+    image: '/anuj.jpg',
+    experience: '1+ Year',
+    bio: 'Dedicated to pushing technological boundaries and delivering high-quality software solutions that users love.',
   },
 ];
 
@@ -75,37 +75,37 @@ export default function HomePage() {
       <Hero
         title={
           <>
-            Building the{" "}
-            <span className="gradient-text">Future</span> of Technology
+            Building the <span className="gradient-text">Future</span> of
+            Technology
           </>
         }
         subtitle="We create innovative apps and digital solutions that transform ideas into impactful experiences. Join us on our journey to shape tomorrow."
-        primaryCTA={{ label: "Explore Products", href: "/products" }}
-        secondaryCTA={{ label: "Learn More", href: "/about" }}
+        primaryCTA={{ label: 'Explore Products', href: '/products' }}
+        secondaryCTA={{ label: 'Learn More', href: '/about' }}
       />
 
       {/* Products Showcase */}
       <section className="py-24 relative overflow-hidden">
-        <div 
-          className="absolute inset-0" 
-          style={{ backgroundColor: "var(--background)" }}
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: 'var(--background)' }}
         />
-        <div 
-          className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[128px]" 
-          style={{ backgroundColor: "var(--accent)", opacity: 0.05 }}
+        <div
+          className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[128px]"
+          style={{ backgroundColor: 'var(--accent)', opacity: 0.05 }}
         />
 
         <Container className="relative z-10">
           <FadeIn className="text-center mb-16">
-            <h2 
+            <h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
-              style={{ color: "var(--text-primary)" }}
+              style={{ color: 'var(--text-primary)' }}
             >
               Our Products
             </h2>
-            <p 
+            <p
               className="text-lg max-w-2xl mx-auto"
-              style={{ color: "var(--text-secondary)" }}
+              style={{ color: 'var(--text-secondary)' }}
             >
               Innovative solutions designed to solve real-world problems and
               make technology accessible to everyone.
@@ -163,7 +163,7 @@ export default function HomePage() {
                   name="PhotoPrint Pro"
                   tagline="Print-Ready Photos in Seconds"
                   description="Remove backgrounds, arrange photos on A4 sheets, and print high-quality images directly. No design skills needed."
-                  icon={<Image className="w-8 h-8" />}
+                  icon={<Camera className="w-8 h-8" />}
                   status="live"
                   href="/products/photoprint-pro"
                 />
@@ -222,8 +222,8 @@ export default function HomePage() {
       <CTA
         title="Ready to Experience Innovation?"
         description="Explore our products and discover how we're building technology that matters. Join thousands of satisfied users today."
-        primaryCTA={{ label: "Get Started", href: "/products" }}
-        secondaryCTA={{ label: "Contact Us", href: "/contact" }}
+        primaryCTA={{ label: 'Get Started', href: '/products' }}
+        secondaryCTA={{ label: 'Contact Us', href: '/contact' }}
       />
     </>
   );
