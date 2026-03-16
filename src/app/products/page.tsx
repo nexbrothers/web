@@ -136,7 +136,7 @@ const products = [
       />
     ),
     status: 'live' as const,
-    href: '/products/printneat',
+    href: '/products/scanvo',
     features: [
       'Smart Document Scanner',
       'ID Card Mode (Front & Back)',
