@@ -128,7 +128,7 @@ const products = [
       'Turn your phone into a powerful document scanner. Scan any document, ID card, or multi-page file, auto-enhance the quality, organize in folders, extract text with OCR, and export as a crisp PDF — all offline, all private, completely free.',
     icon: (
       <Image
-        src="/images/printneat-logo.png"
+        src="/images/scanvo-logo.png"
         alt="Scanvo"
         width={32}
         height={32}
