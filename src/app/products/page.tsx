@@ -7,32 +7,35 @@ import {
   Sparkles,
   ArrowRight,
   Gamepad2,
-  Image,
+  Camera,
   BriefcaseBusiness,
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Products',
   description:
-    'Discover NexBrothers products - innovative solutions designed for real-world impact. Explore Playro, request-ledger, GridSmash, PhotoPrint Pro, and Job Automator.',
+    'Discover NexBrothers products - innovative solutions designed for real-world impact. Explore Playro, request-ledger, GridSmash, PhotoPrint Pro, Scanvo, and Job Automator.',
   keywords: [
     'NexBrothers products',
     'Playro',
     'request-ledger',
     'GridSmash',
     'PhotoPrint Pro',
+    'Scanvo',
     'Job Automator',
     'cricket app',
     'HTTP request library',
     'block puzzle game',
     'photo printing app',
+    'document scanner app',
     'job automation',
   ],
   openGraph: {
     title: 'NexBrothers Products',
     description:
-      'Innovative solutions designed for real-world impact. Explore Playro, GridSmash, PhotoPrint Pro, Job Automator, and more.',
+      'Innovative solutions designed for real-world impact. Explore Playro, GridSmash, PhotoPrint Pro, Scanvo, Job Automator, and more.',
     url: 'https://nexbrothers.com/products',
     type: 'website',
   },
@@ -40,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: 'NexBrothers Products',
     description:
-      'Innovative solutions designed for real-world impact. Explore Playro and request-ledger.',
+      'Innovative solutions designed for real-world impact. Explore Playro, Scanvo, and more.',
   },
   alternates: {
     canonical: 'https://nexbrothers.com/products',
@@ -106,7 +109,7 @@ const products = [
     tagline: 'Print-Ready Photos in Seconds',
     description:
       'Remove backgrounds instantly, arrange photos on A4 sheets, and print high-quality images directly from the app. Perfect for passport photos, ID cards, and bulk photo printing. No design skills needed.',
-    icon: <Image className="w-8 h-8" />,
+    icon: <Camera className="w-8 h-8" />,
     status: 'live' as const,
     href: '/products/photoprint-pro',
     features: [
@@ -116,6 +119,31 @@ const products = [
       'Passport & ID Photo Layouts',
       'Bulk Photo Processing',
       'Direct Print Integration',
+    ],
+  },
+  {
+    name: 'Scanvo',
+    tagline: 'Scan, Organize & Export Documents Instantly',
+    description:
+      'Turn your phone into a powerful document scanner. Scan any document, ID card, or multi-page file, auto-enhance the quality, organize in folders, extract text with OCR, and export as a crisp PDF — all offline, all private, completely free.',
+    icon: (
+      <Image
+        src="/images/printneat-logo.png"
+        alt="Scanvo"
+        width={32}
+        height={32}
+        className="rounded-lg"
+      />
+    ),
+    status: 'live' as const,
+    href: '/products/printneat',
+    features: [
+      'Smart Document Scanner',
+      'ID Card Mode (Front & Back)',
+      'Batch Multi-Page Scan',
+      'PDF & Image Export',
+      'OCR Text Recognition',
+      'Folder Organization',
     ],
   },
   {
