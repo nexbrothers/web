@@ -5,7 +5,7 @@ import { FadeIn } from "@/components/animations";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Learn how NexBrothers collects, uses, and protects your personal information.",
+    "Learn how NexBrothers and Scanvo collect, use, and protect your personal information.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -13,25 +13,25 @@ export default function PrivacyPolicyPage() {
     <>
       {/* Hero */}
       <section className="relative pt-32 pb-12 overflow-hidden">
-        <div 
-          className="absolute inset-0" 
+        <div
+          className="absolute inset-0"
           style={{ backgroundColor: "var(--background)" }}
         />
-        <div 
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[128px]" 
+        <div
+          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[128px]"
           style={{ backgroundColor: "var(--accent)", opacity: 0.1 }}
         />
 
         <Container className="relative z-10">
           <FadeIn className="max-w-3xl">
-            <h1 
+            <h1
               className="text-4xl sm:text-5xl font-bold mb-4"
               style={{ color: "var(--text-primary)" }}
             >
               Privacy Policy
             </h1>
             <p style={{ color: "var(--text-secondary)" }}>
-              Last updated: December 25, 2024
+              Last updated: March 16, 2025
             </p>
           </FadeIn>
         </Container>
@@ -39,225 +39,256 @@ export default function PrivacyPolicyPage() {
 
       {/* Content */}
       <section className="py-16 relative">
-        <div 
+        <div
           className="absolute inset-0"
-          style={{ 
-            background: "linear-gradient(to bottom, var(--background), var(--background-secondary))" 
+          style={{
+            background:
+              "linear-gradient(to bottom, var(--background), var(--background-secondary))",
           }}
         />
 
         <Container className="relative z-10">
           <FadeIn>
             <div className="max-w-3xl prose prose-invert prose-lg">
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
                 At NexBrothers, we take your privacy seriously. This Privacy
-                Policy explains how we collect, use, disclose, and safeguard
-                your information when you use our services and applications.
+                Policy explains how our applications — including{" "}
+                <strong style={{ color: "var(--text-primary)" }}>Scanvo</strong>{" "}
+                — collect, use, and protect your information. By using our apps,
+                you agree to this policy.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
-                1. Information We Collect
+                1. Permissions We Request
               </h2>
-              <h3 
+              <p
+                className="leading-relaxed"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                Scanvo requests the following permissions to provide its core functionality:
+              </p>
+
+              <h3
                 className="text-xl font-semibold mt-6 mb-3"
                 style={{ color: "var(--text-primary)" }}
               >
-                Personal Information
+                Camera
               </h3>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
-                We may collect personal information that you voluntarily
-                provide when using our services, including:
+                We use your device camera solely to scan documents, ID cards,
+                and multi-page files within the app. Camera access is only
+                activated when you initiate a scan. We do not record video, take
+                photos silently, or transmit any camera data to external servers.
+                All scanned images remain on your device.
               </p>
-              <ul 
-                className="space-y-2 list-disc list-inside"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                <li>Name and email address</li>
-                <li>Account credentials</li>
-                <li>Profile information</li>
-                <li>Contact information</li>
-              </ul>
 
-              <h3 
+              <h3
                 className="text-xl font-semibold mt-6 mb-3"
                 style={{ color: "var(--text-primary)" }}
               >
-                Usage Information
+                Storage (Read &amp; Write)
               </h3>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
-                We automatically collect certain information when you use our
-                services:
+                Storage access is used to save scanned documents and exported
+                PDF/image files to your device. We only read files that you
+                explicitly select within the app. We do not access or transmit
+                any other files stored on your device.
               </p>
-              <ul 
-                className="space-y-2 list-disc list-inside"
+
+              <h3
+                className="text-xl font-semibold mt-6 mb-3"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Internet Access
+              </h3>
+              <p
+                className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
-                <li>Device information and identifiers</li>
-                <li>Log data and usage statistics</li>
-                <li>Location data (with your permission)</li>
-                <li>Performance and crash data</li>
-              </ul>
+                Internet access is used only for displaying ads via Google
+                AdMob and for anonymous crash/analytics reporting via Firebase.
+                All core scanning, PDF export, and OCR features work completely
+                offline without internet.
+              </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
-                2. How We Use Your Information
+                2. Data We Collect
               </h2>
-              <p 
-                className="leading-relaxed"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                We use the collected information for various purposes:
-              </p>
-              <ul 
+              <ul
                 className="space-y-2 list-disc list-inside"
                 style={{ color: "var(--text-secondary)" }}
               >
-                <li>To provide and maintain our services</li>
-                <li>To improve and personalize user experience</li>
-                <li>To communicate with you about updates and promotions</li>
-                <li>To detect and prevent fraud or abuse</li>
-                <li>To comply with legal obligations</li>
+                <li>
+                  <strong style={{ color: "var(--text-primary)" }}>
+                    Scanned documents:
+                  </strong>{" "}
+                  Stored locally on your device only. Never uploaded to any server.
+                </li>
+                <li>
+                  <strong style={{ color: "var(--text-primary)" }}>
+                    Crash reports:
+                  </strong>{" "}
+                  Anonymous crash data via Firebase Crashlytics to help us fix bugs.
+                </li>
+                <li>
+                  <strong style={{ color: "var(--text-primary)" }}>
+                    Usage analytics:
+                  </strong>{" "}
+                  Anonymous app usage data via Firebase Analytics (no personal data).
+                </li>
+                <li>
+                  <strong style={{ color: "var(--text-primary)" }}>
+                    Ad data:
+                  </strong>{" "}
+                  Google AdMob may collect device identifiers for ad personalization
+                  as per Google&apos;s own privacy policy.
+                </li>
               </ul>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
-                3. Data Storage and Security
+                3. Data We Do NOT Collect
               </h2>
-              <p 
-                className="leading-relaxed"
+              <ul
+                className="space-y-2 list-disc list-inside"
                 style={{ color: "var(--text-secondary)" }}
               >
-                We implement appropriate technical and organizational security
-                measures to protect your personal information. However, no
-                method of transmission over the Internet is 100% secure, and
-                we cannot guarantee absolute security.
-              </p>
-              <p 
-                className="leading-relaxed mt-4"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Your data is stored on secure servers and is retained only
-                for as long as necessary to fulfill the purposes outlined in
-                this policy.
-              </p>
+                <li>We do NOT upload your scanned documents to any cloud or server</li>
+                <li>We do NOT collect your name, email, or any personal identity</li>
+                <li>We do NOT sell your data to any third party</li>
+                <li>We do NOT access your contacts, messages, or call logs</li>
+                <li>We do NOT track your location</li>
+              </ul>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 4. Third-Party Services
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
-                Our services may contain links to third-party websites or
-                services. We are not responsible for their privacy practices.
-                We may use third-party services for analytics, advertising,
-                and other purposes, which may collect information about you.
+                Scanvo uses the following third-party services, each governed by
+                their own privacy policies:
               </p>
-
-              <h2 
-                className="text-2xl font-bold mt-12 mb-4"
-                style={{ color: "var(--text-primary)" }}
-              >
-                5. Cookies and Tracking
-              </h2>
-              <p 
-                className="leading-relaxed"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                We use cookies and similar tracking technologies to track
-                activity on our services and hold certain information. You
-                can instruct your browser to refuse all cookies or indicate
-                when a cookie is being sent.
-              </p>
-
-              <h2 
-                className="text-2xl font-bold mt-12 mb-4"
-                style={{ color: "var(--text-primary)" }}
-              >
-                6. Your Rights
-              </h2>
-              <p 
-                className="leading-relaxed"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Depending on your location, you may have certain rights
-                regarding your personal information:
-              </p>
-              <ul 
+              <ul
                 className="space-y-2 list-disc list-inside"
                 style={{ color: "var(--text-secondary)" }}
               >
-                <li>Right to access your personal data</li>
-                <li>Right to correct inaccurate data</li>
-                <li>Right to delete your data</li>
-                <li>Right to data portability</li>
-                <li>Right to opt-out of marketing communications</li>
+                <li>
+                  <strong style={{ color: "var(--text-primary)" }}>
+                    Google AdMob
+                  </strong>{" "}
+                  — for displaying ads
+                </li>
+                <li>
+                  <strong style={{ color: "var(--text-primary)" }}>
+                    Firebase Analytics &amp; Crashlytics
+                  </strong>{" "}
+                  — for anonymous usage and crash reporting
+                </li>
+                <li>
+                  <strong style={{ color: "var(--text-primary)" }}>
+                    Google ML Kit
+                  </strong>{" "}
+                  — for on-device OCR text recognition (fully offline, no data sent)
+                </li>
               </ul>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
-                7. Children&apos;s Privacy
+                5. Data Security
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
-                Our services are not intended for children under 13 years of
-                age. We do not knowingly collect personal information from
-                children under 13. If we become aware that we have collected
-                such information, we will take steps to delete it.
+                All scanned documents and files are stored exclusively on your
+                local device. Scanvo does not transmit any document data over
+                the internet. Your documents are as secure as your device itself.
               </p>
 
-              <h2 
+              <h2
+                className="text-2xl font-bold mt-12 mb-4"
+                style={{ color: "var(--text-primary)" }}
+              >
+                6. Children&apos;s Privacy
+              </h2>
+              <p
+                className="leading-relaxed"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                Scanvo is not directed to children under 13. We do not knowingly
+                collect any personal information from children. If you believe
+                your child has provided us with personal data, please contact us
+                and we will delete it immediately.
+              </p>
+
+              <h2
+                className="text-2xl font-bold mt-12 mb-4"
+                style={{ color: "var(--text-primary)" }}
+              >
+                7. Your Rights
+              </h2>
+              <ul
+                className="space-y-2 list-disc list-inside"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                <li>You can revoke camera permission at any time in device Settings</li>
+                <li>You can delete all app data via device Settings → Apps → Scanvo → Clear Data</li>
+                <li>You can opt out of personalized ads in your Google account settings</li>
+              </ul>
+
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 8. Changes to This Policy
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
-                We may update this Privacy Policy from time to time. We will
-                notify you of any changes by posting the new policy on this
-                page and updating the &quot;Last updated&quot; date.
+                We may update this Privacy Policy from time to time. Any changes
+                will be posted on this page with an updated date. Continued use
+                of the app after changes means you accept the updated policy.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 9. Contact Us
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
                 If you have any questions about this Privacy Policy, please
                 contact us at:
               </p>
-              <p 
+              <p
                 className="mt-2"
                 style={{ color: "var(--accent)" }}
               >

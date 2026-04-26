@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Hero, Features, Stats, CTA, Teams } from '@/components/sections';
 import { Container, ProductCard, Button } from '@/components/ui';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
@@ -180,6 +181,20 @@ export default function HomePage() {
                   icon={<BriefcaseBusiness className="w-8 h-8" />}
                   status="live"
                   href="/products/job-automator"
+                />
+              </Link>
+            </StaggerItem>
+
+            {/* Scanvo */}
+            <StaggerItem>
+              <Link href="/products/scanvo">
+                <ProductCard
+                  name="Scanvo"
+                  tagline="Scan & Digitize Documents Instantly"
+                  description="Transform physical documents into high-quality digital files with smart scanning, auto-crop, and PDF export. Fast, clean, and reliable."
+                  icon={<Image src="/images/scanvo-logo.png" alt="Scanvo" width={32} height={32} className="rounded-lg" />}
+                  status="live"
+                  href="/products/scanvo"
                 />
               </Link>
             </StaggerItem>

@@ -36,7 +36,7 @@ export function Header() {
   return (
     <>
       <motion.header
-        initial={{ y: -100 }}
+        initial={{ y: 0 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
