@@ -2,7 +2,7 @@
 set -e
 
 BUCKET="nexbrothers.com"
-CF_DISTRIBUTION_ID=""  # Optional: set your CloudFront distribution ID here
+CF_DISTRIBUTION_ID="E1D5279WU60BCV"
 
 echo "🔨 Building..."
 npm run build

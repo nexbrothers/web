@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Container, Card } from '@/components/ui';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
@@ -196,7 +196,13 @@ type DLItem = {
   live: boolean;
 };
 type OS = { id: string; name: string; live: boolean; items: DLItem[] };
-type Tab = { id: string; label: string; icon: React.ReactNode; oses: OS[] };
+type Tab = {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  live?: boolean;
+  oses: OS[];
+};
 
 function buildTabs(version: string): Tab[] {
   const v = `${S3_BASE}/v${version}`;
@@ -205,6 +211,7 @@ function buildTabs(version: string): Tab[] {
       id: 'mobile',
       label: 'Mobile',
       icon: <Smartphone className="w-4 h-4" />,
+      live: true,
       oses: [
         {
           id: 'android',
@@ -212,21 +219,12 @@ function buildTabs(version: string): Tab[] {
           live: true,
           items: [
             {
-              name: 'APK  ·  arm64-v8a',
-              desc: 'Modern phones · Android 7.0+',
-              href: '/downloads/scanvo-arm64.apk',
-              filename: 'Scanvo.apk',
+              name: 'Google Play',
+              desc: 'Download from Play Store',
+              href: 'https://play.google.com/store/apps/details?id=com.nexbrothers.scanvo&hl=en_IN',
               tag: 'Recommended',
               live: true,
             },
-            {
-              name: 'APK  ·  armeabi-v7a',
-              desc: 'Older devices · Android 5.0+',
-              href: '/downloads/scanvo-armeabi.apk',
-              filename: 'Scanvo-armeabi.apk',
-              live: true,
-            },
-            { name: 'Google Play', desc: 'Coming soon', live: false },
           ],
         },
         {
@@ -296,6 +294,7 @@ function buildTabs(version: string): Tab[] {
   ];
 }
 
+
 function DownloadSection({ centered }: { centered?: boolean }) {
   const [tab, setTab] = useState('mobile');
   const [os, setOs] = useState('android');
@@ -346,118 +345,119 @@ function DownloadSection({ centered }: { centered?: boolean }) {
       </div>
 
       {/* ── Level 2: OS pills ── */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {activeTab.oses.map((o: OS) => (
-          <button
-            key={o.id}
-            onClick={() => o.live && setOs(o.id)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all"
-            style={{
-              background: os === o.id ? 'rgba(0,212,255,0.12)' : 'transparent',
-              color:
-                os === o.id
-                  ? 'var(--accent)'
-                  : o.live
-                    ? 'var(--text-secondary)'
-                    : 'var(--text-muted)',
-              border: `1px solid ${os === o.id ? 'var(--accent)' : 'var(--border)'}`,
-              opacity: o.live ? 1 : 0.4,
-              cursor: o.live ? 'pointer' : 'not-allowed',
-            }}
-          >
-            {o.name}
-            {!o.live && <span className="ml-1 opacity-60">· Soon</span>}
-          </button>
-        ))}
-      </div>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {activeTab.oses.map((o: OS) => (
+              <button
+                key={o.id}
+                onClick={() => o.live && setOs(o.id)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all"
+                style={{
+                  background:
+                    os === o.id ? 'rgba(0,212,255,0.12)' : 'transparent',
+                  color:
+                    os === o.id
+                      ? 'var(--accent)'
+                      : o.live
+                        ? 'var(--text-secondary)'
+                        : 'var(--text-muted)',
+                  border: `1px solid ${os === o.id ? 'var(--accent)' : 'var(--border)'}`,
+                  opacity: o.live ? 1 : 0.4,
+                  cursor: o.live ? 'pointer' : 'not-allowed',
+                }}
+              >
+                {o.name}
+                {!o.live && <span className="ml-1 opacity-60">· Soon</span>}
+              </button>
+            ))}
+          </div>
 
-      {/* ── Level 3: Download items ── */}
-      <div
-        className="rounded-2xl overflow-hidden border"
-        style={{ borderColor: 'var(--border)' }}
-      >
-        {activeOs.items.map((item: DLItem, i: number) => {
-          const isLast = i === activeOs.items.length - 1;
-          const inner = (
-            <div
-              className="flex items-center justify-between px-4 py-4 transition-all"
-              style={{
-                borderBottom: isLast ? 'none' : `1px solid var(--border)`,
-                background: item.live
-                  ? 'var(--background-card)'
-                  : 'transparent',
-                opacity: item.live ? 1 : 0.4,
-                cursor: item.live ? 'pointer' : 'default',
-              }}
-            >
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span
-                    className="text-sm font-semibold"
-                    style={{ color: 'var(--text-primary)' }}
-                  >
-                    {item.name}
-                  </span>
-                  {item.tag && (
+          {/* ── Level 3: Download items ── */}
+          <div
+            className="rounded-2xl overflow-hidden border"
+            style={{ borderColor: 'var(--border)' }}
+          >
+            {activeOs.items.map((item: DLItem, i: number) => {
+              const isLast = i === activeOs.items.length - 1;
+              const inner = (
+                <div
+                  className="flex items-center justify-between px-4 py-4 transition-all"
+                  style={{
+                    borderBottom: isLast ? 'none' : `1px solid var(--border)`,
+                    background: item.live
+                      ? 'var(--background-card)'
+                      : 'transparent',
+                    opacity: item.live ? 1 : 0.4,
+                    cursor: item.live ? 'pointer' : 'default',
+                  }}
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span
+                        className="text-sm font-semibold"
+                        style={{ color: 'var(--text-primary)' }}
+                      >
+                        {item.name}
+                      </span>
+                      {item.tag && (
+                        <span
+                          className="text-xs px-2 py-0.5 rounded-full font-medium"
+                          style={{
+                            background: 'rgba(0,212,255,0.12)',
+                            color: 'var(--accent)',
+                          }}
+                        >
+                          {item.tag}
+                        </span>
+                      )}
+                    </div>
+                    <p
+                      className="text-xs mt-0.5 truncate"
+                      style={{ color: 'var(--text-muted)' }}
+                    >
+                      {item.desc}
+                    </p>
+                  </div>
+                  {item.live ? (
+                    <div className="ml-4 flex items-center gap-2 flex-shrink-0">
+                      <span
+                        className="text-xs font-medium"
+                        style={{ color: 'var(--accent)' }}
+                      >
+                        Free
+                      </span>
+                      <div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center"
+                        style={{ background: 'var(--accent)' }}
+                      >
+                        <Download className="w-3.5 h-3.5 text-[#0D1B2A]" />
+                      </div>
+                    </div>
+                  ) : (
                     <span
-                      className="text-xs px-2 py-0.5 rounded-full font-medium"
+                      className="ml-4 text-xs px-2.5 py-1 rounded-full border flex-shrink-0"
                       style={{
-                        background: 'rgba(0,212,255,0.12)',
-                        color: 'var(--accent)',
+                        color: 'var(--text-muted)',
+                        borderColor: 'var(--border)',
                       }}
                     >
-                      {item.tag}
+                      Soon
                     </span>
                   )}
                 </div>
-                <p
-                  className="text-xs mt-0.5 truncate"
-                  style={{ color: 'var(--text-muted)' }}
+              );
+              return item.live && item.href ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  download={item.filename ?? true}
                 >
-                  {item.desc}
-                </p>
-              </div>
-              {item.live ? (
-                <div className="ml-4 flex items-center gap-2 flex-shrink-0">
-                  <span
-                    className="text-xs font-medium"
-                    style={{ color: 'var(--accent)' }}
-                  >
-                    Free
-                  </span>
-                  <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center"
-                    style={{ background: 'var(--accent)' }}
-                  >
-                    <Download className="w-3.5 h-3.5 text-[#0D1B2A]" />
-                  </div>
-                </div>
+                  {inner}
+                </a>
               ) : (
-                <span
-                  className="ml-4 text-xs px-2.5 py-1 rounded-full border flex-shrink-0"
-                  style={{
-                    color: 'var(--text-muted)',
-                    borderColor: 'var(--border)',
-                  }}
-                >
-                  Soon
-                </span>
-              )}
-            </div>
-          );
-          return item.live && item.href ? (
-            <a
-              key={item.name}
-              href={item.href}
-              download={item.filename ?? true}
-            >
-              {inner}
-            </a>
-          ) : (
-            <div key={item.name}>{inner}</div>
-          );
-        })}
-      </div>
+                <div key={item.name}>{inner}</div>
+              );
+            })}
+          </div>
     </div>
   );
 }

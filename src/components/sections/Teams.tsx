@@ -171,7 +171,7 @@ export function Teams({
                             src={member.image}
                             alt={member.name}
                             fill
-                            className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                            className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105"
                           />
                         </div>
 

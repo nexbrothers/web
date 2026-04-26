@@ -3,7 +3,11 @@
     "allow": [
       "Bash(ls /home/anuj/Desktop/nexBrotherss/web/out/404*)",
       "Bash(curl -sI https://www.nexbrothers.com/_next/static/chunks/9e4385a12221b78e.js)",
-      "Bash(curl -sL https://www.nexbrothers.com/products)"
+      "Bash(curl -sL https://www.nexbrothers.com/products)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('Invalidation:', d['Invalidation']['Status']\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }
