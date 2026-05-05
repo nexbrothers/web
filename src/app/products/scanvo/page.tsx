@@ -241,56 +241,15 @@ function buildTabs(version: string): Tab[] {
         },
       ],
     },
+    /*
     {
       id: 'desktop',
       label: 'Desktop',
       icon: <Monitor className="w-4 h-4" />,
-      oses: [
-        {
-          id: 'linux',
-          name: 'Linux',
-          live: true,
-          items: [
-            {
-              name: 'AppImage',
-              desc: 'All distros · No install needed · x86_64',
-              href: `${v}/Scanvo-x86_64.AppImage`,
-              filename: 'Scanvo-x86_64.AppImage',
-              tag: 'Universal',
-              live: true,
-            },
-            {
-              name: '.deb',
-              desc: 'Ubuntu · Debian · Linux Mint · Pop!_OS',
-              href: `${v}/Scanvo_${version}_amd64.deb`,
-              filename: `Scanvo_${version}_amd64.deb`,
-              live: true,
-            },
-          ],
-        },
-        {
-          id: 'windows',
-          name: 'Windows',
-          live: true,
-          items: [
-            {
-              name: 'Installer (.exe)',
-              desc: 'Windows 10 / 11 · x64',
-              href: `${v}/Scanvo_${version}_x64-setup.exe`,
-              filename: `Scanvo_${version}_x64-setup.exe`,
-              tag: 'Recommended',
-              live: true,
-            },
-          ],
-        },
-        {
-          id: 'macos',
-          name: 'macOS',
-          live: false,
-          items: [{ name: 'macOS App', desc: 'Coming soon', live: false }],
-        },
-      ],
+      live: false,
+      oses: [],
     },
+    */
   ];
 }
 
