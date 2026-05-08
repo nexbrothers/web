@@ -16,6 +16,31 @@ export const metadata: Metadata = {
   title: 'About',
   description:
     'Learn about NexBrothers, our mission to build innovative technology, and the values that drive us forward.',
+  openGraph: {
+    title: 'About NexBrothers',
+    description:
+      'Learn about NexBrothers, our mission to build innovative technology, and the values that drive us forward.',
+    url: 'https://nexbrothers.com/about',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'About NexBrothers',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About NexBrothers',
+    description:
+      'Learn about NexBrothers, our mission to build innovative technology, and the values that drive us forward.',
+    images: ['/og-image.png'],
+  },
+  alternates: {
+    canonical: 'https://nexbrothers.com/about',
+  },
 };
 
 const values = [

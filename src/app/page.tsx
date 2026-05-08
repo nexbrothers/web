@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Hero, Features, Stats, CTA, Teams } from '@/components/sections';
-import { Container, ProductCard, Button } from '@/components/ui';
+import { Container, ProductCard, Button, Card } from '@/components/ui';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
 import {
   Lightbulb,
@@ -13,6 +13,7 @@ import {
   Gamepad2,
   Camera,
   BriefcaseBusiness,
+  ScanLine,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -84,6 +85,171 @@ export default function HomePage() {
         primaryCTA={{ label: 'Explore Products', href: '/products' }}
         secondaryCTA={{ label: 'Learn More', href: '/about' }}
       />
+
+      {/* Recent Launch */}
+      <section className="py-24 relative overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: 'var(--background-secondary)' }}
+        />
+        <div
+          className="absolute left-0 top-12 h-72 w-72 rounded-full blur-[120px]"
+          style={{ backgroundColor: 'var(--accent)', opacity: 0.08 }}
+        />
+
+        <Container className="relative z-10">
+          <FadeIn className="mb-14 text-center">
+            <span
+              className="inline-flex items-center rounded-full px-4 py-1 text-sm font-semibold mb-5"
+              style={{
+                backgroundColor: 'var(--background-card)',
+                color: 'var(--accent)',
+                border: '1px solid var(--border)',
+              }}
+            >
+              Recent Launch
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+              Meet <span className="gradient-text">Scanvo</span>
+            </h2>
+            <p
+              className="text-lg max-w-2xl mx-auto"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Our latest document scanning product with a cleaner, faster way
+              to turn paper documents into polished digital files.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <Link href="/products/scanvo" className="block">
+              <Card
+                gradient
+                className="overflow-hidden p-0 md:p-0"
+              >
+                <div className="grid gap-0 md:grid-cols-[1.15fr_0.85fr]">
+                  <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-between">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3 mb-6">
+                        <div
+                          className="flex h-14 w-14 items-center justify-center rounded-2xl border p-2"
+                          style={{
+                            backgroundColor: 'var(--background-secondary)',
+                            borderColor: 'var(--border)',
+                            boxShadow: '0 10px 30px var(--shadow)',
+                          }}
+                        >
+                          <Image
+                            src="/images/scanvo-logo.png"
+                            alt="Scanvo"
+                            width={28}
+                            height={28}
+                            className="rounded-lg"
+                          />
+                        </div>
+                        <span
+                          className="rounded-full px-3 py-1 text-xs font-semibold"
+                          style={{
+                            backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                            color: '#10B981',
+                          }}
+                        >
+                          Live Now
+                        </span>
+                      </div>
+
+                      <h3
+                        className="text-3xl sm:text-4xl font-bold mb-3"
+                        style={{ color: 'var(--text-primary)' }}
+                      >
+                        Scan, crop, enhance, and export in a few taps.
+                      </h3>
+                      <p
+                        className="text-base sm:text-lg max-w-xl mb-8"
+                        style={{ color: 'var(--text-secondary)' }}
+                      >
+                        Scanvo is built for clean document capture on mobile,
+                        with smart edge detection, ID card mode, batch scans,
+                        and private offline processing.
+                      </p>
+
+                      <div className="grid gap-3 sm:grid-cols-2 mb-8">
+                        {[
+                          'Smart auto edge detection',
+                          'Batch scans into one PDF',
+                          'ID card front and back mode',
+                          'Private offline document processing',
+                        ].map((item) => (
+                          <div
+                            key={item}
+                            className="flex items-center gap-3 rounded-2xl px-4 py-3"
+                            style={{
+                              backgroundColor: 'var(--background-card)',
+                              border: '1px solid var(--border)',
+                            }}
+                          >
+                            <ScanLine
+                              className="w-4 h-4 shrink-0"
+                              style={{ color: 'var(--accent)' }}
+                            />
+                            <span
+                              className="text-sm"
+                              style={{ color: 'var(--text-secondary)' }}
+                            >
+                              {item}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-4">
+                      <Button size="lg" className="group">
+                        Explore Scanvo
+                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                      <span
+                        className="text-sm"
+                        style={{ color: 'var(--text-muted)' }}
+                      >
+                        Opens the Scanvo product page
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="relative min-h-[320px] md:min-h-full">
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          'linear-gradient(180deg, rgba(0, 212, 255, 0.08), rgba(124, 58, 237, 0.05))',
+                      }}
+                    />
+                    <div className="relative h-full p-6 md:p-8 flex items-center justify-center">
+                      <div
+                        className="relative w-full max-w-sm overflow-hidden rounded-[28px] border p-3"
+                        style={{
+                          backgroundColor: 'var(--background-card)',
+                          borderColor: 'var(--border)',
+                          boxShadow: '0 20px 40px var(--shadow)',
+                        }}
+                      >
+                        <Image
+                          src="/images/scanvo/scanvo-8.png"
+                          alt="Scanvo app preview"
+                          width={800}
+                          height={1600}
+                          className="h-auto w-full rounded-[20px]"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+          </FadeIn>
+        </Container>
+      </section>
 
       {/* Products Showcase */}
       <section className="py-24 relative overflow-hidden">
@@ -185,19 +351,6 @@ export default function HomePage() {
               </Link>
             </StaggerItem>
 
-            {/* Scanvo */}
-            <StaggerItem>
-              <Link href="/products/scanvo">
-                <ProductCard
-                  name="Scanvo"
-                  tagline="Scan & Digitize Documents Instantly"
-                  description="Transform physical documents into high-quality digital files with smart scanning, auto-crop, and PDF export. Fast, clean, and reliable."
-                  icon={<Image src="/images/scanvo-logo.png" alt="Scanvo" width={32} height={32} className="rounded-lg" />}
-                  status="live"
-                  href="/products/scanvo"
-                />
-              </Link>
-            </StaggerItem>
           </StaggerChildren>
 
           <FadeIn delay={0.4} className="text-center mt-12">

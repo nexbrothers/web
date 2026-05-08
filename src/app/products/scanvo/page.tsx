@@ -24,6 +24,12 @@ import {
   Building2,
   GraduationCap,
   Store,
+  FileImage,
+  PenTool,
+  Lock,
+  Files,
+  Minimize2,
+  RefreshCw,
 } from 'lucide-react';
 
 const features = [
@@ -151,6 +157,57 @@ const steps = [
   },
 ];
 
+const toolkitTools = [
+  {
+    icon: <Files className="w-5 h-5" />,
+    title: 'Merge PDF',
+    description:
+      'Combine multiple PDF files or scanned pages into one organized document.',
+  },
+  {
+    icon: <Minimize2 className="w-5 h-5" />,
+    title: 'Compress PDF',
+    description:
+      'Reduce PDF file size for faster sharing without losing essential quality.',
+  },
+  {
+    icon: <FileImage className="w-5 h-5" />,
+    title: 'PDF to JPG',
+    description:
+      'Convert PDF pages into high-quality JPG images for sharing or printing.',
+  },
+  {
+    icon: <RefreshCw className="w-5 h-5" />,
+    title: 'JPG to PDF',
+    description:
+      'Turn gallery images and camera captures into clean PDF documents.',
+  },
+  {
+    icon: <PenTool className="w-5 h-5" />,
+    title: 'Edit PDF',
+    description:
+      'Make quick document adjustments and work with your files in one place.',
+  },
+  {
+    icon: <PenTool className="w-5 h-5" />,
+    title: 'Sign PDF',
+    description:
+      'Add signatures to agreements, forms, and business documents directly on your phone.',
+  },
+  {
+    icon: <Lock className="w-5 h-5" />,
+    title: 'Protect PDF',
+    description:
+      'Add an extra layer of privacy to important files before sharing them.',
+  },
+  {
+    icon: <FileText className="w-5 h-5" />,
+    title: 'Document Toolkit',
+    description:
+      'Access scanning, export, layout, booklet, and PDF utilities from one unified workspace.',
+  },
+];
+
 const faqs = [
   {
     question: 'Is Scanvo free to use?',
@@ -181,6 +238,37 @@ const faqs = [
     question: 'Is my data safe?',
     answer:
       'Yes. All image processing is done locally on your device. Scanvo never uploads your documents or photos to any server. Your files stay private.',
+  },
+];
+
+const showcaseImages = [
+  {
+    src: '/images/scanvo/scanvo-8.png',
+    alt: 'Scan anything and enhance everything with Scanvo',
+  },
+  {
+    src: '/images/scanvo/scanvo-5.png',
+    alt: 'Smart crop with precise document edge detection',
+  },
+  {
+    src: '/images/scanvo/scanvo-7.png',
+    alt: 'All-in-one PDF toolkit inside Scanvo',
+  },
+  {
+    src: '/images/scanvo/Scanvo-2.png',
+    alt: 'Create perfect photos instantly with Scanvo',
+  },
+  {
+    src: '/images/scanvo/scanvo-3.png',
+    alt: 'Generate perfect photos in seconds',
+  },
+  {
+    src: '/images/scanvo/scanvo-4.png',
+    alt: 'Print booklets the smart way',
+  },
+  {
+    src: '/images/scanvo/scanvo-6.png',
+    alt: 'Create professional documents effortlessly',
   },
 ];
 
@@ -292,9 +380,13 @@ function DownloadSection({ centered }: { centered?: boolean }) {
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all"
             style={{
               background:
-                tab === t.id ? 'var(--accent)' : 'var(--background-card)',
-              color: tab === t.id ? '#0D1B2A' : 'var(--text-muted)',
+                tab === t.id
+                  ? 'rgba(0,212,255,0.12)'
+                  : 'var(--background-card)',
+              color: tab === t.id ? 'var(--text-primary)' : 'var(--text-muted)',
               border: `1px solid ${tab === t.id ? 'var(--accent)' : 'var(--border)'}`,
+              boxShadow:
+                tab === t.id ? '0 10px 24px rgba(0, 212, 255, 0.08)' : 'none',
             }}
           >
             {t.icon}
@@ -385,10 +477,16 @@ function DownloadSection({ centered }: { centered?: boolean }) {
                         Free
                       </span>
                       <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center"
-                        style={{ background: 'var(--accent)' }}
+                        className="w-8 h-8 rounded-lg flex items-center justify-center border"
+                        style={{
+                          backgroundColor: 'var(--background-secondary)',
+                          borderColor: 'var(--border)',
+                        }}
                       >
-                        <Download className="w-3.5 h-3.5 text-[#0D1B2A]" />
+                        <Download
+                          className="w-3.5 h-3.5"
+                          style={{ color: 'var(--accent)' }}
+                        />
                       </div>
                     </div>
                   ) : (
@@ -476,65 +574,95 @@ export default function ScanvoPage() {
         />
 
         <Container className="relative z-10">
-          <div className="max-w-3xl mx-auto">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
             <FadeIn>
-              <div className="flex items-center gap-3 mb-6">
-                <Image
-                  src="/images/scanvo-logo.png"
-                  alt="Scanvo logo"
-                  width={56}
-                  height={56}
-                  className="rounded-2xl"
-                />
-                <span className="px-3 py-1 rounded-full text-sm font-semibold bg-[#F59E0B]/20 text-[#F59E0B]">
-                  live
-                </span>
-              </div>
-
-              <h1
-                className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4"
-                style={{ color: 'var(--text-primary)' }}
-              >
-                Scanvo
-              </h1>
-              <p
-                className="text-2xl font-medium mb-6"
-                style={{ color: 'var(--accent)' }}
-              >
-                Scan, Enhance & Print Documents Instantly
-              </p>
-              <p
-                className="text-lg mb-8"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                Turn your phone into a powerful document scanner. Scan any
-                document, ID card, or multi-page file, auto-enhance the quality,
-                and export as a crisp PDF — all offline, all private, completely
-                free.
-              </p>
-
-              <div className="flex flex-wrap gap-3 mb-10">
-                {[
-                  '100% Offline',
-                  'Zero Data Upload',
-                  'ID Card Mode',
-                  'Free',
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-4 py-1.5 rounded-full text-sm font-medium border"
-                    style={{
-                      borderColor: 'var(--accent)',
-                      color: 'var(--accent)',
-                    }}
-                  >
-                    {tag}
+              <div className="max-w-3xl">
+                <div className="flex items-center gap-3 mb-6">
+                  <Image
+                    src="/images/scanvo-logo.png"
+                    alt="Scanvo logo"
+                    width={56}
+                    height={56}
+                    className="rounded-2xl"
+                  />
+                  <span className="px-3 py-1 rounded-full text-sm font-semibold bg-[#F59E0B]/20 text-[#F59E0B]">
+                    live
                   </span>
-                ))}
-              </div>
+                </div>
 
-              {/* Download Cards */}
-              <DownloadSection />
+                <h1
+                  className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4"
+                  style={{ color: 'var(--text-primary)' }}
+                >
+                  Scanvo
+                </h1>
+                <p
+                  className="text-2xl font-medium mb-6"
+                  style={{ color: 'var(--accent)' }}
+                >
+                  All-in-One PDF Scanner
+                </p>
+                <p
+                  className="text-lg mb-8"
+                  style={{ color: 'var(--text-secondary)' }}
+                >
+                  Turn your phone into a powerful document scanner. Scan any
+                  document, ID card, or multi-page file, auto-enhance the
+                  quality, and export as a crisp PDF — all offline, all
+                  private, completely free.
+                </p>
+
+                <div className="flex flex-wrap gap-3 mb-10">
+                  {[
+                    '100% Offline',
+                    'Zero Data Upload',
+                    'ID Card Mode',
+                    'Free',
+                  ].map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-4 py-1.5 rounded-full text-sm font-medium border"
+                      style={{
+                        borderColor: 'var(--accent)',
+                        color: 'var(--accent)',
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Download Cards */}
+                <DownloadSection />
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.1}>
+              <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-xl">
+                <div
+                  className="absolute inset-6 sm:inset-8 rounded-full blur-[90px]"
+                  style={{ backgroundColor: 'var(--accent)', opacity: 0.12 }}
+                />
+                <div
+                  className="relative overflow-hidden rounded-[28px] sm:rounded-[32px] p-2 sm:p-3"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
+                    boxShadow: '0 24px 60px var(--shadow)',
+                    backdropFilter: 'blur(18px)',
+                    WebkitBackdropFilter: 'blur(18px)',
+                  }}
+                >
+                  <Image
+                    src="/images/scanvo/hand-scanvo.png"
+                    alt="Scanvo hero preview"
+                    width={1200}
+                    height={1400}
+                    className="h-auto w-full rounded-[22px] sm:rounded-[26px]"
+                    priority
+                  />
+                </div>
+              </div>
             </FadeIn>
           </div>
         </Container>
@@ -646,6 +774,159 @@ export default function ScanvoPage() {
               </StaggerItem>
             ))}
           </StaggerChildren>
+        </Container>
+      </section>
+
+      {/* Toolkit */}
+      <section className="py-24 relative overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to bottom, var(--background-secondary), var(--background))',
+          }}
+        />
+        <div
+          className="absolute right-0 top-1/4 w-96 h-96 rounded-full blur-[128px]"
+          style={{ backgroundColor: 'var(--accent)', opacity: 0.06 }}
+        />
+
+        <Container className="relative z-10">
+          <FadeIn className="text-center mb-16">
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              Complete PDF <span className="gradient-text">Toolkit</span>
+            </h2>
+            <p
+              className="text-lg max-w-3xl mx-auto"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              Scanvo is more than a scanner. It also gives you a full document
+              toolkit for everyday PDF work like merge, compress, convert,
+              edit, sign, and organize.
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <FadeIn>
+              <Card className="h-full p-8 md:p-10" gradient>
+                <div className="flex items-center gap-3 mb-5">
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center"
+                    style={{
+                      background:
+                        'linear-gradient(to bottom right, var(--accent), var(--accent-purple))',
+                      opacity: 0.9,
+                    }}
+                  >
+                    <div style={{ color: 'white' }}>
+                      <FileText className="w-6 h-6" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3
+                      className="text-2xl font-bold"
+                      style={{ color: 'var(--text-primary)' }}
+                    >
+                      Built for complete document work
+                    </h3>
+                    <p style={{ color: 'var(--text-secondary)' }}>
+                      One app for scanning, converting, editing, and sharing.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {toolkitTools.map((tool) => (
+                    <div
+                      key={tool.title}
+                      className="rounded-2xl border p-4"
+                      style={{
+                        backgroundColor: 'var(--background-card)',
+                        borderColor: 'var(--border)',
+                      }}
+                    >
+                      <div className="flex items-center gap-3 mb-3">
+                        <div
+                          className="w-10 h-10 rounded-xl flex items-center justify-center"
+                          style={{
+                            backgroundColor: 'rgba(0, 212, 255, 0.12)',
+                            color: 'var(--accent)',
+                          }}
+                        >
+                          {tool.icon}
+                        </div>
+                        <h4
+                          className="text-base font-semibold"
+                          style={{ color: 'var(--text-primary)' }}
+                        >
+                          {tool.title}
+                        </h4>
+                      </div>
+                      <p
+                        className="text-sm leading-relaxed"
+                        style={{ color: 'var(--text-secondary)' }}
+                      >
+                        {tool.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </FadeIn>
+
+            <FadeIn delay={0.1}>
+              <Card className="h-full p-8 md:p-10 flex flex-col justify-between" gradient>
+                <div>
+                  <span
+                    className="inline-flex rounded-full px-3 py-1 text-xs font-semibold mb-5"
+                    style={{
+                      backgroundColor: 'rgba(0, 212, 255, 0.12)',
+                      color: 'var(--accent)',
+                    }}
+                  >
+                    Everything in one place
+                  </span>
+                  <h3
+                    className="text-2xl sm:text-3xl font-bold mb-4"
+                    style={{ color: 'var(--text-primary)' }}
+                  >
+                    From scan to final PDF, without switching apps
+                  </h3>
+                  <p
+                    className="mb-6"
+                    style={{ color: 'var(--text-secondary)' }}
+                  >
+                    Capture documents, clean them up, create layouts, compress
+                    files, merge pages, export to images, and prepare them for
+                    print or sharing from one consistent workflow.
+                  </p>
+                </div>
+
+                <ul className="space-y-3">
+                  {[
+                    'Scan documents and receipts',
+                    'Convert JPG to PDF and PDF to JPG',
+                    'Edit, sign, and protect PDF files',
+                    'Merge, compress, and organize documents',
+                    'Prepare files for print and booklet output',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <CheckCircle
+                        className="w-5 h-5 shrink-0"
+                        style={{ color: 'var(--accent)' }}
+                      />
+                      <span style={{ color: 'var(--text-secondary)' }}>
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </FadeIn>
+          </div>
         </Container>
       </section>
 
@@ -810,40 +1091,26 @@ export default function ScanvoPage() {
           </FadeIn>
         </Container>
 
-        {/* Laptop banners — side by side */}
-        <FadeIn className="px-4 md:px-8 lg:px-16 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/scanvo/laptop1.jpeg"
-                alt="Scanvo on Laptop - Document Scanner"
-                width={760}
-                height={480}
-                className="w-full object-cover"
-              />
-            </div>
-            <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl">
-              <Image
-                src="/images/scanvo/laptop2.jpeg"
-                alt="Scanvo on Laptop - PDF Export"
-                width={760}
-                height={480}
-                className="w-full object-cover"
-              />
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* Landscape banner — full width with padding */}
-        <FadeIn className="px-4 md:px-8 lg:px-16 mb-8">
-          <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl">
-            <Image
-              src="/images/scanvo/20260316_154510.jpg.jpeg"
-              alt="Smart Tools for Your Documents"
-              width={1520}
-              height={760}
-              className="w-full object-cover"
-            />
+        <FadeIn className="px-4 md:px-8 lg:px-16 mb-10">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {showcaseImages.slice(0, 3).map((img) => (
+              <div
+                key={img.src}
+                className="relative overflow-hidden rounded-3xl border shadow-2xl"
+                style={{
+                  backgroundColor: 'var(--background-card)',
+                  borderColor: 'var(--border)',
+                }}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={864}
+                  height={1536}
+                  className="h-auto w-full"
+                />
+              </div>
+            ))}
           </div>
         </FadeIn>
 
@@ -882,65 +1149,15 @@ export default function ScanvoPage() {
               }
             `}</style>
             <div className="banner-scroll">
-              {[
-                {
-                  src: '/images/scanvo/1773652628984.png',
-                  alt: 'Turn Any Photo Into a Clean Document',
-                },
-                {
-                  src: '/images/scanvo/20260316_154659.jpg.jpeg',
-                  alt: 'Instant Photo Enhancement',
-                },
-                {
-                  src: '/images/scanvo/20260316_154724.jpg.jpeg',
-                  alt: 'Print or Share in One Tap',
-                },
-                {
-                  src: '/images/scanvo/20260316_154755.jpg.jpeg',
-                  alt: 'Create Perfect Passport Photos',
-                },
-                {
-                  src: '/images/scanvo/20260316_154830.jpg.jpeg',
-                  alt: 'Combine Front & Back on One Page',
-                },
-                {
-                  src: '/images/scanvo/20260316_154923.jpg.jpeg',
-                  alt: 'Convert Photos Into Organized Files',
-                },
-                // duplicate for seamless loop
-                {
-                  src: '/images/scanvo/1773652628984.png',
-                  alt: 'Turn Any Photo Into a Clean Document',
-                },
-                {
-                  src: '/images/scanvo/20260316_154659.jpg.jpeg',
-                  alt: 'Instant Photo Enhancement',
-                },
-                {
-                  src: '/images/scanvo/20260316_154724.jpg.jpeg',
-                  alt: 'Print or Share in One Tap',
-                },
-                {
-                  src: '/images/scanvo/20260316_154755.jpg.jpeg',
-                  alt: 'Create Perfect Passport Photos',
-                },
-                {
-                  src: '/images/scanvo/20260316_154830.jpg.jpeg',
-                  alt: 'Combine Front & Back on One Page',
-                },
-                {
-                  src: '/images/scanvo/20260316_154923.jpg.jpeg',
-                  alt: 'Convert Photos Into Organized Files',
-                },
-              ].map((img, i) => (
+              {[...showcaseImages, ...showcaseImages].map((img, i) => (
                 <div
-                  key={i}
+                  key={`${img.src}-${i}`}
                   className="relative shrink-0 rounded-2xl overflow-hidden shadow-xl"
                   style={{ width: '200px', height: '355px' }}
                 >
                   <Image
-                    src={img.src as string}
-                    alt={img.alt as string}
+                    src={img.src}
+                    alt={img.alt}
                     fill
                     className="object-cover"
                   />

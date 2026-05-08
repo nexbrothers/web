@@ -10,7 +10,7 @@ export function ThemeToggle() {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="relative w-10 h-10 rounded-xl flex items-center justify-center bg-white/5 hover:bg-white/10 dark:bg-white/5 dark:hover:bg-white/10 light:bg-black/5 light:hover:bg-black/10 border border-white/10 dark:border-white/10 light:border-black/10 transition-colors duration-300"
+      className="relative w-10 h-10 rounded-xl flex items-center justify-center bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 transition-colors duration-300"
       whileTap={{ scale: 0.95 }}
       aria-label="Toggle theme"
     >

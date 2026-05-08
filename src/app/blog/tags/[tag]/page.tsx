@@ -17,10 +17,34 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { tag } = await params;
+  const canonicalTag = encodeURIComponent(tag);
 
   return {
     title: `Posts tagged "${tag}"`,
     description: `All blog posts tagged with ${tag} on the NexBrothers blog.`,
+    openGraph: {
+      title: `Posts tagged "${tag}"`,
+      description: `All blog posts tagged with ${tag} on the NexBrothers blog.`,
+      url: `https://nexbrothers.com/blog/tags/${canonicalTag}`,
+      type: "website",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: `Posts tagged ${tag} on NexBrothers`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Posts tagged "${tag}"`,
+      description: `All blog posts tagged with ${tag} on the NexBrothers blog.`,
+      images: ["/og-image.png"],
+    },
+    alternates: {
+      canonical: `https://nexbrothers.com/blog/tags/${canonicalTag}`,
+    },
   };
 }
 

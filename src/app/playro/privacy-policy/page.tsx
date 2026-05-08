@@ -6,6 +6,22 @@ export const metadata: Metadata = {
   title: "Privacy Policy — Playro",
   description:
     "Learn how Playro collects, uses, and protects your personal information when you use our cricket tournament management app.",
+  openGraph: {
+    title: "Privacy Policy — Playro",
+    description:
+      "Learn how Playro collects, uses, and protects your personal information when you use our cricket tournament management app.",
+    url: "https://nexbrothers.com/playro/privacy-policy",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy — Playro",
+    description:
+      "Learn how Playro collects, uses, and protects your personal information when you use our cricket tournament management app.",
+  },
+  alternates: {
+    canonical: "https://nexbrothers.com/playro/privacy-policy",
+  },
 };
 
 export default function PlayroPrivacyPolicyPage() {

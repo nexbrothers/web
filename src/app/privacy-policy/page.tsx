@@ -6,6 +6,22 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "Learn how NexBrothers and Scanvo collect, use, and protect your personal information.",
+  openGraph: {
+    title: "Privacy Policy | NexBrothers",
+    description:
+      "Learn how NexBrothers and Scanvo collect, use, and protect your personal information.",
+    url: "https://nexbrothers.com/privacy-policy",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy | NexBrothers",
+    description:
+      "Learn how NexBrothers and Scanvo collect, use, and protect your personal information.",
+  },
+  alternates: {
+    canonical: "https://nexbrothers.com/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {

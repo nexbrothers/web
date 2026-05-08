@@ -11,6 +11,31 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Thoughts on technology, products, and building things that matter. The official NexBrothers blog.",
+  openGraph: {
+    title: "NexBrothers Blog",
+    description:
+      "Thoughts on technology, products, and building things that matter. The official NexBrothers blog.",
+    url: "https://nexbrothers.com/blog",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "NexBrothers Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NexBrothers Blog",
+    description:
+      "Thoughts on technology, products, and building things that matter. The official NexBrothers blog.",
+    images: ["/og-image.png"],
+  },
+  alternates: {
+    canonical: "https://nexbrothers.com/blog",
+  },
 };
 
 export default function BlogPage() {

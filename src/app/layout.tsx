@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: '%s | NexBrothers',
   },
   description:
-    'NexBrothers is a technology company building innovative apps and digital solutions. Explore Playro for cricket tournament management and request-ledger for reliable HTTP request handling.',
+    'NexBrothers builds innovative apps and digital tools including Scanvo, Playro, request-ledger, PhotoPrint Pro, and more.',
   keywords: [
     'technology company',
     'software development',
@@ -119,9 +119,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://nexbrothers.com',
-  },
-  verification: {
-    google: 'your-google-verification-code', // Replace with actual verification code
   },
   category: 'technology',
   other: {

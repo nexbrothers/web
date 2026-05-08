@@ -6,6 +6,22 @@ export const metadata: Metadata = {
   title: "Terms and Conditions",
   description:
     "Read the terms and conditions for using NexBrothers services and applications.",
+  openGraph: {
+    title: "Terms and Conditions | NexBrothers",
+    description:
+      "Read the terms and conditions for using NexBrothers services and applications.",
+    url: "https://nexbrothers.com/terms-and-conditions",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms and Conditions | NexBrothers",
+    description:
+      "Read the terms and conditions for using NexBrothers services and applications.",
+  },
+  alternates: {
+    canonical: "https://nexbrothers.com/terms-and-conditions",
+  },
 };
 
 export default function TermsPage() {
