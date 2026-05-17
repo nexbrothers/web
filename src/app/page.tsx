@@ -1,5 +1,12 @@
 import Image from 'next/image';
-import { Hero, Features, Stats, CTA, Teams } from '@/components/sections';
+import {
+  Hero,
+  Features,
+  Stats,
+  CTA,
+  Teams,
+  ScanvoVideoPreview,
+} from '@/components/sections';
 import { Container, ProductCard, Button, Card } from '@/components/ui';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
 import {
@@ -122,9 +129,9 @@ export default function HomePage() {
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <Link href="/products/scanvo" className="block">
               <Card
                 gradient
+                hover={false}
                 className="overflow-hidden p-0 md:p-0"
               >
                 <div className="grid gap-0 md:grid-cols-[1.15fr_0.85fr]">
@@ -204,10 +211,13 @@ export default function HomePage() {
                     </div>
 
                     <div className="flex flex-wrap items-center gap-4">
-                      <Button size="lg" className="group">
+                      <Link
+                        href="/products/scanvo"
+                        className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00D4FF] to-[#7C3AED] px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#00D4FF]/25 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#00D4FF] focus:ring-offset-2 focus:ring-offset-[#030712]"
+                      >
                         Explore Scanvo
                         <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </Button>
+                      </Link>
                       <span
                         className="text-sm"
                         style={{ color: 'var(--text-muted)' }}
@@ -226,27 +236,11 @@ export default function HomePage() {
                       }}
                     />
                     <div className="relative h-full p-6 md:p-8 flex items-center justify-center">
-                      <div
-                        className="relative w-full max-w-sm overflow-hidden rounded-[28px] border p-3"
-                        style={{
-                          backgroundColor: 'var(--background-card)',
-                          borderColor: 'var(--border)',
-                          boxShadow: '0 20px 40px var(--shadow)',
-                        }}
-                      >
-                        <Image
-                          src="/images/scanvo/scanvo-8.png"
-                          alt="Scanvo app preview"
-                          width={800}
-                          height={1600}
-                          className="h-auto w-full rounded-[20px]"
-                        />
-                      </div>
+                      <ScanvoVideoPreview fallbackImage="/images/scanvo/scanvo-8.png" />
                     </div>
                   </div>
                 </div>
               </Card>
-            </Link>
           </FadeIn>
         </Container>
       </section>

@@ -1,0 +1,16 @@
+{
+  "videos": [
+    {
+      "creatorName": "arshu.techy",
+      "creatorProfileImageUrl": "https://drive.google.com/file/d/10dLzdQnp0cFJgIl7bB9KQXE54DmlL71R/view?usp=sharing",
+      "videoTitle": "Scavo app review",
+      "videoThumbnailUrl": "https://drive.google.com/file/d/1uktZ3xY8tPIYGSLhGDUqoYHvbXhTx6US/view?usp=sharing",
+      "directVideoUrl": "/videos/scanvo-creator-review.mp4",
+      "googleDriveVideoLink": "https://drive.google.com/file/d/182WafW3h2kX7Q_7eQr6ObU9Cgt4iZjh9/view?usp=sharing",
+      "description": "scanner app itna khatarnaak bhi ho skta hai 😱",
+      "platform": "Instagram",
+      "sortOrder": 1,
+      "active": true
+    }
+  ]
+}

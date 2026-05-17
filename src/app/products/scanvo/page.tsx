@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Container, Card } from '@/components/ui';
 import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
@@ -15,7 +15,6 @@ import {
   ChevronUp,
   CheckCircle,
   Smartphone,
-  Monitor,
   ScanLine,
   FolderOpen,
   Moon,
@@ -29,7 +28,10 @@ import {
   Lock,
   Files,
   Minimize2,
+  Play,
   RefreshCw,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 
 const features = [
@@ -272,8 +274,7 @@ const showcaseImages = [
   },
 ];
 
-const S3_BASE = 'https://scanvo-releases.s3.ap-south-1.amazonaws.com/releases';
-const LATEST_JSON = `${S3_BASE}/latest.json`;
+const CREATOR_VIDEOS_CONFIG_URL = '/data/scanvo-creator-videos.json';
 
 type DLItem = {
   name: string;
@@ -292,8 +293,39 @@ type Tab = {
   oses: OS[];
 };
 
-function buildTabs(version: string): Tab[] {
-  const v = `${S3_BASE}/v${version}`;
+type RawHeroVideo = {
+  creatorName?: string;
+  creator?: string;
+  videoTitle?: string;
+  title?: string;
+  videoThumbnailUrl?: string;
+  thumbnailUrl?: string;
+  directVideoUrl?: string;
+  directVideoLink?: string;
+  videoUrl?: string;
+  googleDriveVideoLink?: string;
+  platform?: string;
+  platformName?: string;
+  sortOrder?: number;
+  priority?: number;
+  active?: boolean;
+};
+
+type HeroVideo = {
+  creatorName: string;
+  title: string;
+  thumbnailUrl?: string;
+  videoUrl: string;
+  platform?: string;
+};
+
+type HeroVideoSource =
+  {
+    type: 'video';
+    src: string;
+  };
+
+function buildTabs(): Tab[] {
   return [
     {
       id: 'mobile',
@@ -341,22 +373,321 @@ function buildTabs(version: string): Tab[] {
   ];
 }
 
+function extractDriveFileId(url: string) {
+  try {
+    const parsedUrl = new URL(url);
+    const id = parsedUrl.searchParams.get('id');
+
+    if (
+      id &&
+      (parsedUrl.hostname === 'drive.google.com' ||
+        parsedUrl.hostname === 'drive.usercontent.google.com')
+    ) {
+      return id;
+    }
+  } catch {
+    // Fall back to pattern matching below.
+  }
+
+  const patterns = [
+    /drive\.google\.com\/file\/d\/([^/?#]+)/,
+    /lh3\.googleusercontent\.com\/d\/([^=/?#]+)/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match?.[1]) return match[1];
+  }
+
+  return null;
+}
+
+function getHeroImageSource(url?: string, size = 1000) {
+  if (!url?.trim()) return undefined;
+
+  const driveFileId = extractDriveFileId(url);
+  if (driveFileId) {
+    return `https://lh3.googleusercontent.com/d/${driveFileId}=w${size}`;
+  }
+
+  return url.trim();
+}
+
+function getHeroVideoSource(url: string): HeroVideoSource | null {
+  if (!url.trim()) return null;
+
+  const driveFileId = extractDriveFileId(url);
+  if (driveFileId) {
+    return {
+      type: 'video',
+      src: `https://drive.usercontent.google.com/download?id=${driveFileId}&export=download`,
+    };
+  }
+
+  if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(url)) {
+    return { type: 'video', src: url };
+  }
+
+  return null;
+}
+
+function normalizeHeroVideo(input: unknown): HeroVideo | null {
+  const rawVideos = Array.isArray(input)
+    ? input
+    : Array.isArray((input as { videos?: unknown })?.videos)
+      ? (input as { videos: unknown[] }).videos
+      : [];
+
+  const video = rawVideos
+    .map((rawVideo, index) => {
+      const item = rawVideo as RawHeroVideo;
+      const videoUrl =
+        item.directVideoUrl ??
+        item.directVideoLink ??
+        item.videoUrl ??
+        item.googleDriveVideoLink ??
+        '';
+
+      return {
+        creatorName: (item.creatorName ?? item.creator ?? '').trim(),
+        title: (item.videoTitle ?? item.title ?? '').trim(),
+        thumbnailUrl: item.videoThumbnailUrl ?? item.thumbnailUrl,
+        videoUrl: videoUrl.trim(),
+        platform: item.platformName ?? item.platform,
+        sortOrder: item.sortOrder ?? item.priority ?? index,
+        active: item.active !== false,
+      };
+    })
+    .filter(
+      (item) =>
+        item.active &&
+        Boolean(item.creatorName) &&
+        Boolean(item.title) &&
+        Boolean(item.videoUrl),
+    )
+    .sort((a, b) => a.sortOrder - b.sortOrder)[0];
+
+  if (!video) return null;
+
+  return {
+    creatorName: video.creatorName,
+    title: video.title,
+    thumbnailUrl: video.thumbnailUrl,
+    videoUrl: video.videoUrl,
+    platform: video.platform,
+  };
+}
+
+function ScanvoHeroVideo() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [video, setVideo] = useState<HeroVideo | null>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [hasStarted, setHasStarted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadHeroVideo() {
+      try {
+        const response = await fetch(CREATOR_VIDEOS_CONFIG_URL, {
+          cache: 'no-store',
+          signal: controller.signal,
+        });
+
+        if (!response.ok) throw new Error('Creator video config failed');
+
+        const data = await response.json();
+        setVideo(normalizeHeroVideo(data));
+      } catch (error) {
+        if ((error as Error).name !== 'AbortError') {
+          setVideo(null);
+        }
+      }
+    }
+
+    loadHeroVideo();
+    return () => controller.abort();
+  }, []);
+
+  const source = video ? getHeroVideoSource(video.videoUrl) : null;
+  const thumbnailSource = getHeroImageSource(video?.thumbnailUrl, 1200);
+  const canUseNativeVideo = source?.type === 'video' && !videoFailed;
+
+  useEffect(() => {
+    setHasStarted(false);
+    setIsPlaying(false);
+    setIsReady(false);
+    setVideoFailed(false);
+  }, [source?.src]);
+
+  useEffect(() => {
+    if (!hasStarted || !canUseNativeVideo) return;
+
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    videoElement.muted = isMuted;
+    videoElement
+      .play()
+      .then(() => setIsPlaying(true))
+      .catch(() => {
+        setIsPlaying(false);
+        setVideoFailed(true);
+      });
+  }, [canUseNativeVideo, hasStarted, isMuted]);
+
+  function togglePlayback() {
+    if (!canUseNativeVideo) return;
+
+    setHasStarted(true);
+
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+
+    if (videoElement.paused) {
+      videoElement
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {
+          setIsPlaying(false);
+          setVideoFailed(true);
+        });
+      return;
+    }
+
+    videoElement.pause();
+    setIsPlaying(false);
+  }
+
+  return (
+    <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[380px]">
+      <div
+        className="absolute -inset-5 rounded-[40px] blur-[70px]"
+        style={{ backgroundColor: 'var(--accent)', opacity: 0.16 }}
+      />
+      <div
+        className="relative overflow-hidden rounded-[34px] border p-2"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))',
+          borderColor: 'var(--border)',
+          boxShadow: '0 26px 70px var(--shadow)',
+          backdropFilter: 'blur(18px)',
+          WebkitBackdropFilter: 'blur(18px)',
+        }}
+      >
+        <div className="relative aspect-[9/16] overflow-hidden rounded-[26px] bg-black">
+          {thumbnailSource && (
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={thumbnailSource}
+                alt={video?.title ?? 'Scanvo creator video thumbnail'}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                  hasStarted && isReady ? 'opacity-0' : 'opacity-100'
+                }`}
+                referrerPolicy="no-referrer"
+              />
+            </>
+          )}
+
+          {canUseNativeVideo && source && (
+            <video
+              ref={videoRef}
+              src={source.src}
+              className="absolute inset-0 h-full w-full object-cover"
+              muted={isMuted}
+              playsInline
+              loop
+              preload="metadata"
+              onCanPlay={() => setIsReady(true)}
+              onPlaying={() => setIsReady(true)}
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+              onError={() => setVideoFailed(true)}
+            />
+          )}
+
+          {(!thumbnailSource && (!source || videoFailed)) && (
+            <Image
+              src="/images/scanvo/hand-scanvo.png"
+              alt="Scanvo hero preview"
+              fill
+              className="object-cover"
+              priority
+            />
+          )}
+
+          <button
+            type="button"
+            onClick={togglePlayback}
+            className="absolute inset-0 z-[1] block h-full w-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+            aria-label={
+              isPlaying ? 'Pause Scanvo creator video' : 'Play Scanvo creator video'
+            }
+          >
+            <span className="sr-only">
+              {isPlaying ? 'Pause video' : 'Play video'}
+            </span>
+          </button>
+
+          <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-black/55 via-transparent to-black/20" />
+
+          {canUseNativeVideo && !isPlaying && (
+            <div className="pointer-events-none absolute inset-0 z-[3] flex items-center justify-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/25 bg-white/16 text-white shadow-2xl backdrop-blur-md">
+                <Play className="ml-1 h-7 w-7 fill-current" />
+              </div>
+            </div>
+          )}
+
+          {video && (
+            <div className="pointer-events-none absolute left-4 right-4 top-4 z-[3] flex items-center justify-between gap-3">
+              <div className="min-w-0 rounded-full border border-white/15 bg-black/45 px-3 py-1.5 text-white backdrop-blur-md">
+                <p className="truncate text-xs font-semibold">
+                  {video.creatorName}
+                </p>
+              </div>
+              {video.platform && (
+                <span className="shrink-0 rounded-full border border-white/15 bg-white/12 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-md">
+                  {video.platform}
+                </span>
+              )}
+            </div>
+          )}
+
+          {canUseNativeVideo && (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                setIsMuted((current) => !current);
+              }}
+              className="absolute bottom-4 right-4 z-[4] flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white shadow-xl backdrop-blur-md transition-colors hover:bg-black/75 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+              aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+            >
+              {isMuted ? (
+                <VolumeX className="h-5 w-5" />
+              ) : (
+                <Volume2 className="h-5 w-5" />
+              )}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 function DownloadSection({ centered }: { centered?: boolean }) {
   const [tab, setTab] = useState('mobile');
   const [os, setOs] = useState('android');
-  const [version, setVersion] = useState('1.1.0');
 
-  useEffect(() => {
-    fetch(LATEST_JSON)
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.version) setVersion(d.version);
-      })
-      .catch(() => {});
-  }, []);
-
-  const TABS = buildTabs(version);
+  const TABS = buildTabs();
   const activeTab = TABS.find((t: Tab) => t.id === tab)!;
   const activeOs =
     activeTab.oses.find((o: OS) => o.id === os) ?? activeTab.oses[0];
@@ -638,31 +969,7 @@ export default function ScanvoPage() {
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <div className="relative mx-auto w-full max-w-sm sm:max-w-md lg:max-w-xl">
-                <div
-                  className="absolute inset-6 sm:inset-8 rounded-full blur-[90px]"
-                  style={{ backgroundColor: 'var(--accent)', opacity: 0.12 }}
-                />
-                <div
-                  className="relative overflow-hidden rounded-[28px] sm:rounded-[32px] p-2 sm:p-3"
-                  style={{
-                    background:
-                      'linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
-                    boxShadow: '0 24px 60px var(--shadow)',
-                    backdropFilter: 'blur(18px)',
-                    WebkitBackdropFilter: 'blur(18px)',
-                  }}
-                >
-                  <Image
-                    src="/images/scanvo/hand-scanvo.png"
-                    alt="Scanvo hero preview"
-                    width={1200}
-                    height={1400}
-                    className="h-auto w-full rounded-[22px] sm:rounded-[26px]"
-                    priority
-                  />
-                </div>
-              </div>
+              <ScanvoHeroVideo />
             </FadeIn>
           </div>
         </Container>
