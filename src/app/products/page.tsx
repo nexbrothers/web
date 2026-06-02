@@ -1,17 +1,6 @@
 import { Metadata } from 'next';
-import { Container, ProductCard, Button, Input } from '@/components/ui';
-import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
-import {
-  Trophy,
-  Database,
-  Sparkles,
-  ArrowRight,
-  Gamepad2,
-  Camera,
-  BriefcaseBusiness,
-} from 'lucide-react';
+import { ProductCard } from '@/components/ui';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Products',
@@ -25,26 +14,7 @@ export const metadata: Metadata = {
     'PhotoPrint Pro',
     'Scanvo',
     'Job Automator',
-    'cricket app',
-    'HTTP request library',
-    'block puzzle game',
-    'photo printing app',
-    'document scanner app',
-    'job automation',
   ],
-  openGraph: {
-    title: 'NexBrothers Products',
-    description:
-      'Innovative solutions designed for real-world impact. Explore Playro, GridSmash, PhotoPrint Pro, Scanvo, Job Automator, and more.',
-    url: 'https://nexbrothers.com/products',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary',
-    title: 'NexBrothers Products',
-    description:
-      'Innovative solutions designed for real-world impact. Explore Playro, Scanvo, and more.',
-  },
   alternates: {
     canonical: 'https://nexbrothers.com/products',
   },
@@ -55,337 +25,135 @@ const products = [
     name: 'Playro',
     tagline: 'Cricket Tournament Management',
     description:
-      'The complete solution for managing cricket tournaments. Create tournaments, manage teams, track live scores, and generate automatic standings - all in one powerful app. Coming soon!',
-    icon: <Trophy className="w-8 h-8" />,
+      'The complete solution for managing cricket tournaments. Create tournaments, manage teams, track live scores, and generate automatic standings - all in one powerful app.',
     status: 'coming-soon' as const,
     href: '/playro',
     featured: true,
-    features: [
-      'Tournament Creation & Setup',
-      'Team & Player Management',
-      'Live Score Updates',
-      'Automatic Points Table',
-      'Match Fixtures & Scheduling',
-      'Real-time Statistics',
-    ],
   },
   {
     name: 'request-ledger',
     tagline: 'Never Lose a Request Again',
     description:
       'A durable, client-side HTTP request ledger for web applications on unreliable networks. Persist offline requests, auto-replay on reconnection, zero dependencies.',
-    icon: <Database className="w-8 h-8" />,
     status: 'live' as const,
     href: '/products/request-ledger',
     featured: true,
-    features: [
-      'Offline-First Persistence',
-      'Auto-Replay on Reconnection',
-      'Crash-Safe Recovery',
-      'Configurable Retry Strategies',
-      'TypeScript-First',
-      'Zero Dependencies (~8KB)',
-    ],
   },
   {
     name: 'GridSmash',
     tagline: 'Offline Block Puzzle Game',
     description:
-      'A fun and addictive offline puzzle game where you strategically place blocks to clear rows and columns. Works completely offline - play anywhere, anytime without internet. Deployed on Play Store and going live soon!',
-    icon: <Gamepad2 className="w-8 h-8" />,
+      'A fun and addictive offline puzzle game where you strategically place blocks to clear rows and columns. Works completely offline - play anywhere, anytime without internet.',
     status: 'coming-soon' as const,
     href: '/products',
-    features: [
-      'Fully Offline Gameplay',
-      'Strategic Block Placement',
-      'Row & Column Clearing',
-      'Smooth Animations & Effects',
-      'Score Tracking & Leaderboard',
-      'Available on Google Play Store',
-    ],
   },
   {
     name: 'PhotoPrint Pro',
     tagline: 'Print-Ready Photos in Seconds',
     description:
-      'Remove backgrounds instantly, arrange photos on A4 sheets, and print high-quality images directly from the app. Perfect for passport photos, ID cards, and bulk photo printing. No design skills needed.',
-    icon: <Camera className="w-8 h-8" />,
+      'Remove backgrounds instantly, arrange photos on A4 sheets, and print high-quality images directly from the app. Perfect for passport photos, ID cards, and bulk photo printing.',
     status: 'live' as const,
     href: '/products/photoprint-pro',
-    features: [
-      'Instant Background Removal',
-      'A4 Sheet Auto-Arrangement',
-      'High-Quality Print Output',
-      'Passport & ID Photo Layouts',
-      'Bulk Photo Processing',
-      'Direct Print Integration',
-    ],
   },
   {
     name: 'Scanvo',
     tagline: 'Scan, Organize & Export Documents Instantly',
     description:
-      'Turn your phone into a powerful document scanner. Scan any document, ID card, or multi-page file, auto-enhance the quality, organize in folders, extract text with OCR, and export as a crisp PDF — all offline, all private, completely free.',
-    icon: (
-      <Image
-        src="/images/scanvo-logo.png"
-        alt="Scanvo"
-        width={32}
-        height={32}
-        className="rounded-lg"
-      />
-    ),
+      'Turn your phone into a powerful document scanner. Scan any document, auto-enhance the quality, extract text with OCR, and export as a crisp PDF — all offline, all private.',
     status: 'live' as const,
     href: '/products/scanvo',
-    features: [
-      'Smart Document Scanner',
-      'ID Card Mode (Front & Back)',
-      'Batch Multi-Page Scan',
-      'PDF & Image Export',
-      'OCR Text Recognition',
-      'Folder Organization',
-    ],
   },
   {
     name: 'Job Automator',
     tagline: 'Automated Job Search & Apply',
     description:
-      'Connect your Naukri credentials, set your job preferences, and let the app find and apply to matching jobs automatically. Features a comprehensive dashboard to track all applications, logs, and activity.',
-    icon: <BriefcaseBusiness className="w-8 h-8" />,
+      'Connect your Naukri credentials, set your job preferences, and let the app find and apply to matching jobs automatically. Features a comprehensive dashboard to track all applications.',
     status: 'live' as const,
     href: '/products/job-automator',
-    features: [
-      'Naukri Account Integration',
-      'Smart Job Matching & Scraping',
-      'Automated Job Applications',
-      'Activity Dashboard & Logs',
-      'Custom Job Preferences & Filters',
-      'Application Status Tracking',
-    ],
   },
 ];
 
 export default function ProductsPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'var(--background)' }}
-        />
-        <div
-          className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: 'var(--accent)', opacity: 0.1 }}
-        />
-        <div
-          className="absolute bottom-0 left-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: 'var(--accent-purple)', opacity: 0.1 }}
-        />
+      <section className="hero section-shell" aria-labelledby="hero-title">
+        <div className="hero-copy reveal is-visible">
+          <p className="hero-eyebrow reveal is-visible">
+            Our Products
+          </p>
+          <h1 id="hero-title">Built for the real world.</h1>
+          <p className="hero-text">
+            Innovative solutions designed for real-world impact. From sports
+            management to productivity tools, we build technology that makes a
+            difference.
+          </p>
+        </div>
+      </section>
 
-        <Container className="relative z-10">
-          <FadeIn className="max-w-3xl mx-auto text-center">
-            <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
-              style={{ color: 'var(--text-primary)' }}
+      <section className="section-shell" style={{ padding: '2rem 0' }}>
+        <div className="products-grid">
+          {products.map((product, index) => (
+            <Link key={index} href={product.href} className="contents">
+              <ProductCard
+                name={product.name}
+                tagline={product.tagline}
+                description={product.description}
+                status={product.status}
+                href={product.href}
+                featured={product.featured}
+              />
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="contact section-shell">
+        <div className="contact-copy reveal is-visible">
+          <p className="eyebrow">Stay Updated</p>
+          <h2>Newsletter</h2>
+          <p>
+            Be the first to know when we launch new products. Subscribe to
+            our newsletter for exclusive updates and early access.
+          </p>
+        </div>
+        <div className="contact-panel reveal is-visible">
+          <form className="flex flex-col gap-3 w-full">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full px-4 py-3 outline-none"
+              style={{ 
+                backgroundColor: 'rgba(255,255,255,0.06)', 
+                border: '1px solid rgba(255,255,255,0.1)', 
+                borderRadius: '1rem',
+                color: 'var(--cream)',
+                fontFamily: 'var(--mono)',
+                fontSize: '0.88rem'
+              }}
+              required
+            />
+            <button 
+              type="submit" 
+              className="w-full transition-transform hover:-translate-y-0.5"
+              style={{
+                backgroundColor: 'var(--cream)',
+                color: 'var(--charcoal)',
+                border: 'none',
+                borderRadius: '1rem',
+                padding: '0.8rem 1rem',
+                fontFamily: 'var(--mono)',
+                fontSize: '0.88rem',
+                fontWeight: 'bold',
+                cursor: 'pointer'
+              }}
             >
-              Our <span className="gradient-text">Products</span>
-            </h1>
-            <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>
-              Innovative solutions designed for real-world impact. From sports
-              management to productivity tools, we build technology that makes a
-              difference.
-            </p>
-          </FadeIn>
-        </Container>
-      </section>
-
-      {/* Products Grid */}
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to bottom, var(--background), var(--background-secondary))',
-          }}
-        />
-
-        <Container className="relative z-10">
-          <StaggerChildren className="space-y-8">
-            {/* Featured Product - request-ledger */}
-            <StaggerItem>
-              <div
-                className="relative p-8 rounded-3xl backdrop-blur-xl border overflow-hidden"
-                style={{
-                  backgroundColor: 'var(--background-card)',
-                  borderColor: 'var(--border)',
-                }}
-              >
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background:
-                      'linear-gradient(to bottom right, var(--accent), transparent, var(--accent-purple))',
-                    opacity: 0.05,
-                  }}
-                />
-
-                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12">
-                  <div>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div
-                        className="w-16 h-16 rounded-2xl flex items-center justify-center"
-                        style={{
-                          background:
-                            'linear-gradient(to bottom right, var(--accent), var(--accent-purple))',
-                          opacity: 0.9,
-                        }}
-                      >
-                        <div style={{ color: 'white' }}>{products[0].icon}</div>
-                      </div>
-                      <div>
-                        <span
-                          className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-1 ${
-                            products[0].status === 'live'
-                              ? 'bg-[#10B981]/20 text-[#10B981]'
-                              : 'bg-[#F59E0B]/20 text-[#F59E0B]'
-                          }`}
-                        >
-                          {products[0].status === 'live'
-                            ? 'Live'
-                            : 'Coming Soon'}
-                        </span>
-                        <h2
-                          className="text-3xl font-bold"
-                          style={{ color: 'var(--text-primary)' }}
-                        >
-                          {products[0].name}
-                        </h2>
-                      </div>
-                    </div>
-
-                    <p
-                      className="font-medium mb-4"
-                      style={{ color: 'var(--accent)' }}
-                    >
-                      {products[0].tagline}
-                    </p>
-                    <p
-                      className="text-lg mb-8"
-                      style={{ color: 'var(--text-secondary)' }}
-                    >
-                      {products[0].description}
-                    </p>
-
-                    <Link href={products[0].href}>
-                      <Button size="lg" className="group">
-                        {products[0].status === 'live'
-                          ? 'View Product'
-                          : 'Learn More'}
-                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
-                  </div>
-
-                  <div>
-                    <h3
-                      className="text-xl font-semibold mb-6"
-                      style={{ color: 'var(--text-primary)' }}
-                    >
-                      Key Features
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {products[0].features?.map((feature, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center gap-3 p-4 rounded-xl border"
-                          style={{
-                            backgroundColor: 'var(--background-card)',
-                            borderColor: 'var(--border)',
-                          }}
-                        >
-                          <div
-                            className="w-2 h-2 rounded-full"
-                            style={{ backgroundColor: 'var(--accent)' }}
-                          />
-                          <span style={{ color: 'var(--text-secondary)' }}>
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </StaggerItem>
-
-            {/* Other Products */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {products.slice(1).map((product, index) => (
-                <StaggerItem key={index}>
-                  <Link href={product.href}>
-                    <ProductCard
-                      name={product.name}
-                      tagline={product.tagline}
-                      description={product.description}
-                      icon={product.icon}
-                      status={product.status}
-                      href={product.href}
-                    />
-                  </Link>
-                </StaggerItem>
-              ))}
-            </div>
-          </StaggerChildren>
-        </Container>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'var(--background-secondary)' }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full blur-[128px]"
-          style={{ backgroundColor: 'var(--accent)', opacity: 0.1 }}
-        />
-
-        <Container className="relative z-10">
-          <FadeIn>
-            <div className="max-w-2xl mx-auto text-center">
-              <h2
-                className="text-3xl sm:text-4xl font-bold mb-4"
-                style={{ color: 'var(--text-primary)' }}
-              >
-                Stay Updated
-              </h2>
-              <p
-                className="text-lg mb-8"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                Be the first to know when we launch new products. Subscribe to
-                our newsletter for exclusive updates and early access.
-              </p>
-
-              <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1"
-                />
-                <Button type="submit">Subscribe</Button>
-              </form>
-
-              <p
-                className="text-sm mt-4"
-                style={{ color: 'var(--text-muted)' }}
-              >
-                We respect your privacy. Unsubscribe at any time.
-              </p>
-            </div>
-          </FadeIn>
-        </Container>
+              Subscribe
+            </button>
+          </form>
+          <p className="text-xs text-center" style={{ color: 'rgba(255,255,255,0.5)', marginTop: '0.5rem' }}>
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </div>
       </section>
     </>
   );

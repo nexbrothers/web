@@ -1,19 +1,6 @@
-@import "tailwindcss";
-
 :root {
   --paper: #ebe5d8;
   --paper-deep: #ddd3c0;
-  --background: var(--paper);
-  --background-secondary: var(--panel);
-  --background-card: var(--panel);
-  --text-primary: var(--ink);
-  --text-secondary: var(--muted);
-  --text-muted: var(--oxide);
-  --accent: var(--charcoal);
-  --accent-rgb: 18, 21, 17;
-  --accent-purple: var(--moss);
-  --border: var(--line);
-  --glow: var(--cream);
   --ink: #1f241f;
   --muted: #62675d;
   --line: #1f241f29;
@@ -230,17 +217,18 @@ h3 {
   font-weight: 500;
 }
 h1 {
+  max-width: 11ch;
   margin-top: 1rem;
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  line-height: 1.1;
+  font-size: clamp(3.8rem, 10vw, 8.2rem);
+  line-height: 0.82;
 }
 h2 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  line-height: 1.15;
+  font-size: clamp(2.5rem, 5vw, 5.3rem);
+  line-height: 0.92;
 }
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  line-height: 1.25;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1;
 }
 .hero-text {
   max-width: 43rem;

@@ -1371,103 +1371,108 @@ export default function ScanvoPage() {
       </section>
 
       {/* App Banners Gallery */}
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to bottom, var(--background-secondary), var(--background))',
-          }}
-        />
-
-        <Container className="relative z-10 mb-12">
-          <FadeIn className="text-center">
-            <h2
-              className="text-3xl md:text-4xl font-bold mb-4"
-              style={{ color: 'var(--text-primary)' }}
-            >
-              See Scanvo in Action
-            </h2>
-            <p
-              className="text-lg max-w-2xl mx-auto"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              Powerful features beautifully designed for your everyday document
-              needs.
-            </p>
-          </FadeIn>
-        </Container>
-
-        <FadeIn className="px-4 md:px-8 lg:px-16 mb-10">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {showcaseImages.slice(0, 3).map((img) => (
-              <div
-                key={img.src}
-                className="relative overflow-hidden rounded-3xl border shadow-2xl"
-                style={{
-                  backgroundColor: 'var(--background-card)',
-                  borderColor: 'var(--border)',
-                }}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={864}
-                  height={1536}
-                  className="h-auto w-full"
-                />
-              </div>
-            ))}
+      <section className="section-shell relative py-24 border-t" style={{ borderColor: 'var(--line)' }}>
+        <div className="split-heading reveal is-visible mb-12 md:mb-16">
+          <div>
+            <p className="eyebrow">Interface</p>
+            <h2>See Scanvo in Action</h2>
           </div>
-        </FadeIn>
+          <div>
+            <p className="text-lg" style={{ color: 'var(--muted)' }}>
+              Powerful features beautifully designed for your everyday document
+              needs. Experience the most intuitive scanning workflow ever built.
+            </p>
+          </div>
+        </div>
 
-        {/* Auto-scrolling portrait banners */}
-        <div className="relative">
-          {/* Fade edges */}
+        {/* Custom animations */}
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 1rem)); }
+          }
+          .animate-marquee {
+            animation: marquee 40s linear infinite;
+          }
+          .animate-marquee:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
+        
+        <div className="relative overflow-hidden pt-4 pb-16">
+          {/* Fade edges for elegant scrolling */}
           <div
-            className="absolute left-0 top-0 bottom-0 w-16 md:w-32 z-10 pointer-events-none"
+            className="absolute left-0 top-0 bottom-0 w-16 md:w-48 z-10 pointer-events-none"
             style={{
-              background:
-                'linear-gradient(to right, var(--background-secondary), transparent)',
+              background: 'linear-gradient(to right, var(--paper), transparent)',
             }}
           />
           <div
-            className="absolute right-0 top-0 bottom-0 w-16 md:w-32 z-10 pointer-events-none"
+            className="absolute right-0 top-0 bottom-0 w-16 md:w-48 z-10 pointer-events-none"
             style={{
-              background:
-                'linear-gradient(to left, var(--background-secondary), transparent)',
+              background: 'linear-gradient(to left, var(--paper), transparent)',
             }}
           />
 
-          <div className="flex gap-4 overflow-hidden">
-            <style>{`
-              @keyframes scroll-banners {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-              }
-              .banner-scroll {
-                display: flex;
-                gap: 1rem;
-                animation: scroll-banners 30s linear infinite;
-                width: max-content;
-              }
-              .banner-scroll:hover {
-                animation-play-state: paused;
-              }
-            `}</style>
-            <div className="banner-scroll">
-              {[...showcaseImages, ...showcaseImages].map((img, i) => (
+          <div className="flex gap-8 w-max animate-marquee group">
+            {/* First Set */}
+            <div className="flex gap-8">
+              {showcaseImages.map((img, i) => (
                 <div
-                  key={`${img.src}-${i}`}
-                  className="relative shrink-0 rounded-2xl overflow-hidden shadow-xl"
-                  style={{ width: '200px', height: '355px' }}
+                  key={`a-${i}`}
+                  className="shrink-0"
+                  style={{
+                    width: 'min(75vw, 320px)',
+                    transform: i % 2 !== 0 ? 'translateY(2.5rem)' : 'none'
+                  }}
                 >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
-                    className="object-cover"
-                  />
+                  <div
+                    className="relative w-full overflow-hidden rounded-[2rem] border transition-all duration-700 grayscale hover:grayscale-0 cursor-pointer"
+                    style={{
+                      aspectRatio: '9/16',
+                      borderColor: 'var(--line)',
+                      boxShadow: '0 24px 60px rgba(31,36,31,0.12)',
+                      backgroundColor: 'var(--panel)'
+                    }}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Second Set (Duplicate for seamless loop) */}
+            <div className="flex gap-8">
+              {showcaseImages.map((img, i) => (
+                <div
+                  key={`b-${i}`}
+                  className="shrink-0"
+                  style={{
+                    width: 'min(75vw, 320px)',
+                    transform: i % 2 !== 0 ? 'translateY(2.5rem)' : 'none'
+                  }}
+                >
+                  <div
+                    className="relative w-full overflow-hidden rounded-[2rem] border transition-all duration-700 grayscale hover:grayscale-0 cursor-pointer"
+                    style={{
+                      aspectRatio: '9/16',
+                      borderColor: 'var(--line)',
+                      boxShadow: '0 24px 60px rgba(31,36,31,0.12)',
+                      backgroundColor: 'var(--panel)'
+                    }}
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               ))}
             </div>

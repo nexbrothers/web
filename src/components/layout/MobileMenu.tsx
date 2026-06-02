@@ -27,7 +27,7 @@ export function MobileMenu({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#030712]/80 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 bg-[#1f241f]/20 backdrop-blur-sm md:hidden"
             onClick={onClose}
           />
 
@@ -37,7 +37,8 @@ export function MobileMenu({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-[280px] bg-[#0A1628] border-l border-white/10 md:hidden"
+            className="fixed top-0 right-0 bottom-0 z-50 w-[280px] border-l md:hidden"
+            style={{ backgroundColor: "var(--paper)", borderColor: "var(--line)" }}
           >
             <div className="flex flex-col pt-24 px-6">
               {items.map((item, index) => (
@@ -51,11 +52,12 @@ export function MobileMenu({
                     href={item.href}
                     onClick={onClose}
                     className={cn(
-                      "block py-4 text-lg font-medium border-b border-white/5 transition-colors",
+                      "block py-4 text-lg font-medium border-b transition-colors",
                       currentPath === item.href
-                        ? "text-[#00D4FF]"
-                        : "text-[#94A3B8] hover:text-white"
+                        ? "text-[var(--ink)]"
+                        : "text-[var(--muted)] hover:text-[var(--ink)]"
                     )}
+                    style={{ borderColor: "var(--line)" }}
                   >
                     {item.label}
                   </Link>

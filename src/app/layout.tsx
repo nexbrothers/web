@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Merriweather } from 'next/font/google';
 import './globals.css';
 import { Header, Footer } from '@/components/layout';
-import { ThemeProvider } from '@/components/theme';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/seo';
+import CursorEffect from '@/components/ui/CursorEffect';
 
 const inter = Inter({
   variable: '--font-sans',
@@ -14,6 +14,13 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-mono',
   subsets: ['latin'],
+  display: 'swap',
+});
+
+const merriweather = Merriweather({
+  variable: '--font-serif',
+  subsets: ['latin'],
+  weight: ['300', '400', '700', '900'],
   display: 'swap',
 });
 
@@ -132,21 +139,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth no-js" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
-        style={{
-          background: 'var(--background)',
-          color: 'var(--text-primary)',
-        }}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${merriweather.variable} antialiased`}
       >
-        <ThemeProvider>
-          <OrganizationJsonLd />
-          <WebSiteJsonLd />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <div className="noise" aria-hidden="true"></div>
+        <div className="cursor-light" aria-hidden="true"></div>
+        <CursorEffect />
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
+        <Header />
+        <main id="top">{children}</main>
+        <Footer />
       </body>
     </html>
   );

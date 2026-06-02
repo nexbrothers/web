@@ -7,20 +7,13 @@ import {
   Teams,
   ScanvoVideoPreview,
 } from '@/components/sections';
-import { Container, ProductCard, Button, Card } from '@/components/ui';
-import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
+import { ProductCard } from '@/components/ui';
 import {
   Lightbulb,
   Users,
   Cpu,
   TrendingUp,
-  Trophy,
-  Database,
   ArrowRight,
-  Gamepad2,
-  Camera,
-  BriefcaseBusiness,
-  ScanLine,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -80,12 +73,10 @@ const teamMembers = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section */}
       <Hero
         title={
           <>
-            Building the <span className="gradient-text">Future</span> of
-            Technology
+            Building the <br /> Future of Technology
           </>
         }
         subtitle="We create innovative apps and digital solutions that transform ideas into impactful experiences. Join us on our journey to shape tomorrow."
@@ -94,293 +85,129 @@ export default function HomePage() {
       />
 
       {/* Recent Launch */}
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'var(--background-secondary)' }}
-        />
-        <div
-          className="absolute left-0 top-12 h-72 w-72 rounded-full blur-[120px]"
-          style={{ backgroundColor: 'var(--accent)', opacity: 0.08 }}
-        />
+      <section className="work-section section-shell">
+        <div className="section-heading reveal is-visible">
+          <p className="eyebrow">Recent Launch</p>
+          <h2>Meet Scanvo</h2>
+        </div>
 
-        <Container className="relative z-10">
-          <FadeIn className="mb-14 text-center">
-            <span
-              className="inline-flex items-center rounded-full px-4 py-1 text-sm font-semibold mb-5"
-              style={{
-                backgroundColor: 'var(--background-card)',
-                color: 'var(--accent)',
-                border: '1px solid var(--border)',
-              }}
-            >
-              Recent Launch
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Meet <span className="gradient-text">Scanvo</span>
-            </h2>
-            <p
-              className="text-lg max-w-2xl mx-auto"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              Our latest document scanning product with a cleaner, faster way
-              to turn paper documents into polished digital files.
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-              <Card
-                gradient
-                hover={false}
-                className="overflow-hidden p-0 md:p-0"
-              >
-                <div className="grid gap-0 md:grid-cols-[1.15fr_0.85fr]">
-                  <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-between">
-                    <div>
-                      <div className="flex flex-wrap items-center gap-3 mb-6">
-                        <div
-                          className="flex h-14 w-14 items-center justify-center rounded-2xl border p-2"
-                          style={{
-                            backgroundColor: 'var(--background-secondary)',
-                            borderColor: 'var(--border)',
-                            boxShadow: '0 10px 30px var(--shadow)',
-                          }}
-                        >
-                          <Image
-                            src="/images/scanvo-logo.png"
-                            alt="Scanvo"
-                            width={28}
-                            height={28}
-                            className="rounded-lg"
-                          />
-                        </div>
-                        <span
-                          className="rounded-full px-3 py-1 text-xs font-semibold"
-                          style={{
-                            backgroundColor: 'rgba(16, 185, 129, 0.15)',
-                            color: '#10B981',
-                          }}
-                        >
-                          Live Now
-                        </span>
-                      </div>
-
-                      <h3
-                        className="text-3xl sm:text-4xl font-bold mb-3"
-                        style={{ color: 'var(--text-primary)' }}
-                      >
-                        Scan, crop, enhance, and export in a few taps.
-                      </h3>
-                      <p
-                        className="text-base sm:text-lg max-w-xl mb-8"
-                        style={{ color: 'var(--text-secondary)' }}
-                      >
-                        Scanvo is built for clean document capture on mobile,
-                        with smart edge detection, ID card mode, batch scans,
-                        and private offline processing.
-                      </p>
-
-                      <div className="grid gap-3 sm:grid-cols-2 mb-8">
-                        {[
-                          'Smart auto edge detection',
-                          'Batch scans into one PDF',
-                          'ID card front and back mode',
-                          'Private offline document processing',
-                        ].map((item) => (
-                          <div
-                            key={item}
-                            className="flex items-center gap-3 rounded-2xl px-4 py-3"
-                            style={{
-                              backgroundColor: 'var(--background-card)',
-                              border: '1px solid var(--border)',
-                            }}
-                          >
-                            <ScanLine
-                              className="w-4 h-4 shrink-0"
-                              style={{ color: 'var(--accent)' }}
-                            />
-                            <span
-                              className="text-sm"
-                              style={{ color: 'var(--text-secondary)' }}
-                            >
-                              {item}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-4">
-                      <Link
-                        href="/products/scanvo"
-                        className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00D4FF] to-[#7C3AED] px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#00D4FF]/25 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#00D4FF] focus:ring-offset-2 focus:ring-offset-[#030712]"
-                      >
-                        Explore Scanvo
-                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                      <span
-                        className="text-sm"
-                        style={{ color: 'var(--text-muted)' }}
-                      >
-                        Opens the Scanvo product page
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="relative min-h-[320px] md:min-h-full">
-                    <div
-                      className="absolute inset-0"
-                      style={{
-                        background:
-                          'linear-gradient(180deg, rgba(0, 212, 255, 0.08), rgba(124, 58, 237, 0.05))',
-                      }}
-                    />
-                    <div className="relative h-full p-6 md:p-8 flex items-center justify-center">
-                      <ScanvoVideoPreview fallbackImage="/images/scanvo/scanvo-8.png" />
-                    </div>
-                  </div>
-                </div>
-              </Card>
-          </FadeIn>
-        </Container>
+        <div className="work-grid" style={{ gridTemplateColumns: '1fr' }}>
+          <article className="work-card work-card-featured reveal is-visible" style={{ minHeight: 'auto', transform: 'none' }}>
+            <div className="grid gap-8 md:grid-cols-2 items-center">
+              <div>
+                <div className="work-index" style={{ marginBottom: '2rem' }}>NEW</div>
+                <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Scan, crop, enhance, and export in a few taps.</h3>
+                <p className="mb-8 text-lg" style={{ color: 'var(--cream)' }}>
+                  Scanvo is built for clean document capture on mobile, with smart edge detection, ID card mode, batch scans, and private offline processing.
+                </p>
+                <Link href="/products/scanvo" className="button" style={{ background: 'var(--cream)', color: 'var(--charcoal)', border: 'none' }}>
+                  Explore Scanvo
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </div>
+              <div className="relative min-h-[300px] flex items-center justify-center p-4">
+                <ScanvoVideoPreview fallbackImage="/images/scanvo/scanvo-8.png" />
+              </div>
+            </div>
+          </article>
+        </div>
       </section>
 
       {/* Products Showcase */}
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'var(--background)' }}
-        />
-        <div
-          className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: 'var(--accent)', opacity: 0.05 }}
-        />
+      <section className="section-shell" style={{ padding: 'clamp(5rem, 9vw, 8rem) 0' }}>
+        <div className="split-heading reveal is-visible" style={{ borderTop: 'none', padding: '0 0 2.2rem 0' }}>
+          <div>
+            <p className="eyebrow">Products</p>
+            <h2>Built for the real world.</h2>
+          </div>
+          <p>
+            Innovative solutions designed to solve real-world problems and make technology accessible to everyone.
+          </p>
+        </div>
 
-        <Container className="relative z-10">
-          <FadeIn className="text-center mb-16">
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
-              style={{ color: 'var(--text-primary)' }}
-            >
-              Our Products
-            </h2>
-            <p
-              className="text-lg max-w-2xl mx-auto"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              Innovative solutions designed to solve real-world problems and
-              make technology accessible to everyone.
-            </p>
-          </FadeIn>
+        <div className="products-grid">
+          {/* Playro */}
+          <Link href="/playro" className="contents">
+            <ProductCard
+              name="Playro"
+              tagline="Cricket Tournament Management"
+              description="The complete solution for managing cricket tournaments with real-time scoring, automatic standings, and detailed statistics."
+              status="coming-soon"
+              href="/playro"
+              featured
+            />
+          </Link>
+          
+          {/* request-ledger */}
+          <Link href="/products/request-ledger" className="contents">
+            <ProductCard
+              name="request-ledger"
+              tagline="Never Lose a Request Again"
+              description="A durable, client-side HTTP request ledger for web apps on unreliable networks. Offline persistence, auto-replay, zero dependencies."
+              status="live"
+              href="/products/request-ledger"
+            />
+          </Link>
 
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Featured Product - Playro (USP) */}
-            <StaggerItem>
-              <Link href="/playro">
-                <ProductCard
-                  name="Playro"
-                  tagline="Cricket Tournament Management"
-                  description="The complete solution for managing cricket tournaments with real-time scoring, automatic standings, and detailed statistics."
-                  icon={<Trophy className="w-8 h-8" />}
-                  status="coming-soon"
-                  href="/playro"
-                  featured
-                />
-              </Link>
-            </StaggerItem>
+          {/* GridSmash */}
+          <Link href="/products" className="contents">
+            <ProductCard
+              name="GridSmash"
+              tagline="Offline Block Puzzle Game"
+              description="A fun offline puzzle game where you strategically place blocks to clear rows and columns. Play anywhere, no internet needed."
+              status="coming-soon"
+              href="/products"
+            />
+          </Link>
 
-            {/* request-ledger */}
-            <StaggerItem>
-              <Link href="/products/request-ledger">
-                <ProductCard
-                  name="request-ledger"
-                  tagline="Never Lose a Request Again"
-                  description="A durable, client-side HTTP request ledger for web apps on unreliable networks. Offline persistence, auto-replay, zero dependencies."
-                  icon={<Database className="w-8 h-8" />}
-                  status="live"
-                  href="/products/request-ledger"
-                />
-              </Link>
-            </StaggerItem>
+          {/* PhotoPrint Pro */}
+          <Link href="/products/photoprint-pro" className="contents">
+            <ProductCard
+              name="PhotoPrint Pro"
+              tagline="Print-Ready Photos in Seconds"
+              description="Remove backgrounds, arrange photos on A4 sheets, and print high-quality images directly. No design skills needed."
+              status="live"
+              href="/products/photoprint-pro"
+            />
+          </Link>
 
-            {/* GridSmash */}
-            <StaggerItem>
-              <Link href="/products">
-                <ProductCard
-                  name="GridSmash"
-                  tagline="Offline Block Puzzle Game"
-                  description="A fun offline puzzle game where you strategically place blocks to clear rows and columns. Play anywhere, no internet needed."
-                  icon={<Gamepad2 className="w-8 h-8" />}
-                  status="coming-soon"
-                  href="/products"
-                />
-              </Link>
-            </StaggerItem>
-
-            {/* PhotoPrint Pro */}
-            <StaggerItem>
-              <Link href="/products/photoprint-pro">
-                <ProductCard
-                  name="PhotoPrint Pro"
-                  tagline="Print-Ready Photos in Seconds"
-                  description="Remove backgrounds, arrange photos on A4 sheets, and print high-quality images directly. No design skills needed."
-                  icon={<Camera className="w-8 h-8" />}
-                  status="live"
-                  href="/products/photoprint-pro"
-                />
-              </Link>
-            </StaggerItem>
-
-            {/* Job Automator */}
-            <StaggerItem>
-              <Link href="/products/job-automator">
-                <ProductCard
-                  name="Job Automator"
-                  tagline="Automated Job Search & Apply"
-                  description="Connect your Naukri account, set your preferences, and let it find and apply to matching jobs automatically with a full activity dashboard."
-                  icon={<BriefcaseBusiness className="w-8 h-8" />}
-                  status="live"
-                  href="/products/job-automator"
-                />
-              </Link>
-            </StaggerItem>
-
-          </StaggerChildren>
-
-          <FadeIn delay={0.4} className="text-center mt-12">
-            <Link href="/products">
-              <Button size="lg" className="group">
-                View All Products
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-          </FadeIn>
-        </Container>
+          {/* Job Automator */}
+          <Link href="/products/job-automator" className="contents">
+            <ProductCard
+              name="Job Automator"
+              tagline="Automated Job Search & Apply"
+              description="Connect your Naukri account, set your preferences, and let it find and apply to matching jobs automatically with a full activity dashboard."
+              status="live"
+              href="/products/job-automator"
+            />
+          </Link>
+        </div>
+        
+        <div className="text-center mt-8 reveal is-visible">
+          <Link href="/products" className="button button-secondary">
+            View All Products
+          </Link>
+        </div>
       </section>
 
-      {/* Why NexBrothers */}
       <Features
         title="Why NexBrothers?"
         subtitle="We combine passion, expertise, and innovation to deliver exceptional digital products."
         features={values}
-        columns={4}
       />
 
-      {/* Stats */}
       <Stats
         title="Making an Impact"
         subtitle="Numbers that reflect our commitment to excellence and user satisfaction."
         stats={stats}
       />
 
-      {/* Team */}
       <Teams
         title="Meet the Brothers"
         subtitle="The passionate duo behind NexBrothers, dedicated to building innovative technology solutions."
         members={teamMembers}
       />
 
-      {/* CTA */}
       <CTA
         title="Ready to Experience Innovation?"
         description="Explore our products and discover how we're building technology that matters. Join thousands of satisfied users today."
