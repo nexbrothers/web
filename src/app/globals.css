@@ -436,3 +436,103 @@ pre {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ========================================
+   Privacy Policy Styles
+   ======================================== */
+
+.policy-section {
+  margin-bottom: 2.5rem;
+}
+
+.policy-section h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid rgba(61, 12, 222, 0.15);
+}
+
+.policy-section h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 1.25rem 0 0.5rem;
+}
+
+.policy-section p {
+  color: var(--text-secondary);
+  margin-bottom: 0.85rem;
+  line-height: 1.75;
+}
+
+.policy-section strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.policy-section ul {
+  margin: 0.5rem 0 1rem 1.5rem;
+  color: var(--text-secondary);
+  list-style: disc;
+}
+
+.policy-section ul li {
+  margin-bottom: 0.4rem;
+  line-height: 1.65;
+}
+
+.policy-section ul li::marker {
+  color: #3d0cde;
+}
+
+.policy-section code {
+  background: var(--background);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #3d0cde;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.policy-section a {
+  color: #3d0cde;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.policy-section a:hover {
+  opacity: 0.8;
+}
+
+.highlight-box {
+  background: rgba(61, 12, 222, 0.08);
+  border-left: 4px solid #3d0cde;
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.25rem 0;
+}
+
+.highlight-box p {
+  margin-bottom: 0;
+  color: var(--text-primary);
+}
+
+.highlight-box strong {
+  color: #3d0cde;
+}
+
+.contact-info {
+  margin: 1rem 0;
+}
+
+.contact-info p {
+  margin-bottom: 0.4rem;
+}
+
+.contact-info strong {
+  display: inline-block;
+  min-width: 90px;
+  color: #3d0cde;
+}
