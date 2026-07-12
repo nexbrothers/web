@@ -274,16 +274,24 @@ export default function HomePage() {
           </FadeIn>
 
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Featured Product - Playro (USP) */}
+            {/* Sign Lock */}
             <StaggerItem>
-              <Link href="/playro">
+              <Link href="/products/signlock">
                 <ProductCard
-                  name="Playro"
-                  tagline="Cricket Tournament Management"
-                  description="The complete solution for managing cricket tournaments with real-time scoring, automatic standings, and detailed statistics."
-                  icon={<Trophy className="w-8 h-8" />}
+                  name="Sign Lock"
+                  tagline="Your Sign. Your Privacy."
+                  description="The first drawing-based Android app locker. Lock any app with your unique drawing password. Advanced gesture recognition, fully offline."
+                  icon={
+                    <Image
+                      src="/images/sign-lock.png"
+                      alt="Sign Lock"
+                      width={64}
+                      height={64}
+                      className="rounded-2xl object-cover"
+                    />
+                  }
                   status="coming-soon"
-                  href="/playro"
+                  href="/products/signlock"
                   featured
                 />
               </Link>
@@ -299,6 +307,20 @@ export default function HomePage() {
                   icon={<Database className="w-8 h-8" />}
                   status="live"
                   href="/products/request-ledger"
+                />
+              </Link>
+            </StaggerItem>
+
+            {/* Playro */}
+            <StaggerItem>
+              <Link href="/playro">
+                <ProductCard
+                  name="Playro"
+                  tagline="Cricket Tournament Management"
+                  description="The complete solution for managing cricket tournaments with real-time scoring, automatic standings, and detailed statistics."
+                  icon={<Trophy className="w-8 h-8" />}
+                  status="coming-soon"
+                  href="/playro"
                 />
               </Link>
             </StaggerItem>

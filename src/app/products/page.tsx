@@ -4,7 +4,6 @@ import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
 import {
   Trophy,
   Database,
-  Sparkles,
   ArrowRight,
   Gamepad2,
   Camera,
@@ -52,21 +51,29 @@ export const metadata: Metadata = {
 
 const products = [
   {
-    name: 'Playro',
-    tagline: 'Cricket Tournament Management',
+    name: 'Sign Lock',
+    tagline: 'Your Sign. Your Privacy.',
     description:
-      'The complete solution for managing cricket tournaments. Create tournaments, manage teams, track live scores, and generate automatic standings - all in one powerful app. Coming soon!',
-    icon: <Trophy className="w-8 h-8" />,
+      'The first drawing-based Android app locker. Lock any app with your unique drawing password. Advanced gesture recognition, 12 themes, AES-256 encryption, fully offline. Built by NexBrothers.',
+    icon: (
+      <Image
+        src="/images/sign-lock.png"
+        alt="Sign Lock"
+        width={64}
+        height={64}
+        className="rounded-2xl object-cover"
+      />
+    ),
     status: 'coming-soon' as const,
-    href: '/playro',
+    href: '/products/signlock',
     featured: true,
     features: [
-      'Tournament Creation & Setup',
-      'Team & Player Management',
-      'Live Score Updates',
-      'Automatic Points Table',
-      'Match Fixtures & Scheduling',
-      'Real-time Statistics',
+      'Drawing-Based Authentication',
+      'Lock Any App Installed',
+      '95%+ Gesture Recognition',
+      '12 Premium Drawing Themes',
+      'AES-256-GCM Encryption',
+      '100% Offline',
     ],
   },
   {
@@ -130,9 +137,9 @@ const products = [
       <Image
         src="/images/scanvo-logo.png"
         alt="Scanvo"
-        width={32}
-        height={32}
-        className="rounded-lg"
+        width={64}
+        height={64}
+        className="rounded-2xl object-cover"
       />
     ),
     status: 'live' as const,
@@ -144,6 +151,23 @@ const products = [
       'PDF & Image Export',
       'OCR Text Recognition',
       'Folder Organization',
+    ],
+  },
+  {
+    name: 'Playro',
+    tagline: 'Cricket Tournament Management',
+    description:
+      'The complete solution for managing cricket tournaments. Create tournaments, manage teams, track live scores, and generate automatic standings - all in one powerful app. Coming soon!',
+    icon: <Trophy className="w-8 h-8" />,
+    status: 'coming-soon' as const,
+    href: '/playro',
+    features: [
+      'Tournament Creation & Setup',
+      'Team & Player Management',
+      'Live Score Updates',
+      'Automatic Points Table',
+      'Match Fixtures & Scheduling',
+      'Real-time Statistics',
     ],
   },
   {
