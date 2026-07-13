@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container, Button } from "@/components/ui";
+import { Container, Button } from "@repo/ui/ui";
 import { Home, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 

@@ -6,9 +6,9 @@ import {
   CTA,
   Teams,
   ScanvoVideoPreview,
-} from '@/components/sections';
-import { Container, ProductCard, Button, Card } from '@/components/ui';
-import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
+} from '@repo/ui/sections';
+import { Container, ProductCard, Button, Card } from '@repo/ui/ui';
+import { FadeIn, StaggerChildren, StaggerItem } from '@repo/ui/animations';
 import {
   Lightbulb,
   Users,
@@ -212,7 +212,7 @@ export default function HomePage() {
 
                     <div className="flex flex-wrap items-center gap-4">
                       <Link
-                        href="/products/scanvo"
+                        href="https://scanvo.nexbrothers.com"
                         className="group inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[#00D4FF] to-[#7C3AED] px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#00D4FF]/25 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#00D4FF] focus:ring-offset-2 focus:ring-offset-[#030712]"
                       >
                         Explore Scanvo
@@ -276,7 +276,7 @@ export default function HomePage() {
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Sign Lock */}
             <StaggerItem>
-              <Link href="/products/signlock">
+              <Link href="https://signlock.nexbrothers.com">
                 <ProductCard
                   name="Sign Lock"
                   tagline="Your Sign. Your Privacy."
@@ -291,7 +291,7 @@ export default function HomePage() {
                     />
                   }
                   status="coming-soon"
-                  href="/products/signlock"
+                  href="https://signlock.nexbrothers.com"
                   featured
                 />
               </Link>

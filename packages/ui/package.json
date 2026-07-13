@@ -1,0 +1,28 @@
+{
+  "name": "@repo/ui",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./ui": "./src/ui/index.ts",
+    "./ui/*": "./src/ui/*.tsx",
+    "./animations": "./src/animations/index.ts",
+    "./animations/*": "./src/animations/*.tsx",
+    "./sections": "./src/sections/index.ts",
+    "./sections/*": "./src/sections/*.tsx",
+    "./theme": "./src/theme/index.ts",
+    "./header": "./src/header.tsx",
+    "./footer": "./src/footer.tsx"
+  },
+  "dependencies": {
+    "@repo/utils": "workspace:*",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.42.2",
+    "lucide-react": "^0.562.0",
+    "next": "16.1.1",
+    "react": "19.2.3",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}

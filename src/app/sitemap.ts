@@ -72,7 +72,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${BASE_URL}/products/scanvo`,
+      url: 'https://scanvo.nexbrothers.com',
       lastModified: SITE_UPDATED_AT,
       changeFrequency: "weekly",
       priority: 0.8,
@@ -102,7 +102,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.2,
     },
     {
-      url: `${BASE_URL}/signlock/privacypolicy`,
+      url: 'https://signlock.nexbrothers.com/privacy',
       lastModified: SITE_UPDATED_AT,
       changeFrequency: "yearly",
       priority: 0.3,

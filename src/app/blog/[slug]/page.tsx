@@ -5,8 +5,8 @@ import Image from "next/image";
 import { getAllPostSlugs, getPostBySlug, getAllPosts } from "@/lib/blog";
 import { getAuthor } from "@/lib/authors";
 import { markdownToHtml } from "@/lib/markdown";
-import { Container } from "@/components/ui";
-import { FadeIn } from "@/components/animations";
+import { Container } from "@repo/ui/ui";
+import { FadeIn } from "@repo/ui/animations";
 import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/seo";
 import { Calendar, Clock, User, ArrowLeft, Tag, Twitter, Github, Linkedin, Globe } from "lucide-react";
 

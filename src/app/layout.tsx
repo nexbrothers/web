@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Header, Footer } from '@/components/layout';
-import { ThemeProvider } from '@/components/theme';
+import { ThemeProvider } from '@repo/ui/theme';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/seo';
 
 const inter = Inter({
@@ -145,7 +145,12 @@ export default function RootLayout({
           <WebSiteJsonLd />
           <Header />
           <main>{children}</main>
-          <Footer />
+          <Footer 
+            legalLinks={[
+              { label: "Privacy Policy", href: "/privacy-policy" },
+              { label: "Terms & Conditions", href: "/terms-and-conditions" },
+            ]}
+          />
         </ThemeProvider>
       </body>
     </html>

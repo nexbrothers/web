@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { Container, ProductCard, Button, Input } from '@/components/ui';
-import { FadeIn, StaggerChildren, StaggerItem } from '@/components/animations';
+import { Container, ProductCard, Button, Input } from '@repo/ui/ui';
+import { FadeIn, StaggerChildren, StaggerItem } from '@repo/ui/animations';
 import {
   Trophy,
   Database,
@@ -65,7 +65,7 @@ const products = [
       />
     ),
     status: 'coming-soon' as const,
-    href: '/products/signlock',
+    href: 'https://signlock.nexbrothers.com',
     featured: true,
     features: [
       'Drawing-Based Authentication',
@@ -143,7 +143,7 @@ const products = [
       />
     ),
     status: 'live' as const,
-    href: '/products/scanvo',
+    href: 'https://scanvo.nexbrothers.com',
     features: [
       'Smart Document Scanner',
       'ID Card Mode (Front & Back)',

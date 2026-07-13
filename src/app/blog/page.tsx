@@ -3,8 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { getAllPosts, getAllTags } from "@/lib/blog";
 import { getAuthor } from "@/lib/authors";
-import { Container } from "@/components/ui";
-import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
+import { Container } from "@repo/ui/ui";
+import { FadeIn, StaggerChildren, StaggerItem } from "@repo/ui/animations";
 import { Calendar, Clock, ArrowRight, Tag, User, Mail } from "lucide-react";
 
 export const metadata: Metadata = {

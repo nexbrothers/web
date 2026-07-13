@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "@repo/utils";
 
 interface MobileMenuProps {
   isOpen: boolean;

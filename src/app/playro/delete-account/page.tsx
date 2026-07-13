@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Container, Button, Input, Card } from "@/components/ui";
-import { FadeIn } from "@/components/animations";
+import { Container, Button, Input, Card } from "@repo/ui/ui";
+import { FadeIn } from "@repo/ui/animations";
 import { Trash2, AlertTriangle, CheckCircle, Mail } from "lucide-react";
 
 export default function DeleteAccountPage() {

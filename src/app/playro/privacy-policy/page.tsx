@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { Container } from "@/components/ui";
-import { FadeIn } from "@/components/animations";
+import { Container } from "@repo/ui/ui";
+import { FadeIn } from "@repo/ui/animations";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Playro",

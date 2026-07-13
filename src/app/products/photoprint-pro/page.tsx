@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Container, Button, Card } from '@/components/ui';
-import { FadeIn } from '@/components/animations';
+import { Container, Button, Card } from '@repo/ui/ui';
+import { FadeIn } from '@repo/ui/animations';
 import { ArrowRight, CheckCircle2, Sparkles, ScanLine } from 'lucide-react';
 
 export default function PhotoPrintProPage() {
@@ -77,7 +77,7 @@ export default function PhotoPrintProPage() {
                   </div>
 
                   <div className="flex flex-wrap items-center gap-4">
-                    <Link href="/products/scanvo">
+                    <Link href="https://scanvo.nexbrothers.com">
                       <Button size="lg" className="group">
                         Continue to Scanvo
                         <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />

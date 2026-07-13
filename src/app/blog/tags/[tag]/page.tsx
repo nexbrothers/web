@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllTags, getPostsByTag } from "@/lib/blog";
-import { Container } from "@/components/ui";
-import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
+import { Container } from "@repo/ui/ui";
+import { FadeIn, StaggerChildren, StaggerItem } from "@repo/ui/animations";
 import { Calendar, Clock, ArrowRight, ArrowLeft, Tag } from "lucide-react";
 
 interface Props {

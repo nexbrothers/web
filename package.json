@@ -2,11 +2,14 @@
   "name": "nex-brothers",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.7.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "turbo:build": "turbo build",
+    "turbo:dev": "turbo dev"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -17,7 +20,9 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "reading-time": "^1.5.0",
-    "request-ledger": "^0.1.1"
+    "request-ledger": "^0.1.1",
+    "@repo/ui": "workspace:*",
+    "@repo/utils": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -27,6 +32,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "turbo": "latest"
   }
 }

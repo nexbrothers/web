@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Container, Button, Card } from "@/components/ui";
-import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
+import { Container, Button, Card } from "@repo/ui/ui";
+import { FadeIn, StaggerChildren, StaggerItem } from "@repo/ui/animations";
 import {
   Trophy,
   Users,

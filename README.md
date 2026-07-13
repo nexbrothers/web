@@ -1,55 +1,90 @@
 # NexBrothers
 
-Welcome to the official NexBrothers website repository. This project is built using [Next.js](https://nextjs.org/) and modern web technologies to deliver a premium user experience.
+Welcome to the official NexBrothers repository. This project is a monorepo managed using [pnpm workspaces](https://pnpm.io/workspaces) and [Turborepo](https://turbo.build/repo), containing the main NexBrothers corporate website and dedicated applications for our products.
+
+## Project Structure
+
+This monorepo contains multiple apps and shared packages:
+
+- **`.` (Root)**: The main NexBrothers corporate website (`nexbrothers.com`).
+- **`apps/scanvo`**: The dedicated Next.js application for [Scanvo](https://scanvo.nexbrothers.com).
+- **`apps/signlock`**: The dedicated Next.js application for [Signlock](https://signlock.nexbrothers.com).
+- **`packages/ui`**: Shared UI components used across applications (Header, Footer, Hero).
+- **`packages/utils`**: Shared utilities and helper functions.
 
 ## Getting Started
 
 ### Prerequisites
 
-Ensure you have **Node.js** installed on your system.
+Ensure you have **Node.js** and **pnpm** installed on your system.
+We highly recommend using `pnpm` (v11+) as the package manager for this monorepo.
 
 ### Installation
 
-Clone the repository and install the dependencies:
+Clone the repository and install the dependencies for all workspace projects:
 
 ```bash
-npm install
+pnpm install
 ```
 
-### Running Locally
+## Running Applications Locally
 
-Start the development server:
+You can run all applications simultaneously using Turborepo, or run them individually.
+
+### Running All Apps Together
+
+To start the development servers for **all** applications at once:
 
 ```bash
-npm run dev
+pnpm turbo:dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will concurrently start:
+- NexBrothers Main Site at `http://localhost:3000`
+- Scanvo App at `http://localhost:3001`
+- Signlock App at `http://localhost:3002`
 
-## Project Structure
+### Running Individual Apps
 
-This project follows the Next.js App Router structure:
+If you prefer to run only a single application, you can use the Turborepo `--filter` flag:
 
-- **`src/app`**: Contains the main application routes, pages, and layouts.
-- **`src/components`**: Reusable UI components, animations, and shared elements.
-- **`public`**: Static assets like images and fonts.
+**Run only the main NexBrothers site:**
+```bash
+npx turbo dev --filter=nex-brothers
+```
+
+**Run only the Scanvo app:**
+```bash
+npx turbo dev --filter=scanvo
+```
+
+**Run only the Signlock app:**
+```bash
+npx turbo dev --filter=signlock
+```
+
+## Building for Production
+
+To build all applications for production:
+
+```bash
+pnpm turbo:build
+```
+
+You can also build a specific app using the filter flag:
+```bash
+npx turbo build --filter=scanvo
+```
 
 ## Technologies Used
 
 - **Framework**: [Next.js](https://nextjs.org/) (App Router)
+- **Monorepo Tools**: [pnpm Workspaces](https://pnpm.io/workspaces) & [Turborepo](https://turbo.build/repo)
 - **Library**: [React](https://react.dev/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
-
-## Learn More
-
-To learn more about the technologies used in this project:
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [React Documentation](https://react.dev/)
 
 ---
 

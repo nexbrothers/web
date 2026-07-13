@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Container, Button } from "@/components/ui";
-import { FadeIn } from "@/components/animations";
+import { Container, Button } from "@repo/ui/ui";
+import { FadeIn } from "@repo/ui/animations";
 import {
   ArrowLeft,
   Copy,

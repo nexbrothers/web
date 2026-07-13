@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Container, Button, Input, Textarea, Select, Card } from "@/components/ui";
-import { FadeIn } from "@/components/animations";
+import { Container, Button, Input, Textarea, Select, Card } from "@repo/ui/ui";
+import { FadeIn } from "@repo/ui/animations";
 import { Mail, MessageSquare, Clock, Send, CheckCircle } from "lucide-react";
 
 const contactInfo = [

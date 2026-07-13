@@ -1,14 +1,14 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@repo/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Container } from "@/components/ui";
+import { Container } from "@repo/ui/ui";
 import { MobileMenu } from "./MobileMenu";
-import { ThemeToggle } from "@/components/theme";
+import { ThemeToggle } from "@repo/ui/theme";
 import Image from "next/image";
 
 const navItems = [
