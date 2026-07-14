@@ -18,8 +18,14 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Signlock - Secure E-Signatures",
-  description: "Signlock by NexBrothers provides cryptographically secure document signing for modern enterprises.",
+  title: "SignLock - Drawing-Based App Lock for Android",
+  description: "SignLock is a unique drawing-based app locker for Android. Lock your apps with a personal signature — more secure than PINs and patterns. Fully offline, encrypted on-device.",
+  keywords: ["app lock", "drawing lock", "signature lock", "android security", "privacy", "app locker", "pattern lock"],
+  openGraph: {
+    title: "SignLock - Drawing-Based App Lock for Android",
+    description: "Lock your apps with your signature. More secure than PINs and patterns. Fully offline.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased min-h-screen flex flex-col`}
         style={{
@@ -37,9 +43,18 @@ export default function RootLayout({
         }}
       >
         <ThemeProvider>
-          <Header productName="Signlock" />
+          <Header
+            productName="SignLock"
+            logoSrc="/logo.png"
+            navLinks={[
+              { label: "How It Works", href: "/#how-it-works" },
+              { label: "Features", href: "/#features" },
+              { label: "Themes", href: "/#themes" },
+              { label: "Security", href: "/#security" },
+            ]}
+          />
           <main className="flex-1">{children}</main>
-          <Footer productName="Signlock" />
+          <Footer productName="SignLock" />
         </ThemeProvider>
       </body>
     </html>
