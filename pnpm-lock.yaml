@@ -70,6 +70,49 @@ importers:
         specifier: ^5
         version: 5.9.3
 
+  apps/mymoneyreport:
+    dependencies:
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@repo/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      next:
+        specifier: 16.1.1
+        version: 16.1.1(@babel/core@7.29.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react:
+        specifier: 19.2.3
+        version: 19.2.3
+      react-dom:
+        specifier: 19.2.3
+        version: 19.2.3(react@19.2.3)
+    devDependencies:
+      '@cloudflare/next-on-pages':
+        specifier: ^1.11.3
+        version: 1.13.16(next@16.1.1(@babel/core@7.29.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(wrangler@4.110.0)
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.3.2
+      '@types/node':
+        specifier: ^20
+        version: 20.19.43
+      '@types/react':
+        specifier: ^19
+        version: 19.2.17
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.2.3(@types/react@19.2.17)
+      postcss:
+        specifier: ^8
+        version: 8.5.16
+      tailwindcss:
+        specifier: ^4
+        version: 4.3.2
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
   apps/scanvo:
     dependencies:
       '@repo/ui':
