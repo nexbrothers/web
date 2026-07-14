@@ -15,9 +15,7 @@ import {
   RefreshCw,
   Download,
   Lock,
-  Sparkles,
 } from "lucide-react";
-import Link from "next/link";
 import { Button } from "@repo/ui/ui";
 import { motion } from "framer-motion";
 
@@ -358,22 +356,11 @@ export default function ProductDetails() {
           </FadeIn>
 
           <div className="max-w-lg mx-auto text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold mb-4" style={{ borderColor: "var(--accent)", color: "var(--accent)", backgroundColor: "rgba(0,212,255,0.06)" }}>
-              <Sparkles className="w-3.5 h-3.5" />
-              Coming Soon
-            </div>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-              <a
-                href="https://play.google.com/store/apps/details?id=com.nexbrothers.signlock"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button size="lg" className="group">
-                  <Download className="mr-2 w-5 h-5" />
-                  Download from Google Play
-                  <ArrowRightIcon className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </a>
+              <Button size="lg" className="group" disabled>
+                <Download className="mr-2 w-5 h-5" />
+                Coming Soon
+              </Button>
             </motion.div>
           </div>
         </Container>
@@ -382,10 +369,3 @@ export default function ProductDetails() {
   );
 }
 
-function ArrowRightIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...props} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-    </svg>
-  );
-}

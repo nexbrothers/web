@@ -684,19 +684,13 @@ export default function SignlockHome() {
             <p className="text-lg mb-10 max-w-xl mx-auto" style={{ color: "var(--text-secondary)" }}>
               Download SignLock on Google Play and start protecting your apps with your personal signature.
             </p>
-            <div className="flex flex-col items-center gap-3">
-              <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold" style={{ borderColor: "var(--accent)", color: "var(--accent)", backgroundColor: "rgba(0,212,255,0.06)" }}>
-                <Sparkles className="w-3.5 h-3.5" />
-                Coming Soon
-              </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                  <Button size="lg" className="group">
-                    <Download className="mr-2 w-5 h-5" />
-                    Get It on Google Play
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </motion.div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                <Button size="lg" className="group" disabled>
+                  <Download className="mr-2 w-5 h-5" />
+                  Coming Soon
+                </Button>
+              </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                 <Link href="/product-details">
                   <Button variant="secondary" size="lg">
@@ -705,7 +699,6 @@ export default function SignlockHome() {
                 </Link>
               </motion.div>
             </div>
-          </div>
           </FadeIn>
         </Container>
       </section>
