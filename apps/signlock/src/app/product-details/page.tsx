@@ -15,6 +15,7 @@ import {
   RefreshCw,
   Download,
   Lock,
+  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@repo/ui/ui";
@@ -357,6 +358,10 @@ export default function ProductDetails() {
           </FadeIn>
 
           <div className="max-w-lg mx-auto text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold mb-4" style={{ borderColor: "var(--accent)", color: "var(--accent)", backgroundColor: "rgba(0,212,255,0.06)" }}>
+              <Sparkles className="w-3.5 h-3.5" />
+              Coming Soon
+            </div>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <a
                 href="https://play.google.com/store/apps/details?id=com.nexbrothers.signlock"
