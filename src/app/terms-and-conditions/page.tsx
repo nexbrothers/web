@@ -29,18 +29,18 @@ export default function TermsPage() {
     <>
       {/* Hero */}
       <section className="relative pt-32 pb-12 overflow-hidden">
-        <div 
-          className="absolute inset-0" 
+        <div
+          className="absolute inset-0"
           style={{ backgroundColor: "var(--background)" }}
         />
-        <div 
-          className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-[128px]" 
+        <div
+          className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-[128px]"
           style={{ backgroundColor: "var(--accent-purple)", opacity: 0.1 }}
         />
 
         <Container className="relative z-10">
           <FadeIn className="max-w-3xl">
-            <h1 
+            <h1
               className="text-4xl sm:text-5xl font-bold mb-4"
               style={{ color: "var(--text-primary)" }}
             >
@@ -55,17 +55,17 @@ export default function TermsPage() {
 
       {/* Content */}
       <section className="py-16 relative">
-        <div 
+        <div
           className="absolute inset-0"
-          style={{ 
-            background: "linear-gradient(to bottom, var(--background), var(--background-secondary))" 
+          style={{
+            background: "linear-gradient(to bottom, var(--background), var(--background-secondary))"
           }}
         />
 
         <Container className="relative z-10">
           <FadeIn>
             <div className="max-w-3xl prose prose-invert prose-lg">
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -74,13 +74,13 @@ export default function TermsPage() {
                 or using our services, you agree to be bound by these terms.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 1. Acceptance of Terms
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -90,19 +90,19 @@ export default function TermsPage() {
                 may not use our services.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 2. Use of Services
               </h2>
-              <h3 
+              <h3
                 className="text-xl font-semibold mt-6 mb-3"
                 style={{ color: "var(--text-primary)" }}
               >
                 Eligibility
               </h3>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -112,19 +112,19 @@ export default function TermsPage() {
                 terms.
               </p>
 
-              <h3 
+              <h3
                 className="text-xl font-semibold mt-6 mb-3"
                 style={{ color: "var(--text-primary)" }}
               >
                 Account Responsibilities
               </h3>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
                 If you create an account, you are responsible for:
               </p>
-              <ul 
+              <ul
                 className="space-y-2 list-disc list-inside"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -134,13 +134,13 @@ export default function TermsPage() {
                 <li>Keeping your account information accurate and current</li>
               </ul>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 3. Intellectual Property
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -150,7 +150,7 @@ export default function TermsPage() {
                 of NexBrothers and are protected by copyright, trademark, and
                 other intellectual property laws.
               </p>
-              <p 
+              <p
                 className="leading-relaxed mt-4"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -159,19 +159,19 @@ export default function TermsPage() {
                 without prior written permission.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 4. Prohibited Activities
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
                 When using our services, you agree not to:
               </p>
-              <ul 
+              <ul
                 className="space-y-2 list-disc list-inside"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -184,13 +184,13 @@ export default function TermsPage() {
                 <li>Attempt to access data not intended for you</li>
               </ul>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 5. Disclaimer of Warranties
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -200,7 +200,7 @@ export default function TermsPage() {
                 MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
                 NON-INFRINGEMENT.
               </p>
-              <p 
+              <p
                 className="leading-relaxed mt-4"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -209,13 +209,13 @@ export default function TermsPage() {
                 components.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 6. Limitation of Liability
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -226,13 +226,13 @@ export default function TermsPage() {
                 RELATED TO YOUR USE OF OUR SERVICES.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 7. Indemnification
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -243,13 +243,13 @@ export default function TermsPage() {
                 with your use of our services or violation of these terms.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 8. Governing Law
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -259,13 +259,13 @@ export default function TermsPage() {
                 terms shall be resolved in the courts of India.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 9. Changes to Terms
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
@@ -276,24 +276,24 @@ export default function TermsPage() {
                 acceptance of the updated terms.
               </p>
 
-              <h2 
+              <h2
                 className="text-2xl font-bold mt-12 mb-4"
                 style={{ color: "var(--text-primary)" }}
               >
                 10. Contact Information
               </h2>
-              <p 
+              <p
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
                 If you have any questions about these Terms and Conditions,
                 please contact us at:
               </p>
-              <p 
+              <p
                 className="mt-2"
                 style={{ color: "var(--accent)" }}
               >
-                support@nexbrothers.com
+                nexbrotherss@gmail.com
               </p>
             </div>
           </FadeIn>

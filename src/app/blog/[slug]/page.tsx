@@ -358,7 +358,7 @@ export default async function BlogPostPage({ params }: Props) {
                     color: "white",
                   }}
                 >
-                  Submit to support@nexbrothers.com
+                  Submit to nexbrotherss@gmail.com
                 </a>
               </div>
             </div>

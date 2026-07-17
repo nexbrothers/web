@@ -170,7 +170,7 @@ export default function PrivacyPolicy() {
                   If you have any questions or concerns about this privacy policy or SignLock's privacy practices, please contact us:
                 </p>
                 <div className="contact-info">
-                  <p><strong>Email:</strong> support@nexbrothers.com</p>
+                  <p><strong>Email:</strong>nexbrotherss@gmail.com</p>
                   <p><strong>Website:</strong> <a href="https://signlock.nexbrothers.com">signlock.nexbrothers.com</a></p>
                 </div>
               </div>

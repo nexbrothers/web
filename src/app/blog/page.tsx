@@ -239,7 +239,7 @@ export default function BlogPage() {
                   Want to Share Your Story?
                 </h2>
                 <p style={{ color: "var(--text-secondary)" }}>
-                  We love featuring guest contributors! Share your knowledge, experience, 
+                  We love featuring guest contributors! Share your knowledge, experience,
                   or insights with our community — we&apos;ll publish your post with full credit.
                 </p>
               </div>
@@ -300,7 +300,7 @@ export default function BlogPage() {
                   }}
                 >
                   <Mail className="w-5 h-5" />
-                  Submit to support@nexbrothers.com
+                  Submit tonexbrotherss@gmail.com
                 </a>
                 <p className="text-xs mt-4" style={{ color: "var(--text-muted)" }}>
                   We review all submissions and respond within 48 hours

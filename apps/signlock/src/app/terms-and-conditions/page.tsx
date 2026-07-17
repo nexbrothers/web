@@ -169,7 +169,7 @@ export default function TermsAndConditions() {
                   For any questions, concerns, or reports regarding these terms and conditions, please contact us:
                 </p>
                 <div className="contact-info">
-                  <p><strong>Email:</strong> support@nexbrothers.com</p>
+                  <p><strong>Email:</strong>nexbrotherss@gmail.com</p>
                   <p><strong>Developer:</strong> NexBrothers</p>
                 </div>
               </div>

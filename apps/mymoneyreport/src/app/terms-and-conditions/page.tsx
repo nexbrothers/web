@@ -158,7 +158,7 @@ export default function TermsAndConditions() {
                   If you have any questions about these terms, please contact us:
                 </p>
                 <div className="contact-info">
-                  <p><strong>Email:</strong> support@nexbrothers.com</p>
+                  <p><strong>Email:</strong>nexbrotherss@gmail.com</p>
                   <p><strong>Company:</strong> NexBrothers</p>
                 </div>
               </div>

@@ -308,7 +308,7 @@ export default function PrivacyPolicyPage() {
                 className="mt-2"
                 style={{ color: "var(--accent)" }}
               >
-                support@nexbrothers.com
+                nexbrotherss@gmail.com
               </p>
             </div>
           </FadeIn>

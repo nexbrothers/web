@@ -109,7 +109,7 @@ const sections = [
           </li>
           <li>
             Extracted transaction data is stored <strong>only in your device&apos;s local SQLite
-            database</strong>.
+              database</strong>.
           </li>
           <li>
             SMS message content <strong>never leaves your device</strong> — it is not
@@ -247,7 +247,7 @@ const sections = [
           contact us:
         </p>
         <div className="contact-info">
-          <p><strong>Email:</strong> support@nexbrothers.com</p>
+          <p><strong>Email:</strong>nexbrotherss@gmail.com</p>
           <p><strong>Company:</strong> NexBrothers</p>
           <p><strong>Address:</strong> Mumbai, Maharashtra, India</p>
         </div>
