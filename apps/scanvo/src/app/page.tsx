@@ -163,10 +163,10 @@ export default function ScanvoHome() {
           <>
             Scan <span style={{ color: "var(--brand)" }}>smarter</span>.
             <br />
-            Work faster.
+            Create Perfect PDFs.
           </>
         }
-        subtitle="Transform your phone into a powerful document scanner. AI-powered edge detection, OCR, 20+ PDF tools, and 100% private on-device processing."
+        subtitle="Transform paper documents into crystal-clear PDFs with AI-powered scanning, automatic edge detection, smart enhancement, OCR, editing, signatures, and secure sharing—all from one powerful app."
         primaryCTA={{ label: "Download for Free", href: PLAY_STORE_URL }}
       >
         <div className="flex flex-col items-center gap-6">

@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 
-type Phase = "camera" | "scanning" | "processing" | "result";
+type Phase = "camera" | "scanning" | "processing" | "result" | "share" | "sharing";
 
 /* ─── invoice content rows ─── */
 const rows = [
@@ -141,24 +141,28 @@ export function HeroScannerAnimation() {
   const [phase, setPhase] = useState<Phase>("camera");
   const [edges, setEdges] = useState(false);
   const [done, setDone] = useState(false);
+  const [shareTapped, setShareTapped] = useState(false);
+  const tm = useRef<ReturnType<typeof setTimeout>[]>([]);
   const sp = useMotionValue(0);
   const clipI = useTransform(sp, v => `inset(${v}% 0 0 0)`);
   const beamT = useTransform(sp, v => `${v}%`);
 
   const cycle = useCallback(() => {
-    sp.set(0); setPhase("camera"); setEdges(false); setDone(false);
-    const t1 = setTimeout(() => setEdges(true), 1600);
-    const t2 = setTimeout(() => { setPhase("scanning"); animate(sp, 100, { duration: 2, ease: "linear" }); }, 2800);
-    const t3 = setTimeout(() => setPhase("processing"), 5000);
-    const t4 = setTimeout(() => { setPhase("result"); setDone(true); }, 5700);
-    const t5 = setTimeout(() => cycle(), 8400);
-    return [t1, t2, t3, t4, t5];
+    sp.set(0); setPhase("camera"); setEdges(false); setDone(false); setShareTapped(false);
+    const t1 = setTimeout(() => setEdges(true), 1400);
+    const t2 = setTimeout(() => { setPhase("scanning"); animate(sp, 100, { duration: 1.8, ease: "linear" }); }, 2600);
+    const t3 = setTimeout(() => setPhase("processing"), 4600);
+    const t4 = setTimeout(() => { setPhase("result"); setDone(true); }, 5300);
+    const t5 = setTimeout(() => setPhase("share"), 6800);
+    const t6 = setTimeout(() => setShareTapped(true), 8200);
+    const t7 = setTimeout(() => cycle(), 9600);
+    tm.current = [t1, t2, t3, t4, t5, t6, t7];
   }, [sp]);
 
   useEffect(() => {
-    let c = false; const ts: ReturnType<typeof setTimeout>[] = [];
-    setTimeout(() => { if (!c) ts.push(...cycle()); }, 500);
-    return () => { c = true; ts.forEach(clearTimeout); };
+    const start = setTimeout(() => cycle(), 600);
+    tm.current.push(start);
+    return () => { tm.current.forEach(clearTimeout); tm.current = []; };
   }, [cycle]);
 
   return (
@@ -243,7 +247,7 @@ export function HeroScannerAnimation() {
             )}
 
             {/* success badge */}
-            {done && (
+            {done && phase !== "share" && phase !== "sharing" && (
               <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
                 className="absolute bottom-[9%] left-1/2 -translate-x-1/2 flex items-center gap-1 px-2.5 py-1 rounded-full"
                 style={{ backgroundColor: "color-mix(in srgb, var(--success) 15%, transparent)", backdropFilter: "blur(4px)" }}
@@ -254,6 +258,78 @@ export function HeroScannerAnimation() {
                 </svg>
                 <span className="text-white text-[7px] font-medium">Scan Complete</span>
               </motion.div>
+            )}
+
+            {/* share sheet overlay */}
+            {(phase === "share" || phase === "sharing") && (
+              <>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 0.5 }}
+                  className="absolute inset-0 z-20"
+                  style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
+                />
+                <motion.div
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute bottom-0 left-0 right-0 z-30 rounded-t-xl overflow-hidden"
+                  style={{ backgroundColor: "var(--bg-secondary)" }}
+                >
+                  <div className="flex flex-col items-center pt-2 pb-3 px-4">
+                    {/* drag handle */}
+                    <div className="w-7 h-[3px] rounded-full mb-2.5" style={{ backgroundColor: "var(--border-hover)" }} />
+
+                    {/* preview + info */}
+                    <div className="flex items-center gap-2.5 w-full mb-3">
+                      <div className="w-8 h-10 rounded border shrink-0 overflow-hidden" style={{ borderColor: "var(--border-primary)" }}>
+                        <svg viewBox="0 0 32 40" className="w-full h-full">
+                          <rect x="2" y="2" width="28" height="36" rx="1" fill="#fcfcf8" />
+                          <rect x="5" y="6" width="12" height="3" rx="0.5" fill="#1a1a1a" />
+                          <rect x="5" y="11" width="20" height="1.5" rx="0.5" fill="#999" />
+                          <rect x="5" y="15" width="14" height="2" rx="0.5" fill="#444" />
+                          <rect x="5" y="19" width="8" height="2" rx="0.5" fill="#444" />
+                          <rect x="5" y="23" width="16" height="2" rx="0.5" fill="#444" />
+                        </svg>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-[8px] font-medium truncate" style={{ color: "var(--text-primary)" }}>Scan_2026-03-15.pdf</div>
+                        <div className="text-[6px] mt-0.5" style={{ color: "var(--text-muted)" }}>PDF &middot; 2.4 MB &middot; 3 pages</div>
+                      </div>
+                    </div>
+
+                    {/* Share button */}
+                    <motion.button
+                      className="w-full rounded-lg py-2 text-[8px] font-semibold text-white"
+                      style={{ backgroundColor: "var(--brand)" }}
+                      animate={shareTapped ? { scale: [1, 0.95, 1] } : { scale: 1 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      {shareTapped ? (
+                        <motion.span
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="flex items-center justify-center gap-1.5"
+                        >
+                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                            <circle cx="5" cy="5" r="4" stroke="white" strokeWidth="1" />
+                            <path d="M3.2 5l1.2 1.2L6.8 3.8" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          Shared Successfully
+                        </motion.span>
+                      ) : (
+                        <span className="flex items-center justify-center gap-1.5">
+                          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                            <path d="M5 2v4.5M3.5 3.5L5 2l1.5 1.5" stroke="white" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M2 5.5v2a.5.5 0 00.5.5h5a.5.5 0 00.5-.5v-2" stroke="white" strokeWidth="1" strokeLinecap="round" />
+                          </svg>
+                          Share as PDF
+                        </span>
+                      )}
+                    </motion.button>
+                  </div>
+                </motion.div>
+              </>
             )}
           </div>
 
