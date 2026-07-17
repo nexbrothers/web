@@ -40,7 +40,7 @@ export function Features({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {features.map((feature, index) => (
-            <FadeIn key={index} delay={index * 0.05}>
+            <FadeIn key={index} delay={index * 0.05} className="h-full">
               <FeatureCard
                 icon={feature.icon}
                 title={feature.title}

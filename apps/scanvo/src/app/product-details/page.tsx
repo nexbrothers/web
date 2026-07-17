@@ -85,7 +85,7 @@ export default function ProductDetails() {
                     <div style={{ color: "var(--brand)" }}>{f.icon}</div>
                   </div>
                   <h3 className="text-base font-semibold mb-1.5" style={{ color: "var(--text-primary)" }}>{f.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>{f.desc}</p>
+                  <p className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>{f.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -194,7 +194,7 @@ export default function ProductDetails() {
                   $0
                   <span className="text-sm font-normal" style={{ color: "var(--text-muted)" }}>/mo</span>
                 </div>
-                <ul className="space-y-2.5 flex-1 text-sm" style={{ color: "var(--text-secondary)" }}>
+                <ul className="space-y-2.5 flex-1 text-base" style={{ color: "var(--text-secondary)" }}>
                   {[
                     "Unlimited document scanning",
                     "Smart edge detection & correction",
@@ -232,7 +232,7 @@ export default function ProductDetails() {
                   ₹150
                   <span className="text-sm font-normal" style={{ color: "var(--text-muted)" }}>/mo</span>
                 </div>
-                <ul className="space-y-2.5 flex-1 text-sm" style={{ color: "var(--text-secondary)" }}>
+                <ul className="space-y-2.5 flex-1 text-base" style={{ color: "var(--text-secondary)" }}>
                   <li className="font-semibold" style={{ color: "var(--text-primary)" }}>Everything in Free, plus:</li>
                   {[
                     "Complete ad-free experience",

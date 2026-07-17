@@ -14,12 +14,14 @@ import {
   Star,
   CheckCircle,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { FadeIn } from "@repo/ui/animations";
 import { HeroScannerAnimation } from "../components/hero-scanner";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.nexbrothers.scanvo";
@@ -75,6 +77,18 @@ const howItWorks = [
 
 const testimonials = [
   {
+    name: "Inspire with me",
+    date: "26 May 2026",
+    content: "I was literally stressed after tea spilled on my important documents and the text became unclear. But this app completely saved me — the scan quality and filters restored everything perfectly. Truly impressed, highly recommended!",
+    rating: 5,
+  },
+  {
+    name: "Rajeev Sharma",
+    date: "14 April 2026",
+    content: "Very helpful app for scanning documents. The scan quality is really impressive. The interface is simple and user friendly. Overall, a great all-in-one scanning tool.",
+    rating: 5,
+  },
+  {
     name: "Manoj Sharma",
     date: "15 June 2026",
     content: "I have tried many scanner apps, but Scanvo stands out because of its privacy-first approach. Being able to scan documents without uploading them to the cloud gives me peace of mind. Fast, reliable, and easy to use.",
@@ -89,7 +103,91 @@ const testimonials = [
   {
     name: "Prateek Babu",
     date: "3 April 2026",
-    content: "This document scanner app is really impressive. It works completely offline, which makes it fast, secure, and reliable. The scanning quality is excellent with smooth performance and no lag. It also offers a wide range of useful features like PDF editing, organizing, and merging, making it an all-in-one solution. One of the best scanner apps I've used so far.",
+    content: "This document scanner app is really impressive. It works completely offline, which makes it fast, secure, and reliable. The scanning quality is excellent with smooth performance and no lag. One of the best scanner apps I've used so far.",
+    rating: 5,
+  },
+  {
+    name: "Anik Kumar",
+    date: "26 May 2026",
+    content: "Wonderful app amazing experience.",
+    rating: 5,
+  },
+  {
+    name: "Sunny Kumar Sharma",
+    date: "21 April 2026",
+    content: "Best offline app for document scanning. Works perfectly without internet.",
+    rating: 5,
+  },
+  {
+    name: "Hina Ansari",
+    date: "10 May 2026",
+    content: "Very good app. Works great for all my scanning needs.",
+    rating: 5,
+  },
+  {
+    name: "Dipu Sharma",
+    date: "15 April 2026",
+    content: "Awesome app I found, I was exactly finding such application. Does everything I need.",
+    rating: 5,
+  },
+  {
+    name: "Aditya raj",
+    date: "12 April 2026",
+    content: "Easy to use. Simple interface and great results every time.",
+    rating: 5,
+  },
+  {
+    name: "kiran kumari",
+    date: "30 May 2026",
+    content: "Great application, love it! The scanning quality is top notch.",
+    rating: 5,
+  },
+  {
+    name: "Saurabh Kumar",
+    date: "21 May 2026",
+    content: "Best app I found for document scanning. Highly recommended.",
+    rating: 5,
+  },
+  {
+    name: "ADARSH SHARMA",
+    date: "6 April 2026",
+    content: "Best app I found for scanning documents. Works flawlessly.",
+    rating: 5,
+  },
+  {
+    name: "Anshu Sharma",
+    date: "13 April 2026",
+    content: "Everything is wow. The app is perfect for all my scanning needs.",
+    rating: 5,
+  },
+  {
+    name: "Rakesh Kumar",
+    date: "31 May 2026",
+    content: "Nice app. Does exactly what it promises with great quality.",
+    rating: 5,
+  },
+  {
+    name: "navin sharma",
+    date: "17 April 2026",
+    content: "Main ye application bahut time se dhundh raha tha. Thanks for this amazing app.",
+    rating: 5,
+  },
+  {
+    name: "Ayush Sharma",
+    date: "12 April 2026",
+    content: "Best app for document scanning. Simple and effective.",
+    rating: 5,
+  },
+  {
+    name: "Roba Ediris",
+    date: "3 May 2026",
+    content: "Good job. The app works really well for all my scanning needs.",
+    rating: 5,
+  },
+  {
+    name: "Mr Aaka",
+    date: "18 April 2026",
+    content: "Great app. Does everything I need from a document scanner.",
     rating: 5,
   },
 ];
@@ -140,7 +238,7 @@ function StarRating({ rating }: { rating: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          className="w-3 h-3"
+          className="w-3.5 h-3.5"
           style={{
             fill: i < rating ? "var(--brand)" : "none",
             color: i < rating ? "var(--brand)" : "var(--border-hover)",
@@ -151,9 +249,48 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .map(w => w[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+}
+
 
 export default function ScanvoHome() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStart = useRef({ x: 0, scrollLeft: 0 });
+
+  const onDragStart = useCallback((e: React.MouseEvent) => {
+    setIsDragging(true);
+    dragStart.current = { x: e.clientX, scrollLeft: scrollRef.current?.scrollLeft ?? 0 };
+  }, []);
+
+  const onDragMove = useCallback((e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const dx = e.clientX - dragStart.current.x;
+    scrollRef.current.scrollLeft = dragStart.current.scrollLeft - dx;
+  }, [isDragging]);
+
+  const onDragEnd = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    setIsDragging(true);
+    dragStart.current = { x: e.touches[0].clientX, scrollLeft: scrollRef.current?.scrollLeft ?? 0 };
+  }, []);
+
+  const onTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    const dx = e.touches[0].clientX - dragStart.current.x;
+    scrollRef.current.scrollLeft = dragStart.current.scrollLeft - dx;
+  }, [isDragging]);
 
   return (
     <main>
@@ -213,13 +350,13 @@ export default function ScanvoHome() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {howItWorks.map((step, i) => (
               <FadeIn key={i} delay={i * 0.08}>
-                <div className="rounded-xl border p-6" style={{ backgroundColor: "var(--bg-primary)", borderColor: "var(--border-primary)" }}>
+                <div className="rounded-xl border p-6 h-full" style={{ backgroundColor: "var(--bg-primary)", borderColor: "var(--border-primary)" }}>
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-xs font-semibold" style={{ color: "var(--brand)" }}>{step.step}</span>
                     <div className="flex-1 h-px" style={{ backgroundColor: "var(--border-primary)" }} />
                   </div>
                   <h3 className="text-base font-semibold mb-1.5" style={{ color: "var(--text-primary)" }}>{step.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>{step.description}</p>
+                  <p className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>{step.description}</p>
                 </div>
               </FadeIn>
             ))}
@@ -253,7 +390,7 @@ export default function ScanvoHome() {
                       <CheckCircle className="w-3.5 h-3.5 shrink-0" style={{ color: "var(--success)" }} />
                       <div>
                         <div className="text-base font-medium" style={{ color: "var(--text-primary)" }}>{tool.title}</div>
-                        <div className="text-sm" style={{ color: "var(--text-muted)" }}>{tool.desc}</div>
+                        <div className="text-base" style={{ color: "var(--text-muted)" }}>{tool.desc}</div>
                       </div>
                     </div>
                   </FadeIn>
@@ -314,21 +451,86 @@ export default function ScanvoHome() {
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {testimonials.map((t, i) => (
-              <FadeIn key={i} delay={i * 0.06}>
-                <div className="rounded-xl border p-5 h-full flex flex-col" style={{ backgroundColor: "var(--bg-secondary)", borderColor: "var(--border-primary)" }}>
-                  <StarRating rating={t.rating} />
-                  <p className="mt-3 flex-1 text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                    &ldquo;{t.content}&rdquo;
-                  </p>
-                  <div className="mt-4 pt-3 flex items-center justify-between" style={{ borderTop: "1px solid var(--border-primary)" }}>
-                    <span className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{t.name}</span>
-                    <span className="text-xs" style={{ color: "var(--text-muted)" }}>{t.date}</span>
+          <div className="relative group">
+            {/* left arrow */}
+            <button
+              onClick={() => { const el = scrollRef.current; if (!el) return; el.scrollBy({ left: -360, behavior: "smooth" }); }}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-10 w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md"
+              style={{ backgroundColor: "var(--bg-primary)", color: "var(--text-primary)", border: "1px solid var(--border-primary)" }}
+              aria-label="Previous reviews"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+
+            {/* right arrow */}
+            <button
+              onClick={() => { const el = scrollRef.current; if (!el) return; el.scrollBy({ left: 360, behavior: "smooth" }); }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-10 w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md"
+              style={{ backgroundColor: "var(--bg-primary)", color: "var(--text-primary)", border: "1px solid var(--border-primary)" }}
+              aria-label="Next reviews"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+
+            <div
+              ref={scrollRef}
+              onMouseDown={onDragStart}
+              onMouseMove={onDragMove}
+              onMouseUp={onDragEnd}
+              onMouseLeave={onDragEnd}
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onDragEnd}
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory cursor-grab active:cursor-grabbing select-none [&::-webkit-scrollbar]:hidden"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+            >
+              {testimonials.map((t, i) => (
+                <div
+                  key={i}
+                  className="w-[280px] sm:w-[340px] snap-start shrink-0"
+                >
+                  <div
+                    className="rounded-xl border p-5 h-full flex flex-col transition-all duration-200"
+                    style={{
+                      backgroundColor: "var(--bg-secondary)",
+                      borderColor: "var(--border-primary)",
+                    }}
+                  >
+                    {/* avatar + name row */}
+                    <div className="flex items-center gap-3 mb-3">
+                      <div
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-semibold shrink-0"
+                        style={{ backgroundColor: "var(--brand-subtle)", color: "var(--brand)" }}
+                      >
+                        {getInitials(t.name)}
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-semibold truncate" style={{ color: "var(--text-primary)" }}>
+                          {t.name}
+                        </div>
+                        <div className="text-[11px]" style={{ color: "var(--text-muted)" }}>
+                          {t.date}
+                        </div>
+                      </div>
+                      <StarRating rating={t.rating} />
+                    </div>
+
+                    {/* quote */}
+                    <div className="relative flex-1">
+                      <span
+                        className="absolute -top-1 -left-1 text-2xl leading-none select-none"
+                        style={{ color: "var(--brand)", opacity: 0.2 }}
+                      >
+                        &ldquo;
+                      </span>
+                      <p className="text-sm leading-relaxed pl-3" style={{ color: "var(--text-secondary)" }}>
+                        {t.content}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </FadeIn>
-            ))}
+              ))}
+            </div>
           </div>
         </Container>
       </section>

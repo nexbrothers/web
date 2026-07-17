@@ -67,7 +67,7 @@ export function Header({ productName, logoSrc, navLinks }: HeaderProps) {
             </div>
           )}
           <span
-            className="text-sm font-semibold tracking-tight"
+            className="text-base font-semibold tracking-tight"
             style={{ color: "var(--text-primary)" }}
           >
             {productName}
@@ -79,7 +79,7 @@ export function Header({ productName, logoSrc, navLinks }: HeaderProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm transition-colors duration-200"
+              className="text-base transition-colors duration-200"
               style={{ color: "var(--text-secondary)" }}
               onMouseEnter={(e) => e.currentTarget.style.color = "var(--text-primary)"}
               onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-secondary)"}
@@ -129,7 +129,7 @@ export function Header({ productName, logoSrc, navLinks }: HeaderProps) {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="block px-3 py-2 rounded-md text-sm transition-colors"
+                className="block px-3 py-2 rounded-md text-base transition-colors"
                 style={{ color: "var(--text-secondary)" }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "var(--bg-elevated)";

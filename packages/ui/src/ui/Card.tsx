@@ -42,8 +42,8 @@ export function FeatureCard({
   className = "",
 }: FeatureCardProps) {
   return (
-    <div
-      className={cn("rounded-xl border p-5 transition-all duration-200 hover:border-[var(--border-hover)]", className)}
+      <div
+        className={cn("rounded-xl border p-5 h-full transition-all duration-200 hover:border-[var(--border-hover)]", className)}
       style={{
         backgroundColor: "var(--bg-secondary)",
         borderColor: "var(--border-primary)",
@@ -58,7 +58,7 @@ export function FeatureCard({
       <h3 className="text-base font-semibold mb-1.5" style={{ color: "var(--text-primary)" }}>
         {title}
       </h3>
-      <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+      <p className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
         {description}
       </p>
     </div>

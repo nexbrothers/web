@@ -53,11 +53,11 @@ export function Footer({ productName = "NexBrothers", legalLinks }: FooterProps)
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <span className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+                <span className="text-base font-semibold" style={{ color: "var(--text-primary)" }}>
                   {productName === "NexBrothers" ? "NexBrothers" : `${productName} by NexBrothers`}
                 </span>
               </Link>
-              <p className="text-sm mb-5 max-w-sm" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-base mb-5 max-w-sm" style={{ color: "var(--text-secondary)" }}>
                 Building tomorrow&apos;s technology, today. We create innovative apps
                 and digital solutions that make a real difference.
               </p>
@@ -81,7 +81,7 @@ export function Footer({ productName = "NexBrothers", legalLinks }: FooterProps)
             </div>
 
             <div>
-              <h3 className="text-xs font-semibold tracking-wider uppercase mb-4" style={{ color: "var(--text-muted)" }}>
+              <h3 className="text-sm font-semibold tracking-wider uppercase mb-4" style={{ color: "var(--text-muted)" }}>
                 Products
               </h3>
               <ul className="space-y-2.5">
@@ -89,7 +89,7 @@ export function Footer({ productName = "NexBrothers", legalLinks }: FooterProps)
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm transition-colors duration-200"
+                      className="text-base transition-colors duration-200"
                       style={{ color: "var(--text-secondary)" }}
                       onMouseEnter={(e) => e.currentTarget.style.color = "var(--text-primary)"}
                       onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-secondary)"}
@@ -102,21 +102,21 @@ export function Footer({ productName = "NexBrothers", legalLinks }: FooterProps)
             </div>
 
             <div>
-              <h3 className="text-xs font-semibold tracking-wider uppercase mb-4" style={{ color: "var(--text-muted)" }}>
+              <h3 className="text-sm font-semibold tracking-wider uppercase mb-4" style={{ color: "var(--text-muted)" }}>
                 Company
               </h3>
               <ul className="space-y-2.5">
                 {company.map((link) => (
                   <li key={link.label}>
                     {link.disabled ? (
-                      <span className="text-sm" style={{ color: "var(--text-muted)" }}>
+                      <span className="text-base" style={{ color: "var(--text-muted)" }}>
                         {link.label}
                         <span className="text-xs ml-1" style={{ color: "var(--brand)" }}>Soon</span>
                       </span>
                     ) : (
                       <Link
                         href={link.href}
-                        className="text-sm transition-colors duration-200"
+                        className="text-base transition-colors duration-200"
                         style={{ color: "var(--text-secondary)" }}
                         onMouseEnter={(e) => e.currentTarget.style.color = "var(--text-primary)"}
                         onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-secondary)"}
@@ -130,7 +130,7 @@ export function Footer({ productName = "NexBrothers", legalLinks }: FooterProps)
             </div>
 
             <div>
-              <h3 className="text-xs font-semibold tracking-wider uppercase mb-4" style={{ color: "var(--text-muted)" }}>
+              <h3 className="text-sm font-semibold tracking-wider uppercase mb-4" style={{ color: "var(--text-muted)" }}>
                 Legal
               </h3>
               <ul className="space-y-2.5">
@@ -138,7 +138,7 @@ export function Footer({ productName = "NexBrothers", legalLinks }: FooterProps)
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm transition-colors duration-200"
+                      className="text-base transition-colors duration-200"
                       style={{ color: "var(--text-secondary)" }}
                       onMouseEnter={(e) => e.currentTarget.style.color = "var(--text-primary)"}
                       onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-secondary)"}
