@@ -63,6 +63,11 @@ npx turbo dev --filter=scanvo
 npx turbo dev --filter=signlock
 ```
 
+**Run only the MyMoneyReport app:**
+```bash
+npx turbo dev --filter=mymoneyreport
+```
+
 ## Building for Production
 
 To build all applications for production:
