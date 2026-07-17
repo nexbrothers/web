@@ -19,9 +19,15 @@
   --border-hover: rgba(0, 212, 255, 0.5);
   --glow: rgba(0, 212, 255, 0.5);
   --shadow: rgba(0, 0, 0, 0.3);
+  --bg-primary: var(--background);
+  --bg-secondary: var(--background-secondary);
+  --bg-elevated: var(--background-card);
+  --border-primary: var(--border);
+  --brand: var(--accent);
+  --brand-hover: var(--accent-purple);
+  --brand-subtle: rgba(139, 92, 246, 0.08);
 }
 
-/* Light Mode Colors */
 .light {
   --primary: #e2e8f0;
   --accent: #0891b2;
@@ -37,6 +43,13 @@
   --border-hover: rgba(8, 145, 178, 0.5);
   --glow: rgba(8, 145, 178, 0.3);
   --shadow: rgba(0, 0, 0, 0.1);
+  --bg-primary: var(--background);
+  --bg-secondary: var(--background-secondary);
+  --bg-elevated: var(--background-card);
+  --border-primary: var(--border);
+  --brand: var(--accent);
+  --brand-hover: var(--accent-purple);
+  --brand-subtle: rgba(8, 145, 178, 0.08);
 }
 
 @theme inline {

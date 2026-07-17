@@ -21,6 +21,13 @@
   --border-hover: rgba(88, 68, 238, 0.5);
   --glow: rgba(88, 68, 238, 0.5);
   --shadow: rgba(0, 0, 0, 0.3);
+  --bg-primary: var(--background);
+  --bg-secondary: var(--background-secondary);
+  --bg-elevated: var(--background-card);
+  --border-primary: var(--border);
+  --brand: var(--accent);
+  --brand-hover: var(--accent-purple);
+  --brand-subtle: rgba(88, 68, 238, 0.08);
 }
 
 .light {
@@ -38,6 +45,13 @@
   --border-hover: rgba(88, 68, 238, 0.5);
   --glow: rgba(88, 68, 238, 0.3);
   --shadow: rgba(0, 0, 0, 0.1);
+  --bg-primary: var(--background);
+  --bg-secondary: var(--background-secondary);
+  --bg-elevated: var(--background-card);
+  --border-primary: var(--border);
+  --brand: var(--accent);
+  --brand-hover: var(--accent-purple);
+  --brand-subtle: rgba(88, 68, 238, 0.08);
 }
 
 @theme inline {

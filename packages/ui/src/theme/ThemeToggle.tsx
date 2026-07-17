@@ -1,42 +1,36 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <motion.button
+    <button
       onClick={toggleTheme}
-      className="relative w-10 h-10 rounded-xl flex items-center justify-center bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 border border-black/10 dark:border-white/10 transition-colors duration-300"
-      whileTap={{ scale: 0.95 }}
+      className="flex h-8 w-8 items-center justify-center rounded-lg transition-colors duration-200"
+      style={{ color: "var(--text-muted)" }}
+      onMouseEnter={(e) => e.currentTarget.style.color = "var(--text-primary)"}
+      onMouseLeave={(e) => e.currentTarget.style.color = "var(--text-muted)"}
       aria-label="Toggle theme"
     >
-      <AnimatePresence mode="wait" initial={false}>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         {theme === "dark" ? (
-          <motion.div
-            key="moon"
-            initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Moon className="w-5 h-5 text-[#00D4FF]" />
-          </motion.div>
+          <path d="M8 1.5a6.5 6.5 0 1 0 6.1 4.3 5.5 5.5 0 0 1-6.1-4.3z" />
         ) : (
-          <motion.div
-            key="sun"
-            initial={{ rotate: 90, opacity: 0, scale: 0.5 }}
-            animate={{ rotate: 0, opacity: 1, scale: 1 }}
-            exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Sun className="w-5 h-5 text-amber-500" />
-          </motion.div>
+          <>
+            <circle cx="8" cy="8" r="3" />
+            <line x1="8" y1="1" x2="8" y2="2" />
+            <line x1="8" y1="14" x2="8" y2="15" />
+            <line x1="1" y1="8" x2="2" y2="8" />
+            <line x1="14" y1="8" x2="15" y2="8" />
+            <line x1="3.05" y1="3.05" x2="3.76" y2="3.76" />
+            <line x1="12.24" y1="12.24" x2="12.95" y2="12.95" />
+            <line x1="12.24" y1="3.76" x2="12.95" y2="3.05" />
+            <line x1="3.76" y1="12.24" x2="3.05" y2="12.95" />
+          </>
         )}
-      </AnimatePresence>
-    </motion.button>
+      </svg>
+    </button>
   );
 }

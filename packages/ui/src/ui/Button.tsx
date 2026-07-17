@@ -1,8 +1,6 @@
 "use client";
 
 import { cn } from "@repo/utils";
-import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
 import { ReactNode } from "react";
 
 interface ButtonProps {
@@ -27,33 +25,31 @@ export function Button({
   onClick,
 }: ButtonProps) {
   const baseStyles =
-    "relative inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#00D4FF] focus:ring-offset-2 focus:ring-offset-[#030712] disabled:opacity-50 disabled:cursor-not-allowed";
+    "relative inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--brand)] focus:ring-offset-1 focus:ring-offset-[var(--bg-primary)] disabled:opacity-40 disabled:cursor-not-allowed select-none";
 
-  const variants = {
+  const variants: Record<string, string> = {
     primary:
-      "bg-gradient-to-r from-[#00D4FF] to-[#7C3AED] text-white hover:shadow-lg hover:shadow-[#00D4FF]/25 hover:scale-[1.02] active:scale-[0.98]",
+      "bg-[var(--brand)] text-white hover:bg-[var(--brand-hover)] active:scale-[0.97]",
     secondary:
-      "bg-transparent border-2 border-[#00D4FF] text-[#00D4FF] hover:bg-[#00D4FF]/10 hover:scale-[1.02] active:scale-[0.98]",
+      "bg-transparent border border-[var(--border-primary)] text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] active:scale-[0.97]",
     ghost:
-      "bg-transparent text-[#94A3B8] hover:text-white hover:bg-white/5 active:scale-[0.98]",
+      "bg-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] active:scale-[0.97]",
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-sm",
-    md: "px-6 py-3 text-base",
-    lg: "px-8 py-4 text-lg",
+    sm: "px-3 py-1.5 text-xs",
+    md: "px-4 py-2 text-sm",
+    lg: "px-5 py-2.5 text-sm",
   };
 
   return (
-    <motion.button
-      whileTap={{ scale: 0.98 }}
-      className={cn(baseStyles, variants[variant], sizes[size], className)}
+    <button
+      className={cn(baseStyles, variants[variant], sizes[size], loading && "cursor-wait", className)}
       disabled={disabled || loading}
       type={type}
       onClick={onClick}
     >
-      {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
       {children}
-    </motion.button>
+    </button>
   );
 }
