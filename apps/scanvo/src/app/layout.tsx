@@ -21,7 +21,7 @@ const baseUrl = "https://scanvo.nexbrothers.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
-  title: "Scanvo - AI Document Scanner & PDF Maker | Scan. Organize. Export.",
+  title: "Scanvo: PDF Scanner & Editor",
   description:
     "Transform your phone into a powerful document scanner with Scanvo. AI-powered edge detection, OCR, PDF editing, and 20+ document tools. 100% private on-device processing.",
   keywords: [
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "document organizer",
   ],
   openGraph: {
-    title: "Scanvo - AI Document Scanner & PDF Maker",
+    title: "Scanvo: PDF Scanner & Editor",
     description:
       "Scan. Organize. Export. Transform your phone into a powerful document scanner with AI-powered edge detection, OCR, and 20+ document tools.",
     url: baseUrl,
@@ -49,13 +49,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Scanvo - AI Document Scanner & PDF Maker",
+        alt: "Scanvo: PDF Scanner & Editor",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Scanvo - AI Document Scanner & PDF Maker",
+    title: "Scanvo: PDF Scanner & Editor",
     description:
       "Scan. Organize. Export. Transform your phone into a powerful document scanner with AI-powered edge detection, OCR, and 20+ document tools.",
     images: ["/og-image.png"],
@@ -66,6 +66,13 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: baseUrl,
+  },
+  icons: {
+    icon: [
+      { url: "/images/scanvo-logo.png", sizes: "any", type: "image/png" },
+      { url: "/images/scanvo-logo.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: { url: "/images/scanvo-logo.png", sizes: "any", type: "image/png" },
   },
 };
 
