@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono, Fraunces } from 'next/font/google';
+import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Header, Footer } from '@/components/layout';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/seo';
@@ -16,10 +16,10 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-const fraunces = Fraunces({
+const spaceGrotesk = Space_Grotesk({
   variable: '--font-display',
   subsets: ['latin'],
-  style: ['normal', 'italic'],
+  weight: ['500', '600', '700'],
   display: 'swap',
 });
 
@@ -140,7 +140,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} antialiased`}
         style={{
           background: 'var(--background)',
           color: 'var(--text-primary)',

@@ -28,45 +28,20 @@ export default function TermsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-12 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: "var(--background)" }}
-        />
-        <div
-          className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: "var(--accent-purple)", opacity: 0.1 }}
-        />
-        <div
-          className="absolute bottom-0 left-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: "var(--accent)", opacity: 0.1 }}
-        />
-
-        <Container className="relative z-10">
+      <section className="pt-40 pb-12" style={{ backgroundColor: "var(--background)" }}>
+        <Container>
           <FadeIn className="max-w-3xl">
-            <h1
-              className="text-4xl sm:text-5xl font-bold mb-4"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Terms and Conditions
+            <h1 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-4" style={{ color: "var(--text-primary)" }}>
+              Terms and conditions
             </h1>
-            <p style={{ color: "var(--text-secondary)" }}>
-              Effective date: December 25, 2024
-            </p>
+            <p style={{ color: "var(--text-secondary)" }}>Effective date: December 25, 2024</p>
           </FadeIn>
         </Container>
       </section>
 
       {/* Content */}
-      <section className="py-16 relative">
-        <div
-          className="absolute inset-0"
-          style={{
-            background: "linear-gradient(to bottom, var(--background), var(--background-secondary))"
-          }}
-        />
-
-        <Container className="relative z-10">
+      <section className="py-16" style={{ backgroundColor: "var(--background)" }}>
+        <Container>
           <FadeIn>
             <div className="max-w-3xl prose prose-invert prose-lg">
               <p

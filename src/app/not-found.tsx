@@ -1,78 +1,51 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container, Button } from "@repo/ui/ui";
+import { Container } from "@repo/ui/ui";
 import { Home, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background */}
-      <div 
-        className="absolute inset-0" 
-        style={{ backgroundColor: "var(--background)" }}
-      />
-      <div 
-        className="absolute top-1/4 -left-32 w-96 h-96 rounded-full blur-[128px]" 
-        style={{ backgroundColor: "var(--accent)", opacity: 0.1 }}
-      />
-      <div 
-        className="absolute bottom-1/4 -right-32 w-96 h-96 rounded-full blur-[128px]" 
-        style={{ backgroundColor: "var(--accent-purple)", opacity: 0.1 }}
-      />
-
-      <Container className="relative z-10">
+    <section className="min-h-[100dvh] flex items-center justify-center" style={{ backgroundColor: "var(--background)" }}>
+      <Container>
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mx-auto text-center"
+          transition={{ duration: 0.5 }}
+          className="max-w-xl mx-auto text-center"
         >
-          {/* 404 Number */}
-          <div className="relative mb-8">
-            <span 
-              className="text-[150px] sm:text-[200px] font-bold select-none"
-              style={{ color: "var(--background-secondary)" }}
-            >
-              404
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center text-[150px] sm:text-[200px] font-bold gradient-text">
-              404
-            </span>
-          </div>
+          <span
+            className="font-display block text-[120px] sm:text-[160px] font-semibold leading-none select-none mb-2"
+            style={{ color: "var(--accent)" }}
+          >
+            404
+          </span>
 
-          {/* Message */}
-          <h1 
-            className="text-3xl sm:text-4xl font-bold mb-4"
-            style={{ color: "var(--text-primary)" }}
-          >
-            Page Not Found
+          <h1 className="font-display text-2xl sm:text-3xl font-semibold mb-4" style={{ color: "var(--text-primary)" }}>
+            Page not found
           </h1>
-          <p 
-            className="text-lg mb-10"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            Oops! The page you&apos;re looking for doesn&apos;t exist or has been
-            moved. Let&apos;s get you back on track.
+          <p className="text-lg mb-10" style={{ color: "var(--text-secondary)" }}>
+            The page you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
 
-          {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/">
-              <Button size="lg">
-                <Home className="mr-2 w-5 h-5" />
-                Go Home
-              </Button>
-            </Link>
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={() => window.history.back()}
+            <Link
+              href="/"
+              className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold"
+              style={{ backgroundColor: "var(--primary)", color: "var(--background)" }}
             >
-              <ArrowLeft className="mr-2 w-5 h-5" />
-              Go Back
-            </Button>
+              <Home className="w-4 h-4" />
+              Go home
+            </Link>
+            <button
+              onClick={() => window.history.back()}
+              className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold border"
+              style={{ borderColor: "var(--border)", color: "var(--text-primary)" }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Go back
+            </button>
           </div>
         </motion.div>
       </Container>

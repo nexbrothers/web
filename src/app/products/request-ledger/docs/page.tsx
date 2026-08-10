@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Container, Button } from "@repo/ui/ui";
+import { Container } from "@repo/ui/ui";
 import { FadeIn } from "@repo/ui/animations";
 import {
   ArrowLeft,
@@ -26,42 +26,21 @@ function CopyButton({ text }: { text: string }) {
   };
 
   return (
-    <button
-      onClick={handleCopy}
-      className="p-1.5 rounded hover:bg-white/10 transition-colors"
-      title="Copy to clipboard"
-    >
-      {copied ? (
-        <Check className="w-4 h-4 text-[var(--success)]" />
-      ) : (
-        <Copy className="w-4 h-4" style={{ color: "var(--text-muted)" }} />
-      )}
+    <button onClick={handleCopy} className="p-1.5 rounded-md transition-colors" title="Copy to clipboard" style={{ color: "var(--on-ink-muted)" }}>
+      {copied ? <Check className="w-4 h-4" style={{ color: "var(--success)" }} /> : <Copy className="w-4 h-4" />}
     </button>
   );
 }
 
 function CodeBlock({ code, language = "typescript" }: { code: string; language?: string }) {
   return (
-    <div
-      className="rounded-xl overflow-hidden border my-4"
-      style={{
-        backgroundColor: "var(--background)",
-        borderColor: "var(--border)",
-      }}
-    >
-      <div
-        className="flex items-center justify-between px-4 py-2 border-b"
-        style={{ borderColor: "var(--border)" }}
-      >
-        <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-          {language}
-        </span>
+    <div className="rounded-2xl overflow-hidden my-4" style={{ backgroundColor: "var(--ink)" }}>
+      <div className="flex items-center justify-between px-4 py-2.5 border-b" style={{ borderColor: "rgba(246,245,241,0.1)" }}>
+        <span className="text-xs font-medium" style={{ color: "var(--on-ink-muted)" }}>{language}</span>
         <CopyButton text={code} />
       </div>
       <pre className="p-4 overflow-x-auto text-sm">
-        <code className="font-mono" style={{ color: "var(--text-primary)" }}>
-          {code}
-        </code>
+        <code style={{ color: "var(--on-ink)", fontFamily: "var(--font-mono), monospace" }}>{code}</code>
       </pre>
     </div>
   );
@@ -81,19 +60,9 @@ function Section({
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div
-      id={id}
-      className="border-b py-6"
-      style={{ borderColor: "var(--border)" }}
-    >
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between text-left group"
-      >
-        <h2
-          className="text-xl font-bold"
-          style={{ color: "var(--text-primary)" }}
-        >
+    <div id={id} className="border-b py-6 scroll-mt-28" style={{ borderColor: "var(--border)" }}>
+      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between text-left group">
+        <h2 className="font-display text-xl font-semibold" style={{ color: "var(--text-primary)" }}>
           {title}
         </h2>
         {isOpen ? (
@@ -102,11 +71,7 @@ function Section({
           <ChevronRight className="w-5 h-5" style={{ color: "var(--text-muted)" }} />
         )}
       </button>
-      {isOpen && (
-        <div className="mt-4 prose-custom">
-          {children}
-        </div>
-      )}
+      {isOpen && <div className="mt-4">{children}</div>}
     </div>
   );
 }
@@ -115,15 +80,13 @@ function Param({ name, type, required, description }: { name: string; type: stri
   return (
     <div className="py-3 border-b last:border-b-0" style={{ borderColor: "var(--border)" }}>
       <div className="flex items-center gap-2 mb-1">
-        <code className="text-sm font-mono px-1.5 py-0.5 rounded" style={{ backgroundColor: "var(--background-secondary)", color: "var(--accent)" }}>
+        <code className="text-sm px-1.5 py-0.5 rounded-md" style={{ backgroundColor: "var(--brand-subtle)", color: "var(--accent)", fontFamily: "var(--font-mono), monospace" }}>
           {name}
         </code>
-        <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: "var(--background-secondary)", color: "var(--text-muted)" }}>
+        <span className="text-xs px-1.5 py-0.5 rounded-md" style={{ backgroundColor: "var(--background)", color: "var(--text-muted)" }}>
           {type}
         </span>
-        {required && (
-          <span className="text-xs text-red-400">required</span>
-        )}
+        {required && <span className="text-xs font-medium" style={{ color: "var(--danger)" }}>required</span>}
       </div>
       <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{description}</p>
     </div>
@@ -146,7 +109,7 @@ const navItems = [
 
 export default function DocsPage() {
   return (
-    <div className="min-h-screen pt-24 pb-12" style={{ background: "var(--background)" }}>
+    <div className="min-h-screen pt-36 pb-12" style={{ background: "var(--background)" }}>
       <Container>
         {/* Header */}
         <FadeIn>
@@ -156,39 +119,35 @@ export default function DocsPage() {
             style={{ color: "var(--text-secondary)" }}
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Product
+            Back to product
           </Link>
-          
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
+
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10">
             <div>
-              <h1 className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: "var(--text-primary)" }}>
-                <span className="gradient-text">request-ledger</span> Documentation
+              <h1 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-2" style={{ color: "var(--text-primary)" }}>
+                request-ledger documentation
               </h1>
-              <p style={{ color: "var(--text-secondary)" }}>
-                Complete API reference and usage examples
-              </p>
+              <p style={{ color: "var(--text-secondary)" }}>Complete API reference and usage examples</p>
             </div>
-            
-            <div className="flex items-center gap-3">
-              <Link href="https://www.npmjs.com/package/request-ledger" target="_blank">
-                <Button variant="ghost" size="sm">
-                  <Package className="w-4 h-4 mr-2" />
-                  npm
-                  <ExternalLink className="w-3 h-3 ml-1 opacity-50" />
-                </Button>
+
+            <div className="flex items-center gap-x-6 shrink-0">
+              <Link href="https://www.npmjs.com/package/request-ledger" target="_blank" className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "var(--text-secondary)" }}>
+                <Package className="w-4 h-4" />
+                npm
+                <ExternalLink className="w-3 h-3 opacity-50" />
               </Link>
-              <Link href="https://github.com/nexbrothers/request-ledger" target="_blank">
-                <Button variant="ghost" size="sm">
-                  <Github className="w-4 h-4 mr-2" />
-                  GitHub
-                  <ExternalLink className="w-3 h-3 ml-1 opacity-50" />
-                </Button>
+              <Link href="https://github.com/nexbrothers/request-ledger" target="_blank" className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "var(--text-secondary)" }}>
+                <Github className="w-4 h-4" />
+                GitHub
+                <ExternalLink className="w-3 h-3 opacity-50" />
               </Link>
-              <Link href="/products/request-ledger/playground">
-                <Button variant="secondary" size="sm">
-                  <Play className="w-4 h-4 mr-2" />
-                  Playground
-                </Button>
+              <Link
+                href="/products/request-ledger/playground"
+                className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold"
+                style={{ backgroundColor: "var(--primary)", color: "var(--background)" }}
+              >
+                <Play className="w-4 h-4" />
+                Playground
               </Link>
             </div>
           </div>
@@ -197,13 +156,7 @@ export default function DocsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8">
           {/* Sidebar Navigation */}
           <FadeIn className="hidden lg:block">
-            <nav
-              className="sticky top-28 p-4 rounded-xl border"
-              style={{
-                backgroundColor: "var(--background-secondary)",
-                borderColor: "var(--border)",
-              }}
-            >
+            <nav className="sticky top-28 p-4 rounded-[20px] border" style={{ backgroundColor: "var(--background-secondary)", borderColor: "var(--border)" }}>
               <div className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: "var(--text-muted)" }}>
                 On this page
               </div>
@@ -212,7 +165,7 @@ export default function DocsPage() {
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
-                      className="block py-1.5 px-2 rounded text-sm transition-colors hover:bg-white/5"
+                      className="block py-1.5 px-2 rounded-md text-sm transition-colors"
                       style={{ color: "var(--text-secondary)" }}
                     >
                       {item.label}
@@ -225,13 +178,7 @@ export default function DocsPage() {
 
           {/* Main Content */}
           <FadeIn delay={0.1}>
-            <div
-              className="rounded-xl border p-6 lg:p-8"
-              style={{
-                backgroundColor: "var(--background-secondary)",
-                borderColor: "var(--border)",
-              }}
-            >
+            <div className="rounded-[24px] border p-6 lg:p-8" style={{ backgroundColor: "var(--background-secondary)", borderColor: "var(--border)" }}>
               {/* Installation */}
               <Section id="installation" title="Installation">
                 <CodeBlock language="bash" code={`npm install request-ledger
@@ -446,10 +393,10 @@ ledger.destroy();`} />
                   Entry Statuses
                 </h3>
                 <div className="space-y-2" style={{ color: "var(--text-secondary)" }}>
-                  <p><code className="text-yellow-400">pending</code> — Queued, waiting to be processed</p>
-                  <p><code style={{ color: "var(--accent)" }}>processing</code> — Currently being executed</p>
-                  <p><code className="text-[var(--success)]">completed</code> — Successfully completed (transient)</p>
-                  <p><code className="text-red-400">failed</code> — Failed after all retry attempts</p>
+                  <p><code style={{ color: "#b45309" }}>pending</code> - queued, waiting to be processed</p>
+                  <p><code style={{ color: "var(--accent)" }}>processing</code> - currently being executed</p>
+                  <p><code style={{ color: "var(--success)" }}>completed</code> - successfully completed (transient)</p>
+                  <p><code style={{ color: "var(--danger)" }}>failed</code> - failed after all retry attempts</p>
                 </div>
               </Section>
 
@@ -494,8 +441,8 @@ ledger.destroy();`} />
                   Error Handling Behavior
                 </h3>
                 <div className="space-y-2 text-sm" style={{ color: "var(--text-secondary)" }}>
-                  <p>✅ <strong>Retries on:</strong> Network errors (offline), 5xx server errors</p>
-                  <p>❌ <strong>Never retries:</strong> 4xx client errors (permanent failures)</p>
+                  <p><strong style={{ color: "var(--success)" }}>Retries on:</strong> network errors (offline), 5xx server errors</p>
+                  <p><strong style={{ color: "var(--danger)" }}>Never retries:</strong> 4xx client errors (permanent failures)</p>
                 </div>
               </Section>
 

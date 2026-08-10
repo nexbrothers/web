@@ -17,7 +17,7 @@ const sections = [
           NexBrothers (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates the My Money Report
           mobile application (the &quot;App&quot;). This Privacy Policy explains how we handle your
           information when you use our App. We take your privacy seriously and have designed the
-          App to be <strong>100% offline</strong> &mdash; meaning your financial data never leaves
+          App to be <strong>100% offline</strong> , meaning your financial data never leaves
           your device.
         </p>
         <p>
@@ -28,7 +28,7 @@ const sections = [
     ),
   },
   {
-    title: "2. No Data Collection &mdash; Truly Offline",
+    title: "2. No Data Collection, Truly Offline",
     content: (
       <>
         <p>
@@ -89,7 +89,7 @@ const sections = [
     ),
   },
   {
-    title: "5. SMS Permissions &mdash; On-Device Only",
+    title: "5. SMS Permissions, On-Device Only",
     content: (
       <>
         <p>
@@ -97,8 +97,8 @@ const sections = [
           track financial transactions from SMS messages:
         </p>
         <ul>
-          <li><strong>READ_SMS</strong> &mdash; to read financial transaction SMS messages</li>
-          <li><strong>RECEIVE_SMS</strong> &mdash; to receive and process incoming financial SMS messages</li>
+          <li><strong>READ_SMS</strong> to read financial transaction SMS messages</li>
+          <li><strong>RECEIVE_SMS</strong> to receive and process incoming financial SMS messages</li>
         </ul>
         <p>Here is exactly how these permissions work:</p>
         <ul>
@@ -111,7 +111,7 @@ const sections = [
             database</strong>.
           </li>
           <li>
-            SMS message content <strong>never leaves your device</strong> &mdash; it is not
+            SMS message content <strong>never leaves your device</strong>, it is not
             transmitted to us or any third party.
           </li>
           <li>
@@ -159,7 +159,7 @@ const sections = [
     ),
   },
   {
-    title: "7. Network Access &mdash; Font Downloads Only",
+    title: "7. Network Access, Font Downloads Only",
     content: (
       <>
         <p>
@@ -204,7 +204,7 @@ const sections = [
     ),
   },
   {
-    title: "9. Your Control &mdash; Data Deletion",
+    title: "9. Your Control, Data Deletion",
     content: (
       <>
         <p>
@@ -284,55 +284,31 @@ const sections = [
 export default function MyMoneyReportPrivacyPolicyPage() {
   return (
     <>
-      <section className="relative pt-32 pb-12 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: "var(--background)" }}
-        />
-        <div
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: "var(--accent)", opacity: 0.08 }}
-        />
-
-        <Container className="relative z-10">
+      <section className="pt-40 pb-12" style={{ backgroundColor: "var(--background)" }}>
+        <Container>
           <FadeIn className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-2xl flex items-center justify-center"
-                style={{ backgroundColor: "#3d0cde" }}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="w-11 h-11 rounded-2xl flex items-center justify-center" style={{ backgroundColor: "#3d0cde" }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
                   <line x1="8" y1="21" x2="16" y2="21" />
                   <line x1="12" y1="17" x2="12" y2="21" />
                 </svg>
               </div>
-              <span className="text-sm font-medium px-3 py-1 rounded-full"
-                style={{ backgroundColor: "rgba(61, 12, 222, 0.15)", color: "#3d0cde" }}>
+              <span className="text-sm font-medium px-3 py-1 rounded-full" style={{ backgroundColor: "rgba(61, 12, 222, 0.12)", color: "#3d0cde" }}>
                 My Money Report
               </span>
             </div>
-            <h1
-              className="text-4xl sm:text-5xl font-bold mb-4"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Privacy Policy
+            <h1 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-4" style={{ color: "var(--text-primary)" }}>
+              Privacy policy
             </h1>
-            <p style={{ color: "var(--text-secondary)" }}>
-              Effective date: July 4, 2026
-            </p>
+            <p style={{ color: "var(--text-secondary)" }}>Effective date: July 4, 2026</p>
           </FadeIn>
         </Container>
       </section>
 
-      <section className="py-16 relative">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, var(--background), var(--background-secondary))",
-          }}
-        />
-
-        <Container className="relative z-10">
+      <section className="py-16" style={{ backgroundColor: "var(--background)" }}>
+        <Container>
           <FadeIn>
             <div className="max-w-3xl">
               <p

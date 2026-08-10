@@ -116,9 +116,9 @@ export default async function TagPage({ params }: Props) {
                           color: "var(--background)",
                         }
                       : {
-                          background: "rgba(0, 212, 255, 0.1)",
+                          background: "var(--brand-subtle)",
                           color: "var(--accent)",
-                          border: "1px solid rgba(0, 212, 255, 0.2)",
+                          border: "1px solid rgba(255, 74, 31, 0.2)",
                         }
                   }
                 >
@@ -155,7 +155,7 @@ export default async function TagPage({ params }: Props) {
                             background:
                               t === tag
                                 ? "var(--accent)"
-                                : "rgba(0, 212, 255, 0.1)",
+                                : "var(--brand-subtle)",
                             color: t === tag ? "var(--background)" : "var(--accent)",
                           }}
                         >

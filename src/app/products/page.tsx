@@ -1,13 +1,15 @@
 import { Metadata } from 'next';
-import { Container, ProductCard, Button, Input } from '@repo/ui/ui';
+import { Container, Input, Button } from '@repo/ui/ui';
 import { FadeIn, StaggerChildren, StaggerItem } from '@repo/ui/animations';
 import {
   Trophy,
   Database,
   ArrowRight,
+  ArrowUpRight,
   Gamepad2,
   Camera,
   BriefcaseBusiness,
+  Lock,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -51,141 +53,64 @@ export const metadata: Metadata = {
 
 const products = [
   {
-    name: 'Sign Lock',
-    tagline: 'Your Sign. Your Privacy.',
-    description:
-      'The first drawing-based Android app locker. Lock any app with your unique drawing password. Advanced gesture recognition, 12 themes, AES-256 encryption, fully offline. Built by NexBrothers.',
-    icon: (
-      <Image
-        src="/images/sign-lock.png"
-        alt="Sign Lock"
-        width={64}
-        height={64}
-        className="rounded-2xl object-cover"
-      />
-    ),
-    status: 'coming-soon' as const,
-    href: 'https://signlock.nexbrothers.com',
-    featured: true,
-    features: [
-      'Drawing-Based Authentication',
-      'Lock Any App Installed',
-      '95%+ Gesture Recognition',
-      '12 Premium Drawing Themes',
-      'AES-256-GCM Encryption',
-      '100% Offline',
-    ],
-  },
-  {
     name: 'request-ledger',
-    tagline: 'Never Lose a Request Again',
+    tagline: 'Never lose a request again',
     description:
       'A durable, client-side HTTP request ledger for web applications on unreliable networks. Persist offline requests, auto-replay on reconnection, zero dependencies.',
-    icon: <Database className="w-8 h-8" />,
+    icon: <Database className="w-6 h-6" />,
     status: 'live' as const,
     href: '/products/request-ledger',
-    featured: true,
-    features: [
-      'Offline-First Persistence',
-      'Auto-Replay on Reconnection',
-      'Crash-Safe Recovery',
-      'Configurable Retry Strategies',
-      'TypeScript-First',
-      'Zero Dependencies (~8KB)',
-    ],
-  },
-  {
-    name: 'GridSmash',
-    tagline: 'Offline Block Puzzle Game',
-    description:
-      'A fun and addictive offline puzzle game where you strategically place blocks to clear rows and columns. Works completely offline - play anywhere, anytime without internet. Deployed on Play Store and going live soon!',
-    icon: <Gamepad2 className="w-8 h-8" />,
-    status: 'coming-soon' as const,
-    href: '/products',
-    features: [
-      'Fully Offline Gameplay',
-      'Strategic Block Placement',
-      'Row & Column Clearing',
-      'Smooth Animations & Effects',
-      'Score Tracking & Leaderboard',
-      'Available on Google Play Store',
-    ],
-  },
-  {
-    name: 'PhotoPrint Pro',
-    tagline: 'Print-Ready Photos in Seconds',
-    description:
-      'Remove backgrounds instantly, arrange photos on A4 sheets, and print high-quality images directly from the app. Perfect for passport photos, ID cards, and bulk photo printing. No design skills needed.',
-    icon: <Camera className="w-8 h-8" />,
-    status: 'live' as const,
-    href: '/products/photoprint-pro',
-    features: [
-      'Instant Background Removal',
-      'A4 Sheet Auto-Arrangement',
-      'High-Quality Print Output',
-      'Passport & ID Photo Layouts',
-      'Bulk Photo Processing',
-      'Direct Print Integration',
-    ],
+    features: ['Offline-first persistence', 'Auto-replay on reconnect', 'Crash-safe recovery', 'Zero dependencies'],
   },
   {
     name: 'Scanvo',
-    tagline: 'Scan, Organize & Export Documents Instantly',
+    tagline: 'Scan, organize & export documents instantly',
     description:
-      'Turn your phone into a powerful document scanner. Scan any document, ID card, or multi-page file, auto-enhance the quality, organize in folders, extract text with OCR, and export as a crisp PDF — all offline, all private, completely free.',
-    icon: (
-      <Image
-        src="/images/scanvo-logo.png"
-        alt="Scanvo"
-        width={64}
-        height={64}
-        className="rounded-2xl object-cover"
-      />
-    ),
+      'Turn your phone into a document scanner. Auto-enhance quality, organize in folders, extract text with OCR, and export as a crisp PDF, offline and private.',
+    icon: <Image src="/images/scanvo-logo.png" alt="" width={28} height={28} className="rounded-md" />,
     status: 'live' as const,
     href: 'https://scanvo.nexbrothers.com',
-    features: [
-      'Smart Document Scanner',
-      'ID Card Mode (Front & Back)',
-      'Batch Multi-Page Scan',
-      'PDF & Image Export',
-      'OCR Text Recognition',
-      'Folder Organization',
-    ],
+    features: ['ID card mode', 'Batch multi-page scan', 'OCR text recognition', 'Folder organization'],
   },
   {
-    name: 'Playro',
-    tagline: 'Cricket Tournament Management',
+    name: 'PhotoPrint Pro',
+    tagline: 'Print-ready photos in seconds',
     description:
-      'The complete solution for managing cricket tournaments. Create tournaments, manage teams, track live scores, and generate automatic standings - all in one powerful app. Coming soon!',
-    icon: <Trophy className="w-8 h-8" />,
-    status: 'coming-soon' as const,
-    href: '/playro',
-    features: [
-      'Tournament Creation & Setup',
-      'Team & Player Management',
-      'Live Score Updates',
-      'Automatic Points Table',
-      'Match Fixtures & Scheduling',
-      'Real-time Statistics',
-    ],
+      'Remove backgrounds instantly, arrange photos on A4 sheets, and print high-quality images directly. Perfect for passport photos and ID cards.',
+    icon: <Camera className="w-6 h-6" />,
+    status: 'live' as const,
+    href: '/products/photoprint-pro',
+    features: ['Instant background removal', 'A4 auto-arrangement', 'Passport & ID layouts', 'Bulk processing'],
   },
   {
     name: 'Job Automator',
-    tagline: 'Automated Job Search & Apply',
+    tagline: 'Automated job search & apply',
     description:
-      'Connect your Naukri credentials, set your job preferences, and let the app find and apply to matching jobs automatically. Features a comprehensive dashboard to track all applications, logs, and activity.',
-    icon: <BriefcaseBusiness className="w-8 h-8" />,
+      'Connect your Naukri account, set your preferences, and let it find and apply to matching jobs automatically with a full activity dashboard.',
+    icon: <BriefcaseBusiness className="w-6 h-6" />,
     status: 'live' as const,
     href: '/products/job-automator',
-    features: [
-      'Naukri Account Integration',
-      'Smart Job Matching & Scraping',
-      'Automated Job Applications',
-      'Activity Dashboard & Logs',
-      'Custom Job Preferences & Filters',
-      'Application Status Tracking',
-    ],
+    features: ['Smart job matching', 'Automated applications', 'Activity dashboard', 'Status tracking'],
+  },
+  {
+    name: 'Playro',
+    tagline: 'Cricket tournament management',
+    description:
+      'The complete solution for managing cricket tournaments with real-time scoring, automatic standings, and detailed statistics.',
+    icon: <Trophy className="w-6 h-6" />,
+    status: 'coming-soon' as const,
+    href: '/playro',
+    features: ['Live score updates', 'Automatic points table', 'Fixtures & scheduling', 'Real-time statistics'],
+  },
+  {
+    name: 'GridSmash',
+    tagline: 'Offline block puzzle game',
+    description:
+      'A fun offline puzzle game where you strategically place blocks to clear rows and columns. Play anywhere, no internet needed.',
+    icon: <Gamepad2 className="w-6 h-6" />,
+    status: 'coming-soon' as const,
+    href: '/products',
+    features: ['Fully offline gameplay', 'Row & column clearing', 'Score tracking', 'On Google Play'],
   },
 ];
 
@@ -193,218 +118,159 @@ export default function ProductsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'var(--background)' }}
-        />
-        <div
-          className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: 'var(--accent)', opacity: 0.1 }}
-        />
-        <div
-          className="absolute bottom-0 left-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: 'var(--accent-purple)', opacity: 0.1 }}
-        />
-
-        <Container className="relative z-10">
-          <FadeIn className="max-w-3xl mx-auto text-center">
+      <section className="pt-40 pb-16" style={{ backgroundColor: 'var(--background)' }}>
+        <Container>
+          <FadeIn className="max-w-2xl">
+            <p className="text-sm font-semibold mb-4" style={{ color: 'var(--accent)' }}>
+              Products
+            </p>
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
+              className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight leading-[1.02]"
               style={{ color: 'var(--text-primary)' }}
             >
-              Our <span className="gradient-text">Products</span>
+              Six small tools, built for real problems.
             </h1>
-            <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>
-              Innovative solutions designed for real-world impact. From sports
-              management to productivity tools, we build technology that makes a
-              difference.
-            </p>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* Sign Lock — featured */}
+      <section className="pb-16" style={{ backgroundColor: 'var(--background)' }}>
+        <Container>
+          <FadeIn>
+            <Link
+              href="https://signlock.nexbrothers.com"
+              className="group relative flex flex-col lg:flex-row lg:items-center gap-8 rounded-[32px] p-8 sm:p-12 overflow-hidden"
+              style={{ backgroundColor: 'var(--ink)' }}
+            >
+              <div
+                className="pointer-events-none absolute -right-24 -top-24 w-96 h-96 rounded-full"
+                style={{ backgroundColor: 'var(--accent)', opacity: 0.16, filter: 'blur(90px)' }}
+              />
+              <div
+                className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl"
+                style={{ backgroundColor: 'rgba(246,245,241,0.08)' }}
+              >
+                <Lock className="w-7 h-7" style={{ color: 'var(--on-ink)' }} />
+              </div>
+              <div className="relative flex-1">
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                  <h2 className="font-display text-2xl sm:text-3xl font-semibold" style={{ color: 'var(--on-ink)' }}>
+                    Sign Lock
+                  </h2>
+                  <span
+                    className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                    style={{ backgroundColor: 'rgba(246,245,241,0.1)', color: 'var(--on-ink-muted)' }}
+                  >
+                    Coming soon
+                  </span>
+                </div>
+                <p className="text-sm mb-3" style={{ color: 'var(--accent)' }}>
+                  Your sign. Your privacy.
+                </p>
+                <p className="text-base max-w-xl mb-5" style={{ color: 'var(--on-ink-muted)' }}>
+                  The first drawing-based Android app locker. Lock any app with your own drawing
+                  password, advanced gesture recognition, AES-256 encryption, fully offline.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['Drawing-based authentication', '95%+ gesture recognition', 'AES-256-GCM encryption', '100% offline'].map(
+                    (f) => (
+                      <span
+                        key={f}
+                        className="rounded-full px-3 py-1.5 text-xs font-medium"
+                        style={{ backgroundColor: 'rgba(246,245,241,0.08)', color: 'var(--on-ink)' }}
+                      >
+                        {f}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
+              <ArrowUpRight
+                className="relative w-6 h-6 shrink-0 self-start transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                style={{ color: 'var(--on-ink-muted)' }}
+              />
+            </Link>
           </FadeIn>
         </Container>
       </section>
 
       {/* Products Grid */}
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to bottom, var(--background), var(--background-secondary))',
-          }}
-        />
-
-        <Container className="relative z-10">
-          <StaggerChildren className="space-y-8">
-            {/* Featured Product - request-ledger */}
-            <StaggerItem>
-              <div
-                className="relative p-8 rounded-3xl backdrop-blur-xl border overflow-hidden"
-                style={{
-                  backgroundColor: 'var(--background-card)',
-                  borderColor: 'var(--border)',
-                }}
-              >
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background:
-                      'linear-gradient(to bottom right, var(--accent), transparent, var(--accent-purple))',
-                    opacity: 0.05,
-                  }}
-                />
-
-                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12">
-                  <div>
-                    <div className="flex items-center gap-4 mb-6">
-                      <div
-                        className="w-16 h-16 rounded-2xl flex items-center justify-center"
-                        style={{
-                          background:
-                            'linear-gradient(to bottom right, var(--accent), var(--accent-purple))',
-                          opacity: 0.9,
-                        }}
+      <section className="pb-24" style={{ backgroundColor: 'var(--background)' }}>
+        <Container>
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {products.map((product) => (
+              <StaggerItem key={product.name}>
+                <Link
+                  href={product.href}
+                  className="group flex flex-col rounded-[28px] p-8 h-full border transition-colors duration-200 hover:border-[var(--border-hover)]"
+                  style={{ backgroundColor: 'var(--background-secondary)', borderColor: 'var(--border)' }}
+                >
+                  <div className="flex items-start justify-between mb-6">
+                    <div
+                      className="flex h-12 w-12 items-center justify-center rounded-2xl"
+                      style={{ backgroundColor: 'var(--brand-subtle)', color: 'var(--accent)' }}
+                    >
+                      {product.icon}
+                    </div>
+                    <span
+                      className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold"
+                      style={{
+                        backgroundColor: product.status === 'live' ? 'rgba(30,157,91,0.12)' : 'var(--background)',
+                        color: product.status === 'live' ? 'var(--success)' : 'var(--accent)',
+                      }}
+                    >
+                      {product.status === 'live' ? 'Live' : 'Coming soon'}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-xl font-semibold mb-1" style={{ color: 'var(--text-primary)' }}>
+                    {product.name}
+                  </h3>
+                  <p className="text-sm font-medium mb-3" style={{ color: 'var(--accent)' }}>
+                    {product.tagline}
+                  </p>
+                  <p className="text-sm mb-6" style={{ color: 'var(--text-secondary)' }}>
+                    {product.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {product.features.map((f) => (
+                      <span
+                        key={f}
+                        className="rounded-full px-3 py-1 text-xs font-medium"
+                        style={{ backgroundColor: 'var(--background)', color: 'var(--text-secondary)', border: '1px solid var(--border)' }}
                       >
-                        <div style={{ color: 'white' }}>{products[0].icon}</div>
-                      </div>
-                      <div>
-                        <span
-                          className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-1 ${
-                            products[0].status === 'live'
-                              ? 'bg-[#10B981]/20 text-[#10B981]'
-                              : 'bg-[#F59E0B]/20 text-[#F59E0B]'
-                          }`}
-                        >
-                          {products[0].status === 'live'
-                            ? 'Live'
-                            : 'Coming Soon'}
-                        </span>
-                        <h2
-                          className="text-3xl font-bold"
-                          style={{ color: 'var(--text-primary)' }}
-                        >
-                          {products[0].name}
-                        </h2>
-                      </div>
-                    </div>
-
-                    <p
-                      className="font-medium mb-4"
-                      style={{ color: 'var(--accent)' }}
-                    >
-                      {products[0].tagline}
-                    </p>
-                    <p
-                      className="text-lg mb-8"
-                      style={{ color: 'var(--text-secondary)' }}
-                    >
-                      {products[0].description}
-                    </p>
-
-                    <Link href={products[0].href}>
-                      <Button size="lg" className="group">
-                        {products[0].status === 'live'
-                          ? 'View Product'
-                          : 'Learn More'}
-                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </Link>
+                        {f}
+                      </span>
+                    ))}
                   </div>
-
-                  <div>
-                    <h3
-                      className="text-xl font-semibold mb-6"
-                      style={{ color: 'var(--text-primary)' }}
-                    >
-                      Key Features
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {products[0].features?.map((feature, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center gap-3 p-4 rounded-xl border"
-                          style={{
-                            backgroundColor: 'var(--background-card)',
-                            borderColor: 'var(--border)',
-                          }}
-                        >
-                          <div
-                            className="w-2 h-2 rounded-full"
-                            style={{ backgroundColor: 'var(--accent)' }}
-                          />
-                          <span style={{ color: 'var(--text-secondary)' }}>
-                            {feature}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </StaggerItem>
-
-            {/* Other Products */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {products.slice(1).map((product, index) => (
-                <StaggerItem key={index}>
-                  <Link href={product.href}>
-                    <ProductCard
-                      name={product.name}
-                      tagline={product.tagline}
-                      description={product.description}
-                      icon={product.icon}
-                      status={product.status}
-                      href={product.href}
-                    />
-                  </Link>
-                </StaggerItem>
-              ))}
-            </div>
+                </Link>
+              </StaggerItem>
+            ))}
           </StaggerChildren>
         </Container>
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-24 relative overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'var(--background-secondary)' }}
-        />
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full blur-[128px]"
-          style={{ backgroundColor: 'var(--accent)', opacity: 0.1 }}
-        />
-
-        <Container className="relative z-10">
+      <section className="py-24" style={{ backgroundColor: 'var(--background-secondary)' }}>
+        <Container>
           <FadeIn>
-            <div className="max-w-2xl mx-auto text-center">
-              <h2
-                className="text-3xl sm:text-4xl font-bold mb-4"
-                style={{ color: 'var(--text-primary)' }}
-              >
-                Stay Updated
+            <div className="max-w-xl mx-auto text-center">
+              <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-4" style={{ color: 'var(--text-primary)' }}>
+                Stay updated
               </h2>
-              <p
-                className="text-lg mb-8"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                Be the first to know when we launch new products. Subscribe to
-                our newsletter for exclusive updates and early access.
+              <p className="text-lg mb-8" style={{ color: 'var(--text-secondary)' }}>
+                Be the first to know when we launch new products.
               </p>
 
-              <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1"
-                />
-                <Button type="submit">Subscribe</Button>
+              <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <Input type="email" placeholder="Enter your email" className="flex-1" />
+                <Button type="submit" className="rounded-full shrink-0">
+                  Subscribe
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
               </form>
 
-              <p
-                className="text-sm mt-4"
-                style={{ color: 'var(--text-muted)' }}
-              >
+              <p className="text-sm mt-4" style={{ color: 'var(--text-muted)' }}>
                 We respect your privacy. Unsubscribe at any time.
               </p>
             </div>

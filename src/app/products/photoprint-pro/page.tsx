@@ -1,186 +1,118 @@
 'use client';
 
 import Link from 'next/link';
-import { Container, Button, Card } from '@repo/ui/ui';
+import { Container } from '@repo/ui/ui';
 import { FadeIn } from '@repo/ui/animations';
 import { ArrowRight, CheckCircle2, Sparkles, ScanLine } from 'lucide-react';
 
 export default function PhotoPrintProPage() {
   return (
-    <>
-      <section className="relative overflow-hidden pt-32 pb-24">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'var(--background)' }}
-        />
-        <div
-          className="absolute left-1/4 top-0 h-96 w-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: 'var(--accent)', opacity: 0.12 }}
-        />
-        <div
-          className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: 'var(--accent-purple)', opacity: 0.1 }}
-        />
+    <section className="pt-40 pb-24" style={{ backgroundColor: 'var(--background)' }}>
+      <Container>
+        <FadeIn className="mx-auto max-w-5xl">
+          <div
+            className="overflow-hidden rounded-[32px] border"
+            style={{ backgroundColor: 'var(--background-secondary)', borderColor: 'var(--border)' }}
+          >
+            <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+              <div className="p-8 sm:p-10 lg:p-12">
+                <span
+                  className="mb-6 inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
+                  style={{ backgroundColor: 'var(--brand-subtle)', color: 'var(--accent)' }}
+                >
+                  Product update
+                </span>
 
-        <Container className="relative z-10">
-          <FadeIn className="mx-auto max-w-5xl">
-            <Card className="overflow-hidden p-0" hover={false} gradient>
-              <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-                <div className="p-8 sm:p-10 lg:p-12">
-                  <span
-                    className="mb-6 inline-flex items-center rounded-full px-4 py-1 text-sm font-semibold"
-                    style={{
-                      backgroundColor: 'rgba(0, 212, 255, 0.12)',
-                      color: 'var(--accent)',
-                    }}
-                  >
-                    Product Update
-                  </span>
+                <h1
+                  className="font-display mb-4 text-4xl font-semibold sm:text-5xl leading-[1.05]"
+                  style={{ color: 'var(--text-primary)' }}
+                >
+                  PhotoPrint Pro is now part of Scanvo
+                </h1>
 
-                  <h1
-                    className="mb-4 text-4xl font-bold sm:text-5xl md:text-6xl"
-                    style={{ color: 'var(--text-primary)' }}
-                  >
-                    PhotoPrint Pro is now part of{' '}
-                    <span className="gradient-text">Scanvo</span>
-                  </h1>
+                <p className="mb-8 max-w-2xl text-lg leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                  We moved PhotoPrint Pro&apos;s features into Scanvo so photo tools,
+                  document tools, and PDF tools live in one app. This page now exists
+                  only to guide existing users to the new home.
+                </p>
 
-                  <p
-                    className="mb-8 max-w-2xl text-lg leading-relaxed"
-                    style={{ color: 'var(--text-secondary)' }}
-                  >
-                    We have moved PhotoPrint Pro features into Scanvo so photo
-                    tools, document tools, and PDF tools live in one app.
-                    This page now exists only to guide existing users to the
-                    new home.
-                  </p>
-
-                  <div className="flex flex-wrap gap-3 mb-8">
-                    {[
-                      'Passport photo tools',
-                      'Document scanning',
-                      'PDF export',
-                      'Layout and print tools',
-                    ].map((item) => (
-                      <div
-                        key={item}
-                        className="rounded-full border px-4 py-2 text-sm"
-                        style={{
-                          borderColor: 'var(--border)',
-                          backgroundColor: 'var(--background-card)',
-                          color: 'var(--text-secondary)',
-                        }}
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-4">
-                    <Link href="https://scanvo.nexbrothers.com">
-                      <Button size="lg" className="group">
-                        Continue to Scanvo
-                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </Link>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {['Passport photo tools', 'Document scanning', 'PDF export', 'Layout and print tools'].map((item) => (
                     <span
-                      className="text-sm"
-                      style={{ color: 'var(--text-muted)' }}
+                      key={item}
+                      className="rounded-full border px-3.5 py-1.5 text-sm"
+                      style={{ borderColor: 'var(--border)', backgroundColor: 'var(--background)', color: 'var(--text-secondary)' }}
                     >
-                      No separate PhotoPrint Pro website page anymore
+                      {item}
                     </span>
+                  ))}
+                </div>
+
+                <Link
+                  href="https://scanvo.nexbrothers.com"
+                  className="group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-base font-semibold"
+                  style={{ backgroundColor: 'var(--accent)', color: '#fff' }}
+                >
+                  Continue to Scanvo
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+
+              <div className="relative p-8 sm:p-10 lg:p-12" style={{ backgroundColor: 'var(--background)' }}>
+                <div className="mb-6 flex items-center gap-3">
+                  <div
+                    className="flex h-14 w-14 items-center justify-center rounded-2xl"
+                    style={{ backgroundColor: 'var(--accent)' }}
+                  >
+                    <ScanLine className="h-7 w-7" style={{ color: '#fff' }} />
                   </div>
+                  <div>
+                    <p className="text-sm font-medium" style={{ color: 'var(--accent)' }}>
+                      New destination
+                    </p>
+                    <h2 className="font-display text-2xl font-semibold" style={{ color: 'var(--text-primary)' }}>
+                      Scanvo
+                    </h2>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  {[
+                    'Use one app instead of separate product flows',
+                    'Access photo, scan, and PDF features together',
+                    'Get future improvements inside Scanvo only',
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-start gap-3 rounded-2xl border p-4"
+                      style={{ borderColor: 'var(--border)', backgroundColor: 'var(--background-secondary)' }}
+                    >
+                      <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" style={{ color: 'var(--accent)' }} />
+                      <span style={{ color: 'var(--text-secondary)' }}>{item}</span>
+                    </div>
+                  ))}
                 </div>
 
                 <div
-                  className="relative p-8 sm:p-10 lg:p-12"
-                  style={{ backgroundColor: 'rgba(0, 212, 255, 0.04)' }}
+                  className="mt-6 rounded-2xl border p-5"
+                  style={{ borderColor: 'var(--border)', backgroundColor: 'var(--background-secondary)' }}
                 >
-                  <div className="mb-6 flex items-center gap-3">
-                    <div
-                      className="flex h-14 w-14 items-center justify-center rounded-2xl"
-                      style={{
-                        background:
-                          'linear-gradient(to bottom right, var(--accent), var(--accent-purple))',
-                      }}
-                    >
-                      <ScanLine className="h-7 w-7 text-white" />
-                    </div>
-                    <div>
-                      <p
-                        className="text-sm font-medium"
-                        style={{ color: 'var(--accent)' }}
-                      >
-                        New destination
-                      </p>
-                      <h2
-                        className="text-2xl font-bold"
-                        style={{ color: 'var(--text-primary)' }}
-                      >
-                        Scanvo
-                      </h2>
-                    </div>
+                  <div className="mb-3 flex items-center gap-2">
+                    <Sparkles className="h-4 w-4" style={{ color: 'var(--accent)' }} />
+                    <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
+                      What changed
+                    </span>
                   </div>
-
-                  <div className="space-y-4">
-                    {[
-                      'Use one app instead of separate product flows',
-                      'Access photo, scan, and PDF features together',
-                      'Get future improvements inside Scanvo only',
-                    ].map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-start gap-3 rounded-2xl border p-4"
-                        style={{
-                          borderColor: 'var(--border)',
-                          backgroundColor: 'var(--background-card)',
-                        }}
-                      >
-                        <CheckCircle2
-                          className="mt-0.5 h-5 w-5 shrink-0"
-                          style={{ color: 'var(--accent)' }}
-                        />
-                        <span style={{ color: 'var(--text-secondary)' }}>
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div
-                    className="mt-8 rounded-3xl border p-5"
-                    style={{
-                      borderColor: 'var(--border)',
-                      backgroundColor: 'var(--background-card)',
-                    }}
-                  >
-                    <div className="mb-3 flex items-center gap-2">
-                      <Sparkles
-                        className="h-4 w-4"
-                        style={{ color: 'var(--accent)' }}
-                      />
-                      <span
-                        className="text-sm font-semibold"
-                        style={{ color: 'var(--text-primary)' }}
-                      >
-                        What changed
-                      </span>
-                    </div>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: 'var(--text-secondary)' }}
-                    >
-                      PhotoPrint Pro has been merged into the Scanvo product
-                      experience. If you used PhotoPrint Pro before, use Scanvo
-                      going forward.
-                    </p>
-                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                    PhotoPrint Pro has been merged into the Scanvo product experience.
+                    If you used PhotoPrint Pro before, use Scanvo going forward.
+                  </p>
                 </div>
               </div>
-            </Card>
-          </FadeIn>
-        </Container>
-      </section>
-    </>
+            </div>
+          </div>
+        </FadeIn>
+      </Container>
+    </section>
   );
 }

@@ -28,46 +28,20 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-12 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: "var(--background)" }}
-        />
-        <div
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: "var(--accent)", opacity: 0.1 }}
-        />
-        <div
-          className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: "var(--accent-purple)", opacity: 0.1 }}
-        />
-
-        <Container className="relative z-10">
+      <section className="pt-40 pb-12" style={{ backgroundColor: "var(--background)" }}>
+        <Container>
           <FadeIn className="max-w-3xl">
-            <h1
-              className="text-4xl sm:text-5xl font-bold mb-4"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Privacy Policy
+            <h1 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-4" style={{ color: "var(--text-primary)" }}>
+              Privacy policy
             </h1>
-            <p style={{ color: "var(--text-secondary)" }}>
-              Last updated: March 16, 2025
-            </p>
+            <p style={{ color: "var(--text-secondary)" }}>Last updated: March 16, 2025</p>
           </FadeIn>
         </Container>
       </section>
 
       {/* Content */}
-      <section className="py-16 relative">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, var(--background), var(--background-secondary))",
-          }}
-        />
-
-        <Container className="relative z-10">
+      <section className="py-16" style={{ backgroundColor: "var(--background)" }}>
+        <Container>
           <FadeIn>
             <div className="max-w-3xl prose prose-invert prose-lg">
               <p
@@ -75,9 +49,9 @@ export default function PrivacyPolicyPage() {
                 style={{ color: "var(--text-secondary)" }}
               >
                 At NexBrothers, we take your privacy seriously. This Privacy
-                Policy explains how our applications — including{" "}
-                <strong style={{ color: "var(--text-primary)" }}>Scanvo</strong>{" "}
-                — collect, use, and protect your information. By using our apps,
+                Policy explains how our applications, including{" "}
+                <strong style={{ color: "var(--text-primary)" }}>Scanvo</strong>,
+                collect, use, and protect your information. By using our apps,
                 you agree to this policy.
               </p>
 
@@ -218,19 +192,19 @@ export default function PrivacyPolicyPage() {
                   <strong style={{ color: "var(--text-primary)" }}>
                     Google AdMob
                   </strong>{" "}
-                  — for displaying ads
+                  for displaying ads
                 </li>
                 <li>
                   <strong style={{ color: "var(--text-primary)" }}>
                     Firebase Analytics &amp; Crashlytics
                   </strong>{" "}
-                  — for anonymous usage and crash reporting
+                  for anonymous usage and crash reporting
                 </li>
                 <li>
                   <strong style={{ color: "var(--text-primary)" }}>
                     Google ML Kit
                   </strong>{" "}
-                  — for on-device OCR text recognition (fully offline, no data sent)
+                  for on-device OCR text recognition (fully offline, no data sent)
                 </li>
               </ul>
 

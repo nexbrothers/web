@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: Props) {
                   href={`/blog/tags/${tag}`}
                   className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:scale-105"
                   style={{
-                    background: "rgba(0, 212, 255, 0.1)",
+                    background: "var(--brand-subtle)",
                     color: "var(--accent)",
                   }}
                 >
@@ -266,7 +266,7 @@ export default async function BlogPostPage({ params }: Props) {
                             rel="noopener noreferrer"
                             className="p-2 rounded-lg transition-all duration-300 hover:scale-110"
                             style={{
-                              background: "rgba(0, 212, 255, 0.1)",
+                              background: "var(--brand-subtle)",
                               color: "var(--accent)",
                             }}
                             aria-label="Twitter"
@@ -281,7 +281,7 @@ export default async function BlogPostPage({ params }: Props) {
                             rel="noopener noreferrer"
                             className="p-2 rounded-lg transition-all duration-300 hover:scale-110"
                             style={{
-                              background: "rgba(0, 212, 255, 0.1)",
+                              background: "var(--brand-subtle)",
                               color: "var(--accent)",
                             }}
                             aria-label="GitHub"
@@ -296,7 +296,7 @@ export default async function BlogPostPage({ params }: Props) {
                             rel="noopener noreferrer"
                             className="p-2 rounded-lg transition-all duration-300 hover:scale-110"
                             style={{
-                              background: "rgba(0, 212, 255, 0.1)",
+                              background: "var(--brand-subtle)",
                               color: "var(--accent)",
                             }}
                             aria-label="LinkedIn"
@@ -311,7 +311,7 @@ export default async function BlogPostPage({ params }: Props) {
                             rel="noopener noreferrer"
                             className="p-2 rounded-lg transition-all duration-300 hover:scale-110"
                             style={{
-                              background: "rgba(0, 212, 255, 0.1)",
+                              background: "var(--brand-subtle)",
                               color: "var(--accent)",
                             }}
                             aria-label="Website"

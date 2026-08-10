@@ -1,9 +1,8 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { cn } from "@repo/utils";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -12,78 +11,69 @@ interface MobileMenuProps {
   currentPath: string;
 }
 
-export function MobileMenu({
-  isOpen,
-  onClose,
-  items,
-  currentPath,
-}: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose, items, currentPath }: MobileMenuProps) {
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 md:hidden"
-            style={{ backgroundColor: "rgba(20, 17, 16, 0.4)" }}
+            style={{ backgroundColor: "rgba(20, 20, 15, 0.45)" }}
             onClick={onClose}
           />
 
-          {/* Menu */}
           <motion.nav
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-[280px] border-l md:hidden"
-            style={{
-              backgroundColor: "var(--background)",
-              borderColor: "var(--border)",
-            }}
+            transition={{ type: "spring", damping: 28, stiffness: 260 }}
+            className="fixed top-0 right-0 bottom-0 z-50 w-[85vw] max-w-[340px] border-l md:hidden rounded-l-[28px] overflow-hidden"
+            style={{ backgroundColor: "var(--background)", borderColor: "var(--border)" }}
           >
-            <div className="flex flex-col pt-24 px-6">
-              {items.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.06 }}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={onClose}
-                    className={cn(
-                      "block py-4 text-lg font-medium border-b transition-colors active:scale-[0.97]"
-                    )}
-                    style={{
-                      borderColor: "var(--border)",
-                      color:
-                        currentPath === item.href
-                          ? "var(--text-primary)"
-                          : "var(--text-secondary)",
-                    }}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+            <div className="flex flex-col h-full pt-28 px-7 pb-8">
+              <div className="flex-1">
+                {items.map((item, index) => {
+                  const active = currentPath === item.href;
+                  return (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, x: 16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <Link
+                        href={item.href}
+                        onClick={onClose}
+                        className="flex items-center justify-between py-4 font-display text-3xl font-semibold border-b active:scale-[0.98] transition-transform"
+                        style={{
+                          borderColor: "var(--border)",
+                          color: active ? "var(--accent)" : "var(--text-primary)",
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: items.length * 0.06 }}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: items.length * 0.05 + 0.05 }}
               >
                 <Link
                   href="/contact"
                   onClick={onClose}
-                  className="flex items-center gap-1.5 py-4 text-lg font-semibold active:scale-[0.97]"
-                  style={{ color: "var(--accent)" }}
+                  className="flex items-center justify-center gap-2 rounded-full py-4 text-base font-semibold active:scale-[0.98] transition-transform"
+                  style={{ backgroundColor: "var(--primary)", color: "var(--background)" }}
                 >
-                  Let&apos;s talk
-                  <ArrowRight className="w-4 h-4" />
+                  Contact
+                  <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </motion.div>
             </div>

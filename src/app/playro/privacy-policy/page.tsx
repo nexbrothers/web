@@ -3,11 +3,11 @@ import { Container } from "@repo/ui/ui";
 import { FadeIn } from "@repo/ui/animations";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Playro",
+  title: "Privacy Policy - Playro",
   description:
     "Learn how Playro collects, uses, and protects your personal information when you use our cricket tournament management app.",
   openGraph: {
-    title: "Privacy Policy — Playro",
+    title: "Privacy Policy - Playro",
     description:
       "Learn how Playro collects, uses, and protects your personal information when you use our cricket tournament management app.",
     url: "https://nexbrothers.com/playro/privacy-policy",
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Privacy Policy — Playro",
+    title: "Privacy Policy - Playro",
     description:
       "Learn how Playro collects, uses, and protects your personal information when you use our cricket tournament management app.",
   },
@@ -28,48 +28,23 @@ export default function PlayroPrivacyPolicyPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-32 pb-12 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: "var(--background)" }}
-        />
-        <div
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-[128px]"
-          style={{ backgroundColor: "var(--accent)", opacity: 0.1 }}
-        />
-
-        <Container className="relative z-10">
+      <section className="pt-40 pb-12" style={{ backgroundColor: "var(--background)" }}>
+        <Container>
           <FadeIn className="max-w-3xl">
-            <p
-              className="text-sm font-semibold uppercase tracking-widest mb-3"
-              style={{ color: "var(--accent)" }}
-            >
+            <p className="text-sm font-semibold mb-3" style={{ color: "var(--accent)" }}>
               Playro
             </p>
-            <h1
-              className="text-4xl sm:text-5xl font-bold mb-4"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Privacy Policy
+            <h1 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-4" style={{ color: "var(--text-primary)" }}>
+              Privacy policy
             </h1>
-            <p style={{ color: "var(--text-secondary)" }}>
-              Last updated: April 26, 2026
-            </p>
+            <p style={{ color: "var(--text-secondary)" }}>Last updated: April 26, 2026</p>
           </FadeIn>
         </Container>
       </section>
 
       {/* Content */}
-      <section className="py-16 relative">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, var(--background), var(--background-secondary))",
-          }}
-        />
-
-        <Container className="relative z-10">
+      <section className="py-16" style={{ backgroundColor: "var(--background)" }}>
+        <Container>
           <FadeIn>
             <div className="max-w-3xl prose prose-invert prose-lg">
               <p
@@ -122,7 +97,7 @@ export default function PlayroPrivacyPolicyPage() {
                 style={{ color: "var(--text-secondary)" }}
               >
                 We collect information you enter while organizing or
-                participating in tournaments — including tournament names, team
+                participating in tournaments, including tournament names, team
                 names, player names, match schedules, scores, and statistics.
                 This data is stored on our servers to enable real-time syncing
                 across devices.
@@ -305,7 +280,7 @@ export default function PlayroPrivacyPolicyPage() {
                     Service providers:
                   </strong>{" "}
                   Firebase (Google) for authentication, database, and crash
-                  reporting — governed by Google&apos;s Privacy Policy.
+                  reporting, governed by Google&apos;s Privacy Policy.
                 </li>
                 <li>
                   <strong style={{ color: "var(--text-primary)" }}>
@@ -329,26 +304,22 @@ export default function PlayroPrivacyPolicyPage() {
                 <li>
                   <strong style={{ color: "var(--text-primary)" }}>
                     Firebase Authentication
-                  </strong>{" "}
-                  — secure sign-in via phone number or email
+                  </strong> for secure sign-in via phone number or email
                 </li>
                 <li>
                   <strong style={{ color: "var(--text-primary)" }}>
                     Firebase Firestore
-                  </strong>{" "}
-                  — cloud database for tournament data and real-time sync
+                  </strong> for cloud database and real-time sync
                 </li>
                 <li>
                   <strong style={{ color: "var(--text-primary)" }}>
                     Firebase Crashlytics
-                  </strong>{" "}
-                  — anonymous crash reporting
+                  </strong> for anonymous crash reporting
                 </li>
                 <li>
                   <strong style={{ color: "var(--text-primary)" }}>
                     Firebase Cloud Messaging
-                  </strong>{" "}
-                  — push notifications for match alerts
+                  </strong> for push notifications on match alerts
                 </li>
               </ul>
 
