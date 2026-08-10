@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@repo/utils";
 
@@ -27,7 +28,8 @@ export function MobileMenu({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[#030712]/80 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 md:hidden"
+            style={{ backgroundColor: "rgba(20, 17, 16, 0.4)" }}
             onClick={onClose}
           />
 
@@ -37,7 +39,11 @@ export function MobileMenu({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-[280px] bg-[#0A1628] border-l border-white/10 md:hidden"
+            className="fixed top-0 right-0 bottom-0 z-50 w-[280px] border-l md:hidden"
+            style={{
+              backgroundColor: "var(--background)",
+              borderColor: "var(--border)",
+            }}
           >
             <div className="flex flex-col pt-24 px-6">
               {items.map((item, index) => (
@@ -45,22 +51,41 @@ export function MobileMenu({
                   key={item.href}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.06 }}
                 >
                   <Link
                     href={item.href}
                     onClick={onClose}
                     className={cn(
-                      "block py-4 text-lg font-medium border-b border-white/5 transition-colors",
-                      currentPath === item.href
-                        ? "text-[#00D4FF]"
-                        : "text-[#94A3B8] hover:text-white"
+                      "block py-4 text-lg font-medium border-b transition-colors active:scale-[0.97]"
                     )}
+                    style={{
+                      borderColor: "var(--border)",
+                      color:
+                        currentPath === item.href
+                          ? "var(--text-primary)"
+                          : "var(--text-secondary)",
+                    }}
                   >
                     {item.label}
                   </Link>
                 </motion.div>
               ))}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: items.length * 0.06 }}
+              >
+                <Link
+                  href="/contact"
+                  onClick={onClose}
+                  className="flex items-center gap-1.5 py-4 text-lg font-semibold active:scale-[0.97]"
+                  style={{ color: "var(--accent)" }}
+                >
+                  Let&apos;s talk
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
             </div>
           </motion.nav>
         </>

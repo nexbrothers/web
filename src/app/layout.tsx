@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Fraunces } from 'next/font/google';
 import './globals.css';
 import { Header, Footer } from '@/components/layout';
-import { ThemeProvider } from '@repo/ui/theme';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/seo';
 
 const inter = Inter({
@@ -17,14 +16,21 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const fraunces = Fraunces({
+  variable: '--font-display',
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://nexbrothers.com'),
   title: {
-    default: 'NexBrothers | Building the Future of Technology',
+    default: 'NexBrothers | Software built with intent',
     template: '%s | NexBrothers',
   },
   description:
-    'NexBrothers builds innovative apps and digital tools including Scanvo, Playro, request-ledger, PhotoPrint Pro, and more.',
+    'NexBrothers builds digital products, applications, and software systems for people and businesses — including Scanvo, Playro, request-ledger, and PhotoPrint Pro.',
   keywords: [
     'technology company',
     'software development',
@@ -81,9 +87,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: 'NexBrothers | Building the Future of Technology',
+    title: 'NexBrothers | Software built with intent',
     description:
-      'Innovative apps and digital solutions that transform ideas into impactful experiences. Discover Playro, request-ledger, and more.',
+      'NexBrothers builds digital products, applications, and software systems for people and businesses.',
     url: 'https://nexbrothers.com',
     siteName: 'NexBrothers',
     locale: 'en_US',
@@ -93,15 +99,15 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'NexBrothers - Building the Future of Technology',
+        alt: 'NexBrothers - Software built with intent',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NexBrothers | Building the Future of Technology',
+    title: 'NexBrothers | Software built with intent',
     description:
-      'Innovative apps and digital solutions that transform ideas into impactful experiences.',
+      'NexBrothers builds digital products, applications, and software systems for people and businesses.',
     creator: '@nexbrothers',
     site: '@nexbrothers',
     images: ['/og-image.png'],
@@ -132,26 +138,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${fraunces.variable} antialiased`}
         style={{
           background: 'var(--background)',
           color: 'var(--text-primary)',
         }}
       >
-        <ThemeProvider>
-          <OrganizationJsonLd />
-          <WebSiteJsonLd />
-          <Header />
-          <main>{children}</main>
-          <Footer 
-            legalLinks={[
-              { label: "Privacy Policy", href: "/privacy-policy" },
-              { label: "Terms & Conditions", href: "/terms-and-conditions" },
-            ]}
-          />
-        </ThemeProvider>
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
+        <Header />
+        <main>{children}</main>
+        <Footer
+          legalLinks={[
+            { label: "Privacy Policy", href: "/privacy-policy" },
+            { label: "Terms & Conditions", href: "/terms-and-conditions" },
+          ]}
+        />
       </body>
     </html>
   );

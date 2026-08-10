@@ -121,16 +121,19 @@ export default function BlogPage() {
                         }}
                       >
                         {/* Cover Image */}
-                        {post.coverImage && (
-                          <div className="relative w-full aspect-video overflow-hidden">
+                        <div
+                          className="relative w-full aspect-video overflow-hidden"
+                          style={{ backgroundColor: "var(--background-secondary)" }}
+                        >
+                          {post.coverImage && (
                             <Image
                               src={post.coverImage}
                               alt={post.title}
                               fill
                               className="object-cover transition-transform duration-500 group-hover:scale-105"
                             />
-                          </div>
-                        )}
+                          )}
+                        </div>
 
                         <div className="p-6 flex flex-col flex-grow">
                           {/* Tags */}

@@ -37,6 +37,10 @@ export default function TermsPage() {
           className="absolute top-0 right-1/4 w-96 h-96 rounded-full blur-[128px]"
           style={{ backgroundColor: "var(--accent-purple)", opacity: 0.1 }}
         />
+        <div
+          className="absolute bottom-0 left-1/4 w-96 h-96 rounded-full blur-[128px]"
+          style={{ backgroundColor: "var(--accent)", opacity: 0.1 }}
+        />
 
         <Container className="relative z-10">
           <FadeIn className="max-w-3xl">

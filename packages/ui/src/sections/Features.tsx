@@ -22,7 +22,7 @@ export function Features({
   features,
 }: FeaturesProps) {
   return (
-    <section className="py-24" id="features">
+    <section className="py-16" id="features">
       <Container>
         <FadeIn className="max-w-xl mb-14">
           <h2

@@ -135,15 +135,16 @@ export default function AboutPage() {
               >
                 Our Story
               </h2>
-              <div className="prose prose-invert max-w-none">
+              <div className="prose prose-invert max-w-[65ch] mx-auto">
                 <p
                   className="text-lg mb-6 leading-relaxed"
                   style={{ color: 'var(--text-secondary)' }}
                 >
                   NexBrothers was born from a simple belief: technology should
-                  make life better, not more complicated. Founded by a team of
-                  passionate developers and designers, we set out to create
-                  products that people actually love to use.
+                  make life better, not more complicated. Founded by two
+                  brothers who wanted to build software they'd actually want
+                  to use themselves, we ship small and ship often rather than
+                  chase a single big idea.
                 </p>
                 <p
                   className="text-lg mb-6 leading-relaxed"
@@ -151,9 +152,10 @@ export default function AboutPage() {
                 >
                   Our journey began with a focus on solving everyday problems.
                   We noticed how difficult it was for cricket enthusiasts to
-                  organize and manage tournaments. This led to the creation of
-                  Playro, our flagship product that has since helped thousands
-                  of organizers run seamless cricket events.
+                  organize and manage tournaments by hand. That became Playro,
+                  our cricket tournament management app — currently in
+                  development, built around real-time scoring, automatic
+                  standings, and match statistics.
                 </p>
                 <p
                   className="text-lg mb-6 leading-relaxed"

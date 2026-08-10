@@ -50,7 +50,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 
 export function Stats({ stats }: StatsProps) {
   return (
-    <section className="py-20">
+    <section className="py-12">
       <Container>
         <div
           className="rounded-xl border p-8"

@@ -11,7 +11,7 @@ interface CTAProps {
 
 export function CTA({ title, description, children }: CTAProps) {
   return (
-    <section className="py-20">
+    <section className="py-24">
       <Container>
         <FadeIn className="max-w-lg mx-auto text-center">
           <h2
