@@ -15,9 +15,10 @@ interface HeaderProps {
   productName: string;
   logoSrc?: string;
   navLinks?: NavLink[];
+  showThemeToggle?: boolean;
 }
 
-export function Header({ productName, logoSrc, navLinks }: HeaderProps) {
+export function Header({ productName, logoSrc, navLinks, showThemeToggle = true }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -90,7 +91,7 @@ export function Header({ productName, logoSrc, navLinks }: HeaderProps) {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
+          {showThemeToggle && <ThemeToggle />}
           <button
             className="md:hidden flex h-8 w-8 items-center justify-center rounded-lg transition-colors"
             style={{ color: "var(--text-primary)" }}

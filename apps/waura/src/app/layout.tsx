@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Onest, JetBrains_Mono } from "next/font/google";
 import { Header } from "@repo/ui/header";
 import { Footer } from "@repo/ui/footer";
-import { ThemeProvider } from "@repo/ui/theme";
 import "./globals.css";
 
-const inter = Inter({
+const onest = Onest({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const bricolage = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
@@ -53,9 +52,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/waura-logo.png",
+        url: "/images/waura/store/waura-feature-1024x500.png",
         width: 1024,
-        height: 1024,
+        height: 500,
         alt: "Waura: Take the W on Screen Time",
       },
     ],
@@ -65,7 +64,7 @@ export const metadata: Metadata = {
     title: "Waura: Take the W on Screen Time",
     description:
       "Your phone time has an aura. Built to keep your data completely on your phone. No accounts, no ads, no internet permission.",
-    images: ["/images/waura-logo.png"],
+    images: ["/images/waura/store/waura-feature-1024x500.png"],
   },
   robots: {
     index: true,
@@ -76,10 +75,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/images/waura-logo.png", sizes: "any", type: "image/png" },
-      { url: "/images/waura-logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/waura/store/waura-icon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/images/waura/store/waura-icon-512.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: { url: "/images/waura-logo.png", sizes: "any", type: "image/png" },
+    apple: { url: "/images/waura/store/waura-icon-512.png", sizes: "512x512", type: "image/png" },
   },
 };
 
@@ -112,7 +111,7 @@ export default function RootLayout({
   const customNavLinks = [
     { label: "How It Works", href: "/#how-it-works" },
     { label: "Five Levels", href: "/#five-levels" },
-    { label: "Inside the App", href: "/#app-tour" },
+    { label: "Inside the App", href: "/#inside-waura" },
     { label: "Privacy", href: "/#privacy" },
     { label: "FAQ", href: "/#faq" },
   ];
@@ -124,34 +123,28 @@ export default function RootLayout({
   ];
 
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="light scroll-smooth" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem("theme");if(!t){t=window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"}document.documentElement.classList.add(t)})()`,
-          }}
-        />
       </head>
       <body
-        className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${onest.variable} ${bricolage.variable} ${jetbrainsMono.variable} antialiased min-h-screen flex flex-col`}
         style={{
           backgroundColor: "var(--bg-primary)",
           color: "var(--text-primary)",
         }}
       >
-        <ThemeProvider>
-          <Header
-            productName="Waura"
-            logoSrc="/images/waura-logo.png"
-            navLinks={customNavLinks}
-          />
-          <main className="flex-1">{children}</main>
-          <Footer productName="Waura" legalLinks={legalLinks} />
-        </ThemeProvider>
+        <Header
+          productName="Waura"
+          logoSrc="/images/waura/store/waura-icon-512.png"
+          navLinks={customNavLinks}
+          showThemeToggle={false}
+        />
+        <main className="flex-1">{children}</main>
+        <Footer productName="Waura" legalLinks={legalLinks} />
       </body>
     </html>
   );
