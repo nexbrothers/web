@@ -12,6 +12,8 @@ interface Stat {
 }
 
 interface StatsProps {
+  title?: string;
+  subtitle?: string;
   stats: Stat[];
 }
 
@@ -48,10 +50,24 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
   );
 }
 
-export function Stats({ stats }: StatsProps) {
+export function Stats({ title, subtitle, stats }: StatsProps) {
   return (
     <section className="py-20">
       <Container>
+        {(title || subtitle) && (
+          <FadeIn className="text-center max-w-xl mx-auto mb-12">
+            {title && (
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight mb-3" style={{ color: "var(--text-primary)" }}>
+                {title}
+              </h2>
+            )}
+            {subtitle && (
+              <p className="text-base leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                {subtitle}
+              </p>
+            )}
+          </FadeIn>
+        )}
         <div
           className="rounded-xl border p-8"
           style={{

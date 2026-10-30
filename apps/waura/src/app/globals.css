@@ -1,0 +1,292 @@
+@import "tailwindcss";
+@source "../../../../packages/ui";
+
+@custom-variant dark (&:is(.dark *));
+
+:root,
+.dark {
+  --bg-primary: #06070a;
+  --bg-secondary: #0c0e14;
+  --bg-elevated: #131620;
+  --bg-card: rgba(12, 14, 20, 0.75);
+  --border-primary: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
+  --brand: #a855f7;
+  --brand-hover: #c084fc;
+  --brand-subtle: rgba(168, 85, 247, 0.12);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* Aura level color tokens */
+  --aura-static: #94a3b8;
+  --aura-flicker: #06b6d4;
+  --aura-glow: #10b981;
+  --aura-radiant: #a855f7;
+  --aura-halo: #f59e0b;
+
+  --shadow-glow: rgba(168, 85, 247, 0.25);
+  --background: #06070a;
+  --background-secondary: #0c0e14;
+  --accent: #a855f7;
+}
+
+.light {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --bg-card: #ffffff;
+  --border-primary: rgba(15, 23, 42, 0.12);
+  --border-hover: rgba(15, 23, 42, 0.24);
+  --brand: #7c3aed;
+  --brand-hover: #6d28d9;
+  --brand-subtle: rgba(124, 58, 237, 0.08);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+
+  --aura-static: #475569;
+  --aura-flicker: #0891b2;
+  --aura-glow: #059669;
+  --aura-radiant: #7c3aed;
+  --aura-halo: #d97706;
+
+  --shadow-glow: rgba(124, 58, 237, 0.12);
+  --background: #f8fafc;
+  --background-secondary: #ffffff;
+  --accent: #7c3aed;
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-border-primary: var(--border-primary);
+  --color-brand: var(--brand);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-aura-static: var(--aura-static);
+  --color-aura-flicker: var(--aura-flicker);
+  --color-aura-glow: var(--aura-glow);
+  --color-aura-radiant: var(--aura-radiant);
+  --color-aura-halo: var(--aura-halo);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans), "Satoshi", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), "Clash Display", system-ui, sans-serif;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+
+::selection {
+  background: var(--brand);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Glassmorphism that is crystal clear in both light & dark mode */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.light .glass {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+}
+
+.light .glass-pill {
+  background: rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  color: var(--text-secondary);
+}
+
+/* Dynamic Aura Glow animations */
+@keyframes aura-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.95;
+  }
+}
+
+@keyframes aura-spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes aura-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-aura-pulse {
+  animation: aura-pulse 6s ease-in-out infinite;
+}
+
+.animate-aura-spin {
+  animation: aura-spin-slow 24s linear infinite;
+}
+
+.animate-aura-float {
+  animation: aura-float 4s ease-in-out infinite;
+}
+
+/* Grid Pattern Background */
+.dark .grid-pattern {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.light .grid-pattern {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Gradient Text Utilities */
+.gradient-text-aura {
+  background: linear-gradient(135deg, #0284c7 0%, #7c3aed 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text-aura {
+  background: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Policy and Prose Styles */
+.policy-section {
+  margin-bottom: 2.5rem;
+}
+.policy-section h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-primary);
+}
+.policy-section h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 1.25rem 0 0.5rem;
+}
+.policy-section p {
+  color: var(--text-secondary);
+  margin-bottom: 0.85rem;
+  line-height: 1.75;
+}
+.policy-section strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.policy-section ul {
+  margin: 0.5rem 0 1rem 1.5rem;
+  color: var(--text-secondary);
+  list-style: disc;
+}
+.policy-section ul li {
+  margin-bottom: 0.4rem;
+  line-height: 1.65;
+}
+.policy-section ul li::marker {
+  color: var(--brand);
+}
+.policy-section code {
+  background: var(--bg-elevated);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: var(--brand);
+  font-family: var(--font-mono), monospace;
+}
+.policy-section a {
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.highlight-box {
+  background: var(--brand-subtle);
+  border-left: 3px solid var(--brand);
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.25rem 0;
+}
+.highlight-box p {
+  margin-bottom: 0;
+  color: var(--text-primary);
+}
+.highlight-box strong {
+  color: var(--brand);
+}

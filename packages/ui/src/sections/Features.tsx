@@ -14,12 +14,14 @@ interface FeaturesProps {
   title: string;
   subtitle?: string;
   features: Feature[];
+  columns?: number;
 }
 
 export function Features({
   title,
   subtitle,
   features,
+  columns = 4,
 }: FeaturesProps) {
   return (
     <section className="py-24" id="features">

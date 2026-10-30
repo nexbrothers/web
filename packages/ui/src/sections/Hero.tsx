@@ -8,6 +8,8 @@ interface HeroProps {
   title: string | ReactNode;
   subtitle: string;
   primaryCTA?: { label: string; href: string };
+  secondaryCTA?: { label: string; href: string };
+  showDefaultBadges?: boolean;
   children?: ReactNode;
 }
 
@@ -15,6 +17,8 @@ export function Hero({
   title,
   subtitle,
   primaryCTA,
+  secondaryCTA,
+  showDefaultBadges = false,
   children,
 }: HeroProps) {
   return (
@@ -42,17 +46,27 @@ export function Hero({
               {subtitle}
             </motion.p>
 
-            {primaryCTA && (
+            {(primaryCTA || secondaryCTA) && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex items-center gap-4 flex-wrap"
               >
-                <a href={primaryCTA.href}>
-                  <Button size="lg">
-                    {primaryCTA.label}
-                  </Button>
-                </a>
+                {primaryCTA && (
+                  <a href={primaryCTA.href}>
+                    <Button size="lg">
+                      {primaryCTA.label}
+                    </Button>
+                  </a>
+                )}
+                {secondaryCTA && (
+                  <a href={secondaryCTA.href}>
+                    <Button variant="secondary" size="lg">
+                      {secondaryCTA.label}
+                    </Button>
+                  </a>
+                )}
               </motion.div>
             )}
 

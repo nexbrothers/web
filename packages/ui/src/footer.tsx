@@ -25,8 +25,10 @@ export function Footer({ productName = "NexBrothers", legalLinks }: FooterProps)
   ];
 
   const products = [
+    { label: "Waura", href: "https://waura.nexbrothers.com" },
+    { label: "Scanvo", href: "https://scanvo.nexbrothers.com" },
+    { label: "SignLock", href: "https://signlock.nexbrothers.com" },
     { label: "Playro", href: "https://nexbrothers.com/playro" },
-    { label: "Coming Soon", href: "https://nexbrothers.com/products" },
   ];
 
   const company = [
