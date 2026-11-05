@@ -30,6 +30,10 @@ import {
   Settings,
 } from "lucide-react";
 import Link from "next/link";
+import { HeroPhone3D } from "../components/hero-phone-3d";
+
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.nexbrothers.signlock&hl=en_IN";
 
 export default function SignlockHome() {
   const setupSteps = [
@@ -170,46 +174,69 @@ export default function SignlockHome() {
           />
         </div>
 
-        <Container className="relative z-10 pt-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <Container className="relative z-10 pt-24 pb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:col-span-7 flex flex-col items-start"
             >
-              <Badge variant="info" className="mb-6 inline-flex">
-                <Sparkles className="w-3.5 h-3.5 mr-1.5" />
-                Drawing-Based App Lock
+              <Badge variant="info" className="mb-6 inline-flex items-center gap-1.5 px-3 py-1 border border-violet-500/30">
+                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Next-Gen Drawing-Based App Lock</span>
               </Badge>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
                 Your Signature,
                 <br />
                 <span className="gradient-text">Your Key.</span>
               </h1>
-              <p className="text-lg sm:text-xl max-w-xl mb-8" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-lg sm:text-xl max-w-xl mb-8 leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                 SignLock lets you lock your Android apps with a personal drawing or signature.
                 More secure than PINs and patterns. Impossible to shoulder-surf. Fully offline.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                  <Link href="#how-it-works">
-                    <Button size="lg" className="group">
-                      See How It Works
-                      <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <a
+                    href={PLAY_STORE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button size="lg" className="group w-full sm:w-auto shadow-[0_0_30px_rgba(139,92,246,0.35)] hover:shadow-[0_0_40px_rgba(0,212,255,0.45)] transition-shadow">
+                      <Download className="mr-2 w-5 h-5" />
+                      Download Now
                     </Button>
-                  </Link>
+                  </a>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                   <Link href="#features">
-                    <Button variant="secondary" size="lg">
+                    <Button variant="secondary" size="lg" className="w-full sm:w-auto">
                       Explore Features
                     </Button>
                   </Link>
                 </motion.div>
               </div>
+
+              {/* Micro Trust Indicators */}
+              <div className="flex flex-wrap items-center gap-6 mt-10 pt-6 border-t border-white/10 text-xs text-neutral-400">
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span>100% On-Device · Zero Cloud Sync</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                  <span>95%+ Accuracy Telemetry</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Smartphone className="w-4 h-4 text-violet-400" />
+                  <span>Free on Android</span>
+                </div>
+              </div>
             </motion.div>
 
-            <PhoneAnimation />
+            <div className="lg:col-span-5 flex justify-center items-center">
+              <HeroPhone3D />
+            </div>
           </div>
         </Container>
 
@@ -432,7 +459,7 @@ export default function SignlockHome() {
             </FadeIn>
 
             <FadeIn direction="right" className="flex justify-center lg:justify-end">
-              <PhoneAnimation compact />
+              <HeroPhone3D compact />
             </FadeIn>
           </div>
         </Container>
@@ -686,10 +713,16 @@ export default function SignlockHome() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-                <Button size="lg" className="group" disabled>
-                  <Download className="mr-2 w-5 h-5" />
-                  Coming Soon
-                </Button>
+                <a
+                  href={PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button size="lg" className="group">
+                    <Download className="mr-2 w-5 h-5" />
+                    Download Now
+                  </Button>
+                </a>
               </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
                 <Link href="/product-details">
@@ -703,269 +736,5 @@ export default function SignlockHome() {
         </Container>
       </section>
     </main>
-  );
-}
-
-function PhoneAnimation({ compact }: { compact?: boolean }) {
-  const [phase, setPhase] = useState<"locked" | "drawing" | "verifying" | "success" | "unlocked">("locked");
-  const sizeClass = compact ? "w-[260px] sm:w-[300px]" : "w-[280px] sm:w-[320px]";
-
-  const schedule = useCallback(() => {
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    timers.push(setTimeout(() => setPhase("drawing"), 1000));
-    timers.push(setTimeout(() => setPhase("verifying"), 2600));
-    timers.push(setTimeout(() => setPhase("success"), 3200));
-    timers.push(setTimeout(() => setPhase("unlocked"), 3900));
-    timers.push(setTimeout(() => {
-      setPhase("locked");
-      timers.push(setTimeout(() => schedule(), 2000));
-    }, 6500));
-    return timers;
-  }, []);
-
-  useEffect(() => {
-    const timers = schedule();
-    return () => timers.forEach(clearTimeout);
-  }, [schedule]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8, delay: 0.4 }}
-      className="flex justify-center lg:justify-end"
-    >
-      <div className="relative">
-        <div className="absolute -inset-8 rounded-[48px] blur-[80px]" style={{ backgroundColor: "var(--accent)", opacity: 0.12 }} />
-
-        <AnimatePresence>
-          {phase === "unlocked" && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              className="absolute -inset-6 rounded-[40px] blur-[60px]"
-              style={{ backgroundColor: "rgba(16, 185, 129, 0.25)" }}
-            />
-          )}
-        </AnimatePresence>
-
-        <div
-          className="relative rounded-[40px] p-3"
-          style={{
-            background: "linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02))",
-            border: "1px solid var(--border)",
-            boxShadow: "0 30px 80px var(--shadow)",
-            backdropFilter: "blur(20px)",
-          }}
-        >
-          <div className={`relative aspect-[9/19] ${sizeClass} rounded-[32px] overflow-hidden bg-[#0a0a0a]`}>
-            <div className="absolute top-0 left-0 right-0 z-20 flex justify-between items-center px-6 py-3 text-[10px] text-white/60">
-              <span>9:41</span>
-              <div className="flex gap-1">
-                <div className="w-3.5 h-2 rounded-sm border border-white/30" />
-              </div>
-            </div>
-
-            <AnimatePresence>
-              {(phase === "locked" || phase === "drawing" || phase === "verifying" || phase === "success") && (
-                <motion.div
-                  key="lockscreen"
-                  initial={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.85, y: 40 }}
-                  transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="absolute inset-0 z-10 flex flex-col items-center justify-center p-6"
-                  style={{ backgroundColor: "#0a0a0a" }}
-                >
-                  <motion.p
-                    className="text-xs text-white/40 font-medium"
-                    animate={phase === "locked" ? { opacity: 0.4 } : { opacity: 0.2 }}
-                  >
-                    signlock
-                  </motion.p>
-                  <motion.p
-                    className="text-[10px] mb-4"
-                    style={{ color: phase === "locked" ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)" }}
-                  >
-                    App Locked
-                  </motion.p>
-
-                  <div
-                    className="w-full aspect-square rounded-2xl flex items-center justify-center relative overflow-hidden"
-                    style={{
-                      background: "radial-gradient(circle at 30% 40%, rgba(139,92,246,0.25), rgba(0,0,0,0.9))",
-                      border: "1px solid rgba(139,92,246,0.2)",
-                    }}
-                  >
-                    <svg viewBox="0 0 180 180" className="w-4/5 h-4/5">
-                      <motion.path
-                        d="M25,100 Q55,25 90,70 T130,50 T155,110"
-                        fill="none"
-                        stroke="url(#heroSigGrad)"
-                        strokeWidth="3.5"
-                        strokeLinecap="round"
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        animate={
-                          phase === "drawing" || phase === "verifying" || phase === "success"
-                            ? { pathLength: 1, opacity: 0.8 }
-                            : { pathLength: 0, opacity: 0 }
-                        }
-                        transition={{ duration: 1.2, ease: "easeInOut" }}
-                      />
-                      <defs>
-                        <linearGradient id="heroSigGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#8b5cf6" />
-                          <stop offset="100%" stopColor="#00D4FF" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-
-                    {phase === "verifying" && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="absolute inset-0 flex items-center justify-center"
-                        style={{ backgroundColor: "rgba(0,0,0,0.4)" }}
-                      >
-                        <motion.div
-                          animate={{ scale: [1, 1.15, 1] }}
-                          transition={{ duration: 0.6, repeat: Infinity }}
-                          className="w-12 h-12 rounded-full flex items-center justify-center"
-                          style={{
-                            background: "linear-gradient(135deg, var(--accent), var(--accent-purple))",
-                            boxShadow: "0 0 30px var(--glow)",
-                          }}
-                        >
-                          <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </motion.div>
-                      </motion.div>
-                    )}
-
-                    {phase === "success" && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="absolute inset-0 flex items-center justify-center"
-                        style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
-                      >
-                        <motion.div
-                          initial={{ scale: 0, rotate: -20 }}
-                          animate={{ scale: 1, rotate: 0 }}
-                          transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                          className="w-16 h-16 rounded-full flex items-center justify-center"
-                          style={{
-                            background: "linear-gradient(135deg, #10B981, #059669)",
-                            boxShadow: "0 0 40px rgba(16,185,129,0.5)",
-                          }}
-                        >
-                          <motion.svg
-                            className="w-8 h-8 text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            initial={{ pathLength: 0 }}
-                            animate={{ pathLength: 1 }}
-                            transition={{ duration: 0.4, delay: 0.1 }}
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </motion.svg>
-                        </motion.div>
-                        {[0, 1, 2].map((i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0.5, scale: 0.8 }}
-                            animate={{ opacity: 0, scale: 2.5 }}
-                            transition={{ duration: 0.8, delay: 0.1 + i * 0.15, ease: "easeOut" }}
-                            className="absolute w-16 h-16 rounded-full border-2 border-[#10B981]"
-                          />
-                        ))}
-                      </motion.div>
-                    )}
-                  </div>
-
-                  <motion.p className="mt-4 text-[10px]" style={{ color: "rgba(255,255,255,0.25)" }}>
-                    {phase === "locked" && "Draw anywhere to unlock"}
-                    {phase === "drawing" && "Drawing..."}
-                    {phase === "verifying" && "Verifying..."}
-                    {phase === "success" && "Unlocked!"}
-                  </motion.p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <AnimatePresence>
-              {phase === "unlocked" && (
-                <motion.div
-                  key="homescreen"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                  className="absolute inset-0 flex flex-col"
-                  style={{ backgroundColor: "#0a0a0a" }}
-                >
-                  <div className="flex-1 flex flex-col items-center justify-center pt-10">
-                    <p className="text-4xl font-light text-white/80">9:41</p>
-                    <p className="text-xs text-white/30 mt-1">Tue, Jul 14</p>
-                  </div>
-                  <div className="px-8 pb-4">
-                    <div className="grid grid-cols-4 gap-5">
-                      {[
-                        { icon: MessageSquare, label: "Messages", color: "#34C759" },
-                        { icon: Camera, label: "Camera", color: "#FF9500" },
-                        { icon: Settings, label: "Settings", color: "#8E8E93" },
-                        { icon: Lock, label: "SignLock", color: "#8b5cf6" },
-                      ].map((app, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.4, delay: 0.1 + i * 0.08 }}
-                          className="flex flex-col items-center gap-1"
-                        >
-                          <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ backgroundColor: app.color }}>
-                            <app.icon className="w-6 h-6 text-white" />
-                          </div>
-                          <span className="text-[9px] text-white/50 truncate max-w-full">{app.label}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="px-8 pb-6">
-                    <div className="rounded-2xl px-4 py-3 flex justify-around" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}>
-                      {["Messages", "Camera", "SignLock"].map((label, i) => (
-                        <div key={i} className="flex flex-col items-center gap-0.5">
-                          <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{
-                            backgroundColor: i === 0 ? "#34C759" : i === 1 ? "#FF9500" : "#8b5cf6"
-                          }}>
-                            {i === 0 ? <MessageSquare className="w-5 h-5 text-white" /> : i === 1 ? <Camera className="w-5 h-5 text-white" /> : <Lock className="w-5 h-5 text-white" />}
-                          </div>
-                          <span className="text-[8px] text-white/40">{label}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <AnimatePresence>
-              {phase !== "unlocked" && (
-                <motion.div
-                  exit={{ opacity: 0, y: 20 }}
-                  className="absolute bottom-0 left-0 right-0 z-20 flex justify-around items-center px-8 py-4 border-t border-white/5"
-                >
-                  <div className="w-4 h-4 rounded-full bg-white/10" />
-                  <div className="w-4 h-4 rounded-full bg-purple-500/50" />
-                  <div className="w-4 h-4 rounded-full bg-white/10" />
-                  <div className="w-4 h-4 rounded-full bg-white/10" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-      </div>
-    </motion.div>
   );
 }

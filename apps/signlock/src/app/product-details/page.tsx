@@ -19,6 +19,9 @@ import {
 import { Button } from "@repo/ui/ui";
 import { motion } from "framer-motion";
 
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.nexbrothers.signlock&hl=en_IN";
+
 export default function ProductDetails() {
   return (
     <>
@@ -357,10 +360,16 @@ export default function ProductDetails() {
 
           <div className="max-w-lg mx-auto text-center">
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-              <Button size="lg" className="group" disabled>
-                <Download className="mr-2 w-5 h-5" />
-                Coming Soon
-              </Button>
+              <a
+                href={PLAY_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" className="group">
+                  <Download className="mr-2 w-5 h-5" />
+                  Download Now
+                </Button>
+              </a>
             </motion.div>
           </div>
         </Container>

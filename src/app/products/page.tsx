@@ -64,7 +64,7 @@ const products = [
         className="rounded-2xl object-cover"
       />
     ),
-    status: 'coming-soon' as const,
+    status: 'live' as const,
     href: 'https://signlock.nexbrothers.com',
     featured: true,
     features: [

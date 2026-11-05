@@ -290,7 +290,7 @@ export default function HomePage() {
                       className="rounded-2xl object-cover"
                     />
                   }
-                  status="coming-soon"
+                  status="live"
                   href="https://signlock.nexbrothers.com"
                   featured
                 />
