@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="1024" height="1024">
+<defs><linearGradient id="g" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#FFB347"/><stop offset="0.55" stop-color="#FF7A1A"/><stop offset="1" stop-color="#F2500A"/></linearGradient><radialGradient id="glow" cx="0.5" cy="0.3" r="0.7"><stop offset="0" stop-color="#fff" stop-opacity="0.28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient><filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1.4" stdDeviation="1.3" flood-color="#8A2A00" flood-opacity="0.35"/></filter></defs>
+<rect width="108" height="108" rx="24" fill="url(#g)"/><rect width="108" height="108" rx="24" fill="url(#glow)"/>
+<g filter="url(#s)" fill="none" stroke-linecap="round">
+<line x1="54" y1="-2" x2="54" y2="31" stroke="#fff" stroke-width="3.6"/>
+<circle cx="54" cy="40" r="9" stroke="#fff" stroke-width="4.6"/>
+</g>
+<g filter="url(#s)">
+<circle cx="24" cy="56" r="4.3" fill="#fff" fill-opacity="0.84"/>
+<circle cx="35.5" cy="69.5" r="4.3" fill="#fff" fill-opacity="0.84"/>
+<circle cx="54" cy="75" r="6.2" fill="#fff" fill-opacity="1"/>
+<circle cx="72.5" cy="69.5" r="4.3" fill="#fff" fill-opacity="0.84"/>
+<circle cx="84" cy="56" r="4.3" fill="#fff" fill-opacity="0.84"/>
+</g>
+<circle cx="54" cy="75" r="9.8" fill="none" stroke="#fff" stroke-opacity="0.55" stroke-width="1.6"/>
+</svg>

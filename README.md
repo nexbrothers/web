@@ -9,6 +9,7 @@ This monorepo contains multiple apps and shared packages:
 - **`.` (Root)**: The main NexBrothers corporate website (`nexbrothers.com`).
 - **`apps/scanvo`**: The dedicated Next.js application for [Scanvo](https://scanvo.nexbrothers.com).
 - **`apps/signlock`**: The dedicated Next.js application for [Signlock](https://signlock.nexbrothers.com).
+- **`apps/quickhang`**: The dedicated Next.js application for [QuickHang](https://quickhang.nexbrothers.com).
 - **`packages/ui`**: Shared UI components used across applications (Header, Footer, Hero).
 - **`packages/utils`**: Shared utilities and helper functions.
 
@@ -61,6 +62,11 @@ npx turbo dev --filter=scanvo
 **Run only the Signlock app:**
 ```bash
 npx turbo dev --filter=signlock
+```
+
+**Run only the QuickHang app (port 3005):**
+```bash
+npx turbo dev --filter=quickhang
 ```
 
 **Run only the MyMoneyReport app:**
